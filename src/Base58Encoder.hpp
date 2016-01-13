@@ -4,7 +4,7 @@
 #include "GenericDataEncoder.hpp"
 
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 struct Base58Alphabet

@@ -1,6 +1,6 @@
 #include <iostream>
 
-namespace Stealth{
+namespace BitCrypto{
 
 template<class Alphabet>
 template<class Iterator>

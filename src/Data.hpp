@@ -3,7 +3,7 @@
 #include <vector>
 #include <ostream>
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 typedef std::vector<unsigned char> Data;

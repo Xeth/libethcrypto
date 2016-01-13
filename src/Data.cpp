@@ -1,7 +1,7 @@
 
 #include "Data.hpp"
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 unsigned char * operator & (Data &data)
