@@ -1,7 +1,7 @@
 
 #include "external/hash_impl.h"
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 

@@ -1,4 +1,4 @@
-namespace Stealth{
+namespace BitCrypto{
 
 
 template<class Hash>

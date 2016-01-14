@@ -4,7 +4,7 @@
 #include "Data.hpp"
 
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 

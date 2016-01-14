@@ -2,7 +2,7 @@
 
 #include "Data.hpp"
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 template<class Hash>
