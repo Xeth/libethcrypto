@@ -18,7 +18,7 @@ PubKeyFactory::PubKeyFactory()
 
 
 
-PubKey PubKeyFactory::create(const Secret &secret)
+PubKey PubKeyFactory::createFromSecret(const Secret &secret)
 {
     PubKey key(_context);
 

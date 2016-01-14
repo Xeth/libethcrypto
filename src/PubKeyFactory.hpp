@@ -13,7 +13,7 @@ class PubKeyFactory
         PubKeyFactory();
         PubKeyFactory(const Secp256k1ContextPtr &);
 
-        PubKey create(const Secret &secret);
+        PubKey createFromSecret(const Secret &secret);
         PubKey createFromCompressed(const Data &);
         PubKey createFromCompressed(const CompressedPoint &);
 
