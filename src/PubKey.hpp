@@ -5,7 +5,9 @@
 #include "secp256k1/secp256k1.h"
 
 #include "Secp256k1ContextPtr.hpp"
+#include "Secp256k1ContextFactory.hpp"
 #include "Data.hpp"
+#include "Secret.hpp"
 
 
 namespace BitCrypto{
@@ -37,6 +39,17 @@ class PubKey
 
         Iterator begin();
         Iterator end();
+
+        PubKey operator + (const PubKey &);
+        PubKey operator + (const Secret &);
+        PubKey operator * (const Secret &);
+        PubKey & operator += (const PubKey &);
+        PubKey & operator += (const Secret &);
+        PubKey & operator *= (const Secret &);
+        PubKey & operator = (const PubKey &);
+
+    private:
+        void createContextIfNotExists();
 
     private:
         secp256k1_pubkey _data;

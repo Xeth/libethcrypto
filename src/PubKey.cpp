@@ -80,4 +80,102 @@ PubKey::ConstIterator PubKey::end() const
     return _data.data+33;
 }
 
+
+void PubKey::createContextIfNotExists()
+{
+    if(!_context)
+    {
+        Secp256k1ContextFactory factory;
+        _context = factory.create();
+    }
+}
+
+PubKey PubKey::operator + (const PubKey &key)
+{
+    createContextIfNotExists();
+
+    PubKey result(_context);
+    const secp256k1_pubkey * keys[2] = {&_data, &key._data};
+    if(!secp256k1_ec_pubkey_combine(_context.get(), &result, keys, 2))
+    {
+        throw std::runtime_error("pubkey operation failed");
+    }
+    return result;
+}
+
+
+PubKey PubKey::operator + (const Secret &secret)
+{
+    createContextIfNotExists();
+
+    PubKey result(*this);
+    if(!secp256k1_ec_pubkey_tweak_add(_context.get(), &result, secret.data()))
+    {
+        throw std::runtime_error("pubkey operation failed");
+    }
+    
+    return result;
+}
+
+PubKey PubKey::operator * (const Secret &secret)
+{
+    createContextIfNotExists();
+
+    PubKey result(*this);
+    if(!secp256k1_ec_pubkey_tweak_mul(_context.get(), &result, secret.data()))
+    {
+        throw std::runtime_error("pubkey operation failed");
+    }
+    return result;
+}
+
+//
+
+PubKey & PubKey::operator += (const PubKey &key)
+{
+    createContextIfNotExists();
+
+    PubKey result(_context);
+    const secp256k1_pubkey * keys[2] = {&_data, &key._data};
+    if(!secp256k1_ec_pubkey_combine(_context.get(), &result, keys, 2))
+    {
+        throw std::runtime_error("pubkey operation failed");
+    }
+    *this = result;
+    return *this;
+}
+
+
+PubKey & PubKey::operator += (const Secret &secret)
+{
+    createContextIfNotExists();
+
+    if(!secp256k1_ec_pubkey_tweak_add(_context.get(), &_data, secret.data()))
+    {
+        throw std::runtime_error("pubkey operation failed");
+    }
+
+    return *this;
+}
+
+PubKey & PubKey::operator *= (const Secret &secret)
+{
+    createContextIfNotExists();
+
+    if(!secp256k1_ec_pubkey_tweak_mul(_context.get(), &_data, secret.data()))
+    {
+        throw std::runtime_error("pubkey operation failed");
+    }
+
+    return *this;
+}
+
+
+PubKey & PubKey::operator = (const PubKey &key)
+{
+    std::copy(key._data.data, key._data.data+33, _data.data);
+    return *this;
+}
+
+
 }
