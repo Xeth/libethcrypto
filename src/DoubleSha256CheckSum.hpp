@@ -3,7 +3,7 @@
 #include "Sha256.hpp"
 #include "DoubleHash.hpp"
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 class DoubleSha256CheckSum

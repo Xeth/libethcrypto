@@ -2,7 +2,8 @@
 
 #include "PubKey.hpp"
 #include "SecuredSecret.hpp"
-
+#include "SecretGenerator.hpp"
+#include "PubKeyFactory.hpp"
 #include "Secp256k1ContextPtr.hpp"
 
 
@@ -28,7 +29,7 @@ class SecuredKeyPair
         const PubKey & getPubKey() const;
 
     private:
-        SecuredSecret _secret;
+        Secret _secret;
         PubKey _pubKey;
 };
 

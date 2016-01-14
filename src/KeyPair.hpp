@@ -13,7 +13,7 @@ class KeyPair
 {
     public:
         KeyPair();
-        KeyPair(const Secp256k1ContextPtr &)
+        KeyPair(const Secp256k1ContextPtr &);
         KeyPair(const Secret &, const PubKey &);
 
         PubKey & getPubKey();

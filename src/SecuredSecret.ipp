@@ -12,7 +12,7 @@ SecuredSecret<Cipher>::SecuredSecret(const Secret &secret, const Cipher &cipher,
 
 template<class Cipher>
 SecuredSecret<Cipher>::SecuredSecret(const Data &secret, const Cipher &cipher) :
-    _cipher(cipher)
+    _cipher(cipher),
     _secret(secret)
 {}
 

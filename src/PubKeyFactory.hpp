@@ -3,6 +3,8 @@
 #include "Secp256k1ContextFactory.hpp"
 #include "PubKey.hpp"
 #include "CompressedPoint.hpp"
+#include "Secret.hpp"
+#include "PubKeyArchiver.hpp"
 
 namespace BitCrypto{
 

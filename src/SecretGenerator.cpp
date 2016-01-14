@@ -26,7 +26,7 @@ Secret SecretGenerator::generate(const Data &seed) const
 {
     Sha256 hasher;
     Secret secret;
-    hasher(seed.begin(), seed.end(), secret.begin());
+    hasher.hash(seed.begin(), seed.end(), secret.begin());
     return secret;
 }
 
@@ -36,7 +36,8 @@ Secret SecretGenerator::generate(const char *seed) const
 {
     Sha256 hasher;
     Secret secret;
-    hasher(seed, seed + strlen(seed), secret.begin());
+    const unsigned char *ptr = (const unsigned char *)seed;
+    hasher.hash(ptr, ptr + strlen(seed), secret.begin());
     return secret;
 }
 

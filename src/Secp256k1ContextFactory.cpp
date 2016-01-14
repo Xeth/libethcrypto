@@ -17,7 +17,7 @@ boost::shared_ptr<secp256k1_context> Secp256k1ContextFactory::create(int flags) 
 }
 
 
-secp256k1_context * Secp256k1ContextFactory::newContext(int flags) const
+secp256k1_context * Secp256k1ContextFactory::makeNew(int flags) const
 {
     return secp256k1_context_create(flags);
 }

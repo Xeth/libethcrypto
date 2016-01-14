@@ -5,6 +5,7 @@
 #include "PubKey.hpp"
 #include "Data.hpp"
 #include "Secp256k1ContextPtr.hpp"
+#include "Secp256k1ContextFactory.hpp"
 
 
 namespace BitCrypto{

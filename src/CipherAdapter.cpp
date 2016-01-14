@@ -1,7 +1,7 @@
 #include "CipherAdapter.hpp"
 
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 CipherAdapter::~CipherAdapter()

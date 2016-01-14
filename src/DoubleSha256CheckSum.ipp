@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 

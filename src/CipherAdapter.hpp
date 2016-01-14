@@ -1,9 +1,11 @@
 #pragma once 
 
-#include "AesCipher.hpp"
+#include <string>
+#include "Data.hpp"
+#include "Secret.hpp"
 
 
-namespace Stealth{
+namespace BitCrypto{
 
 
 class CipherAdapter
