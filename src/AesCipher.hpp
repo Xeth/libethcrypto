@@ -3,7 +3,7 @@
 #include <openssl/aes.h>
 
 
-namespace BitCripto{
+namespace BitCrypto{
 
 
 class AesKey
