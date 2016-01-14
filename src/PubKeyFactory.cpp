@@ -22,7 +22,7 @@ PubKey PubKeyFactory::create(const Secret &secret)
 {
     PubKey key(_context);
 
-    if(!secp256k1_ec_pubkey_create(_context.data(), &key, secret.data()))
+    if(!secp256k1_ec_pubkey_create(_context.get(), &key, secret.data()))
     {
         throw std::runtime_error("failed to create pubkey");
     }
@@ -30,5 +30,18 @@ PubKey PubKeyFactory::create(const Secret &secret)
     return key;
 }
 
+
+PubKey PubKeyFactory::createFromCompressed(const Data &compressed)
+{
+    PubKeyArchiver archiver(_context);
+    return archiver.decompress(compressed);
+}
+
+
+PubKey PubKeyFactory::createFromCompressed(const CompressedPoint &point)
+{
+    PubKeyArchiver archiver(_context);
+    return archiver.decompress(point);
+}
 
 }
