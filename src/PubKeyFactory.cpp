@@ -31,17 +31,26 @@ PubKey PubKeyFactory::createFromSecret(const Secret &secret)
 }
 
 
-PubKey PubKeyFactory::createFromCompressed(const Data &compressed)
+template<class Point>
+PubKey PubKeyFactory::createFromPointData(const Point &point)
 {
-    PubKeyArchiver archiver(_context);
-    return archiver.decompress(compressed);
+    PubKey key(_context);
+    if(!secp256k1_ec_pubkey_parse(_context.get(), &key, point.data(), point.size()))
+    {
+        throw std::runtime_error("failed to parse compressed point");
+    }
+    return key;
+}
+
+PubKey PubKeyFactory::createFromPoint(const UncompressedPoint &point)
+{
+    return createFromPointData(point);
 }
 
 
-PubKey PubKeyFactory::createFromCompressed(const CompressedPoint &point)
+PubKey PubKeyFactory::createFromPoint(const CompressedPoint &point)
 {
-    PubKeyArchiver archiver(_context);
-    return archiver.decompress(point);
+    return createFromPointData(point);
 }
 
 }
