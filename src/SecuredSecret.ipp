@@ -26,5 +26,18 @@ Secret SecuredSecret<Cipher>::unlock(const CipherKey &key)
 }
 
 
+template<class Cipher>
+const Data & SecuredSecret<Cipher>::getData() const
+{
+    return _secret;
+}
+
+
+template<class Cipher>
+Data & SecuredSecret<Cipher>::getData()
+{
+    return _secret;
+}
+
 
 }

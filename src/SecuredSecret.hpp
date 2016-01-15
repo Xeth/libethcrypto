@@ -18,6 +18,9 @@ class SecuredSecret
         template<class CipherKey>
         Secret unlock(const CipherKey &);
 
+        const Data & getData() const;
+        Data & getData();
+
     private:
         CipherAdapter _cipher;
         Data  _secret;
