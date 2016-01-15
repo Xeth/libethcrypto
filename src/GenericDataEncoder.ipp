@@ -165,4 +165,10 @@ Data GenericDataEncoder<Alphabet>::decode(Iterator begin, Iterator end)
 }
 
 
+template<class Alphabet>
+Data GenericDataEncoder<Alphabet>::decode(const std::string &input)
+{
+    return decode<Data>(input.begin(), input.end());
+}
+
 }
