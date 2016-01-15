@@ -12,4 +12,4 @@ include_directories(${CMAKE_BINARY_DIR}/include/bitcrypto)
 add_executable(unit-tests ${TEST_SOURCES})
 add_dependencies(unit-tests bitcrypto)
 
-target_link_libraries(unit-tests bitcrypto ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} )
+target_link_libraries(unit-tests bitcrypto ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} gmp)
