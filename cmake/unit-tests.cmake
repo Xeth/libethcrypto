@@ -5,7 +5,9 @@ file(GLOB TEST_SOURCES
 )
 
 
-include_directories(${CMAKE_BINARY_DIR}/secp256k1/include ${CMAKE_SOURCE_DIR}/src)
+#include_directories(${CMAKE_BINARY_DIR}/secp256k1/include ${CMAKE_SOURCE_DIR}/src)
+
+include_directories(${CMAKE_BINARY_DIR}/include/bitcrypto)
 
 add_executable(unit-tests ${TEST_SOURCES})
 add_dependencies(unit-tests bitcrypto)
