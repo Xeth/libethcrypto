@@ -25,14 +25,7 @@ elseif (UNIX)
 endif (WIN32)
 
 
-foreach(HEADER ${HEADERS})
-    add_custom_command(
-        TARGET bitcrypto
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${CMAKE_SOURCE_DIR}/src/${HEADER} ${CMAKE_BINARY_DIR}/include/bitcrypto
-)
-endforeach(HEADER )
+
 
 
 
