@@ -5,6 +5,7 @@
 #include "CompressedPoint.hpp"
 #include "UncompressedPoint.hpp"
 #include "Secret.hpp"
+#include "Data.hpp"
 
 namespace BitCrypto{
 
@@ -18,10 +19,10 @@ class PubKeyFactory
         PubKey createFromSecret(const Secret &secret);
         PubKey createFromPoint(const CompressedPoint &);
         PubKey createFromPoint(const UncompressedPoint &);
+        PubKey createFromPoint(const Data &);
 
     private:
-        template<class Point>
-        PubKey createFromPointData(const Point &);
+        PubKey createFromPointData(const unsigned char *ptr, size_t size);
 
     private:
         Secp256k1ContextPtr _context;
