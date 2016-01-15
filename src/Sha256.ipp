@@ -10,7 +10,7 @@ void Sha256::hash(Iterator begin, Iterator end, OutIterator out) const
 {
     secp256k1_sha256_t hash;
     secp256k1_sha256_initialize(&hash);
-    secp256k1_sha256_write(&hash, &*begin, end-begin);
+    secp256k1_sha256_write(&hash, (const unsigned char *)&*begin, end-begin);
     secp256k1_sha256_finalize(&hash, &*out);
 }
 
