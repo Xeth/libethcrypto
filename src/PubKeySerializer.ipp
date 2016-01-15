@@ -89,29 +89,15 @@ void PubKeySerializer<Encoder>::unserialize(const std::string &encoded, Uncompre
     std::copy(data.begin(), data.end(), point.begin());
 }
 
-template<class Encoder>
-void PubKeySerializer<Encoder>::unserialize(const std::string &encoded, PubKey &key) const
-{
-    Encoder encoder;
-    Data data = encoder.decode(encoded.begin(), encoded.end());
 
-    if(data.size() !=33 && data.size()!=65 )
-    {
-        throw std::runtime_error("Invalid serialized public key");
-    }
-
-    if(!secp256k1_ec_pubkey_parse(_context.get(), &key, data.data(), data.size()))
-    {
-        throw std::runtime_error("failed to decompress key");
-    }
-}
 
 template<class Encoder>
 PubKey PubKeySerializer<Encoder>::unserialize(const std::string &encoded) const
 {
-    PubKey key(_context);
-    unserialize(encoded, key);
-    return key;
+    PubKeyFactory factory(_context);
+    Encoder encoder;
+    Data data = encoder.decode(encoded.begin(), encoded.end());
+    return factory.createFromPoint(data);
 }
 
 

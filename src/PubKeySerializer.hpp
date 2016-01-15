@@ -6,6 +6,7 @@
 #include "Secp256k1ContextPtr.hpp"
 #include "Base58Encoder.hpp"
 #include "Base16Encoder.hpp"
+#include "PubKeyFactory.hpp"
 
 namespace BitCrypto{
 
@@ -22,7 +23,6 @@ class PubKeySerializer
 
         void unserialize(const std::string &, CompressedPoint &) const;
         void unserialize(const std::string &, UncompressedPoint &) const;
-        void unserialize(const std::string &, PubKey &) const;
         PubKey unserialize(const std::string &) const;
 
         std::string serialize(const CompressedPoint &) const;
@@ -30,10 +30,6 @@ class PubKeySerializer
         std::string serialize(const PubKey &, bool compress=true) const;
 
     private:
-        CompressedPoint compress(const PubKey &);
-        CompressedPoint compress(const Data &);
-        PubKey decompress(const CompressedPoint &);
-        PubKey decompress(const Data &);
         Secp256k1ContextPtr createContext();
 
     private:
