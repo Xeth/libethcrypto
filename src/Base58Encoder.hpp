@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Data.hpp"
-#include "GenericDataEncoder.hpp"
+#include "detail/GenericDataEncoder.hpp"
 
 
 namespace BitCrypto{

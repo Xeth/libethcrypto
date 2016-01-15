@@ -9,11 +9,11 @@ PubKey::PubKey()
 {}
 
 PubKey::PubKey(const Secp256k1ContextPtr &context) : 
-    _context(context)
+    LazySecp256k1Handler(context)
 {}
 
 PubKey::PubKey(const PubKey &copy) :
-    _context(copy._context)
+    LazySecp256k1Handler(copy.getContext())
 {
     std::copy(copy._data.data, copy._data.data+33, _data.data);
 }
@@ -24,7 +24,7 @@ PubKey::PubKey(const Data &bin)
 }
 
 PubKey::PubKey(const Data &bin, const Secp256k1ContextPtr &context) :
-    _context(context)
+    LazySecp256k1Handler(context)
 {
     std::copy(bin.begin(), bin.begin()+33, _data.data);
 }
@@ -81,22 +81,11 @@ PubKey::ConstIterator PubKey::end() const
 }
 
 
-void PubKey::createContextIfNotExists()
-{
-    if(!_context)
-    {
-        Secp256k1ContextFactory factory;
-        _context = factory.create();
-    }
-}
-
 PubKey PubKey::operator + (const PubKey &key)
 {
-    createContextIfNotExists();
-
-    PubKey result(_context);
+    PubKey result(getContext());
     const secp256k1_pubkey * keys[2] = {&_data, &key._data};
-    if(!secp256k1_ec_pubkey_combine(_context.get(), &result, keys, 2))
+    if(!secp256k1_ec_pubkey_combine(getContext().get(), &result, keys, 2))
     {
         throw std::runtime_error("pubkey operation failed");
     }
@@ -106,10 +95,8 @@ PubKey PubKey::operator + (const PubKey &key)
 
 PubKey PubKey::operator + (const Secret &secret)
 {
-    createContextIfNotExists();
-
     PubKey result(*this);
-    if(!secp256k1_ec_pubkey_tweak_add(_context.get(), &result, secret.data()))
+    if(!secp256k1_ec_pubkey_tweak_add(getContext().get(), &result, secret.data()))
     {
         throw std::runtime_error("pubkey operation failed");
     }
@@ -119,10 +106,8 @@ PubKey PubKey::operator + (const Secret &secret)
 
 PubKey PubKey::operator * (const Secret &secret)
 {
-    createContextIfNotExists();
-
     PubKey result(*this);
-    if(!secp256k1_ec_pubkey_tweak_mul(_context.get(), &result, secret.data()))
+    if(!secp256k1_ec_pubkey_tweak_mul(getContext().get(), &result, secret.data()))
     {
         throw std::runtime_error("pubkey operation failed");
     }
@@ -133,11 +118,9 @@ PubKey PubKey::operator * (const Secret &secret)
 
 PubKey & PubKey::operator += (const PubKey &key)
 {
-    createContextIfNotExists();
-
-    PubKey result(_context);
+    PubKey result(getContext());
     const secp256k1_pubkey * keys[2] = {&_data, &key._data};
-    if(!secp256k1_ec_pubkey_combine(_context.get(), &result, keys, 2))
+    if(!secp256k1_ec_pubkey_combine(getContext().get(), &result, keys, 2))
     {
         throw std::runtime_error("pubkey operation failed");
     }
@@ -148,9 +131,7 @@ PubKey & PubKey::operator += (const PubKey &key)
 
 PubKey & PubKey::operator += (const Secret &secret)
 {
-    createContextIfNotExists();
-
-    if(!secp256k1_ec_pubkey_tweak_add(_context.get(), &_data, secret.data()))
+    if(!secp256k1_ec_pubkey_tweak_add(getContext().get(), &_data, secret.data()))
     {
         throw std::runtime_error("pubkey operation failed");
     }
@@ -160,9 +141,7 @@ PubKey & PubKey::operator += (const Secret &secret)
 
 PubKey & PubKey::operator *= (const Secret &secret)
 {
-    createContextIfNotExists();
-
-    if(!secp256k1_ec_pubkey_tweak_mul(_context.get(), &_data, secret.data()))
+    if(!secp256k1_ec_pubkey_tweak_mul(getContext().get(), &_data, secret.data()))
     {
         throw std::runtime_error("pubkey operation failed");
     }

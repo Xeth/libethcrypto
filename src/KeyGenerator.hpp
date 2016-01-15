@@ -2,14 +2,13 @@
 
 #include "KeyPair.hpp"
 #include "SecuredKeyPair.hpp"
-#include "Secp256k1ContextPtr.hpp"
-#include "Secp256k1ContextFactory.hpp"
+#include "detail/Secp256k1Handler.hpp"
 
 
 namespace BitCrypto{
 
 
-class KeyGenerator
+class KeyGenerator : public Secp256k1Handler
 {
     public:
         KeyGenerator();
@@ -28,11 +27,8 @@ class KeyGenerator
         template<class Cipher, class CipherKey>
         SecuredKeyPair<Cipher> generate(const char *, const Cipher &, const CipherKey &);
 
-    private:
-        Secp256k1ContextPtr createContext();
 
     private:
-        Secp256k1ContextPtr _context;
         SecretGenerator _secretGenerator;
         PubKeyFactory _pubKeyGenerator;
 };

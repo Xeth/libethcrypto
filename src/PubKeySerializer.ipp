@@ -2,14 +2,13 @@ namespace BitCrypto{
 
 
 template<class Encoder>
-PubKeySerializer<Encoder>::PubKeySerializer() :
-    _context(createContext())
+PubKeySerializer<Encoder>::PubKeySerializer()
 {}
 
 
 template<class Encoder>
 PubKeySerializer<Encoder>::PubKeySerializer(const Secp256k1ContextPtr &context) :
-    _context(context?context:createContext())
+    Secp256k1Handler(context)
 {}
 
 
@@ -22,7 +21,7 @@ std::string PubKeySerializer<Encoder>::serialize(const PubKey &key, bool compres
         CompressedPoint point;
         size_t pointSize = point.size();
 
-        if(!secp256k1_ec_pubkey_serialize(_context.get(), point.data(), &pointSize, &key, SECP256K1_EC_COMPRESSED))
+        if(!secp256k1_ec_pubkey_serialize(getContext().get(), point.data(), &pointSize, &key, SECP256K1_EC_COMPRESSED))
         {
             throw std::runtime_error("failed to compress pubkey");
         }
@@ -39,7 +38,7 @@ std::string PubKeySerializer<Encoder>::serialize(const PubKey &key, bool compres
         UncompressedPoint point;
         size_t pointSize = point.size();
 
-        if(!secp256k1_ec_pubkey_serialize(_context.get(), point.data(), &pointSize, &key, SECP256K1_EC_UNCOMPRESSED))
+        if(!secp256k1_ec_pubkey_serialize(getContext().get(), point.data(), &pointSize, &key, SECP256K1_EC_UNCOMPRESSED))
         {
             throw std::runtime_error("failed to compress pubkey");
         }
@@ -94,18 +93,13 @@ void PubKeySerializer<Encoder>::unserialize(const std::string &encoded, Uncompre
 template<class Encoder>
 PubKey PubKeySerializer<Encoder>::unserialize(const std::string &encoded) const
 {
-    PubKeyFactory factory(_context);
+    PubKeyFactory factory(getContext());
     Encoder encoder;
     Data data = encoder.decode(encoded.begin(), encoded.end());
     return factory.createFromPoint(data);
 }
 
 
-template<class Encoder>
-Secp256k1ContextPtr PubKeySerializer<Encoder>::createContext()
-{
-    Secp256k1ContextFactory factory;
-    return factory.create();
-}
+
 
 }

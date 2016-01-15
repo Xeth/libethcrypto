@@ -3,7 +3,7 @@
 #include "PubKey.hpp"
 #include "CompressedPoint.hpp"
 #include "UncompressedPoint.hpp"
-#include "Secp256k1ContextPtr.hpp"
+#include "detail/Secp256k1Handler.hpp"
 #include "Base58Encoder.hpp"
 #include "Base16Encoder.hpp"
 #include "PubKeyFactory.hpp"
@@ -12,7 +12,7 @@ namespace BitCrypto{
 
 
 template<class Encoder>
-class PubKeySerializer
+class PubKeySerializer : public Secp256k1Handler
 {
 
     public:
@@ -29,11 +29,6 @@ class PubKeySerializer
         std::string serialize(const UncompressedPoint &) const;
         std::string serialize(const PubKey &, bool compress=true) const;
 
-    private:
-        Secp256k1ContextPtr createContext();
-
-    private:
-        mutable Secp256k1ContextPtr _context;
 };
 
 

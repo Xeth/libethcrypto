@@ -5,14 +5,15 @@ namespace BitCrypto{
 
 
 KeyGenerator::KeyGenerator() :
-    _context(createContext()),
-    _pubKeyGenerator(_context)
+    _secretGenerator(getContext()),
+    _pubKeyGenerator(getContext())
 {}
 
 
 KeyGenerator::KeyGenerator(const Secp256k1ContextPtr &context):
-    _context(context),
-    _pubKeyGenerator(context)
+    Secp256k1Handler(context),
+    _secretGenerator(getContext()),
+    _pubKeyGenerator(getContext())
 {}
 
 

@@ -2,12 +2,13 @@ find_package(Boost COMPONENTS system REQUIRED)
 
 #add_definitions(-D__DEBUG__)
 
-include_directories(${CMAKE_BINARY_DIR}/include/bitcrypto)
+include_directories(${CMAKE_BINARY_DIR}/include/bitcrypto ${CMAKE_SOURCE_DIR}/src)
 
 
 file(GLOB SOURCES 
     "src/*.cpp"
     "src/external/*.cpp"
+    "src/detail/*.cpp"
 )
 
 
@@ -34,7 +35,7 @@ add_custom_command(
 foreach(HEADER ${HEADERS})
     add_custom_command(
         TARGET bitcrypto-core
-        PRE_BUILD
+        POST_BUILD
         COMMAND ${CMAKE_COMMAND}
         ARGS -E copy ${CMAKE_SOURCE_DIR}/src/${HEADER} ${CMAKE_BINARY_DIR}/include/bitcrypto/${HEADER}
 )

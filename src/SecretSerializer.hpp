@@ -6,7 +6,7 @@
 #include "Base58Encoder.hpp"
 #include "Base16Encoder.hpp"
 
-#include "Secp256k1ContextPtr.hpp"
+#include "detail/Secp256k1ContextPtr.hpp"
 
 namespace BitCrypto{
 

@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "Secp256k1ContextFactory.hpp"
+#include "detail/Secp256k1Handler.hpp"
 #include "PubKey.hpp"
 #include "CompressedPoint.hpp"
 #include "UncompressedPoint.hpp"
@@ -10,7 +10,7 @@
 namespace BitCrypto{
 
 
-class PubKeyFactory
+class PubKeyFactory : public Secp256k1Handler
 {
     public:
         PubKeyFactory();
@@ -21,11 +21,10 @@ class PubKeyFactory
         PubKey createFromPoint(const UncompressedPoint &);
         PubKey createFromPoint(const Data &);
 
+
     private:
         PubKey createFromPointData(const unsigned char *ptr, size_t size);
 
-    private:
-        Secp256k1ContextPtr _context;
 };
 
 

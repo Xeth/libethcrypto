@@ -4,7 +4,7 @@
 #include "SecuredSecret.hpp"
 #include "SecretGenerator.hpp"
 #include "PubKeyFactory.hpp"
-#include "Secp256k1ContextPtr.hpp"
+#include "detail/Secp256k1ContextPtr.hpp"
 
 
 namespace BitCrypto{

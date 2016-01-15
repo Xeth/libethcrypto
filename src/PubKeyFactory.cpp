@@ -5,24 +5,22 @@ namespace BitCrypto{
 
 
 PubKeyFactory::PubKeyFactory(const Secp256k1ContextPtr &context) : 
-    _context(context)
+    Secp256k1Handler(context)
 {}
 
 
 
 PubKeyFactory::PubKeyFactory()
-{
-    Secp256k1ContextFactory factory;
-    _context = factory.create();
-}
+{}
 
 
 
 PubKey PubKeyFactory::createFromSecret(const Secret &secret)
 {
-    PubKey key(_context);
+    Secp256k1ContextPtr & context = getContext();
+    PubKey key(context);
 
-    if(!secp256k1_ec_pubkey_create(_context.get(), &key, secret.data()))
+    if(!secp256k1_ec_pubkey_create(context.get(), &key, secret.data()))
     {
         throw std::runtime_error("failed to create pubkey");
     }
@@ -33,8 +31,10 @@ PubKey PubKeyFactory::createFromSecret(const Secret &secret)
 
 PubKey PubKeyFactory::createFromPointData(const unsigned char *ptr, size_t size)
 {
-    PubKey key(_context);
-    if(!secp256k1_ec_pubkey_parse(_context.get(), &key, ptr, size))
+    Secp256k1ContextPtr & context = getContext();
+    PubKey key(context);
+
+    if(!secp256k1_ec_pubkey_parse(context.get(), &key, ptr, size))
     {
         throw std::runtime_error("failed to parse compressed point");
     }

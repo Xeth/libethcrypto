@@ -22,7 +22,7 @@ class SecuredSecret
         Data & getData();
 
     private:
-        CipherAdapter _cipher;
+        Cipher _cipher;
         Data  _secret;
 };
 

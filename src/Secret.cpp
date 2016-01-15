@@ -6,7 +6,7 @@ Secret::Secret()
 {}
 
 Secret::Secret(const Secp256k1ContextPtr &context ) : 
-    _context(context)
+    LazySecp256k1Handler(context)
 {}
 
 
@@ -33,10 +33,8 @@ const unsigned char * Secret::operator & () const
 
 Secret Secret::operator + (const Secret &secret) const
 {
-    createContextIfNeeded();
-
     Secret result(*this);
-    if(!secp256k1_ec_privkey_tweak_add(_context.get(), result.data(), secret.data()))
+    if(!secp256k1_ec_privkey_tweak_add(getContext().get(), result.data(), secret.data()))
     {
         throw std::runtime_error("private key operation failed");
     }
@@ -45,10 +43,8 @@ Secret Secret::operator + (const Secret &secret) const
 
 Secret Secret::operator * (const Secret &secret) const
 {
-    createContextIfNeeded();
-
     Secret result(*this);
-    if(!secp256k1_ec_privkey_tweak_mul(_context.get(), result.data(), secret.data()))
+    if(!secp256k1_ec_privkey_tweak_mul(getContext().get(), result.data(), secret.data()))
     {
         throw std::runtime_error("private key operation failed");
     }
@@ -57,9 +53,7 @@ Secret Secret::operator * (const Secret &secret) const
 
 Secret & Secret::operator += (const Secret &secret)
 {
-    createContextIfNeeded();
-
-    if(!secp256k1_ec_privkey_tweak_add(_context.get(), data(), secret.data()))
+    if(!secp256k1_ec_privkey_tweak_add(getContext().get(), data(), secret.data()))
     {
         throw std::runtime_error("private key operation failed");
     }
@@ -68,22 +62,12 @@ Secret & Secret::operator += (const Secret &secret)
 
 Secret & Secret::operator *= (const Secret &secret)
 {
-    createContextIfNeeded();
-
-    if(!secp256k1_ec_privkey_tweak_mul(_context.get(), data(), secret.data()))
+    if(!secp256k1_ec_privkey_tweak_mul(getContext().get(), data(), secret.data()))
     {
         throw std::runtime_error("private key operation failed");
     }
     return *this;
 }
 
-void Secret::createContextIfNeeded() const
-{
-    if(!_context)
-    {
-        Secp256k1ContextFactory factory;
-        _context = factory.create();
-    }
-}
 
 }

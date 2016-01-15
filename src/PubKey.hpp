@@ -3,9 +3,7 @@
 #include <stdint.h>
 
 #include "secp256k1/secp256k1.h"
-
-#include "Secp256k1ContextPtr.hpp"
-#include "Secp256k1ContextFactory.hpp"
+#include "detail/LazySecp256k1Handler.hpp"
 #include "Data.hpp"
 #include "Secret.hpp"
 
@@ -13,7 +11,7 @@
 namespace BitCrypto{
 
 
-class PubKey
+class PubKey : public LazySecp256k1Handler
 {
     public:
         typedef  uint8_t * Iterator;
@@ -48,8 +46,6 @@ class PubKey
         PubKey & operator *= (const Secret &);
         PubKey & operator = (const PubKey &);
 
-    private:
-        void createContextIfNotExists();
 
     private:
         secp256k1_pubkey _data;

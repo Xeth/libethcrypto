@@ -2,15 +2,16 @@
 
 #include <boost/array.hpp>
 
-#include "Secp256k1ContextPtr.hpp"
-#include "Secp256k1ContextFactory.hpp"
+#include "detail/LazySecp256k1Handler.hpp"
 #include "Data.hpp"
 
 
 namespace BitCrypto{
 
 
-class Secret : public boost::array<unsigned char, 32>
+class Secret : 
+    public boost::array<unsigned char, 32>,
+    public LazySecp256k1Handler
 {
     public:
         Secret();
@@ -26,11 +27,6 @@ class Secret : public boost::array<unsigned char, 32>
         Secret & operator += (const Secret &);
         Secret & operator *= (const Secret &);
 
-    private:
-        void createContextIfNeeded() const;
-
-    private:
-        mutable Secp256k1ContextPtr _context;
 };
 
 
