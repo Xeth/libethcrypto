@@ -4,6 +4,13 @@ file(GLOB TEST_SOURCES
     "test/*.cpp"
 )
 
+find_library(GMP_LIBRARY gmp)
+
+IF(GMP_LIBRARY)
+    MESSAGE(STATUS "gmp library - found")
+ELSE(GMP_LIBRARY)
+    MESSAGE(FATAL_ERROR "gmp library - not found")
+ENDIF(GMP_LIBRARY)
 
 #include_directories(${CMAKE_BINARY_DIR}/secp256k1/include ${CMAKE_SOURCE_DIR}/src)
 
@@ -12,4 +19,4 @@ include_directories(${CMAKE_BINARY_DIR}/include/bitcrypto)
 add_executable(unit-tests ${TEST_SOURCES})
 add_dependencies(unit-tests bitcrypto)
 
-target_link_libraries(unit-tests bitcrypto ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} gmp)
+target_link_libraries(unit-tests bitcrypto ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${GMP_LIBRARY})
