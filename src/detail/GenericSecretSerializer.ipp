@@ -4,18 +4,18 @@ namespace BitCrypto{
 
 
 template<class Encoder>
-SecretSerializer<Encoder>::SecretSerializer()
+GenericSecretSerializer<Encoder>::GenericSecretSerializer()
 {}
 
 
 template<class Encoder>
-SecretSerializer<Encoder>::SecretSerializer(const Secp256k1ContextPtr &context) : 
+GenericSecretSerializer<Encoder>::GenericSecretSerializer(const Secp256k1ContextPtr &context) : 
     _context(context)
 {}
 
 
 template<class Encoder>
-std::string SecretSerializer<Encoder>::serialize(const Secret &secret) const 
+std::string GenericSecretSerializer<Encoder>::serialize(const Secret &secret) const 
 {
     Encoder encoder;
     return encoder.encode(secret.begin(), secret.end());
@@ -24,7 +24,7 @@ std::string SecretSerializer<Encoder>::serialize(const Secret &secret) const
 
 template<class Encoder>
 template<class Cipher>
-std::string SecretSerializer<Encoder>::serialize(const SecuredSecret<Cipher> &secret) const
+std::string GenericSecretSerializer<Encoder>::serialize(const SecuredSecret<Cipher> &secret) const
 {
     Encoder encoder;
     const Data & secretData = secret.getData();
@@ -34,7 +34,7 @@ std::string SecretSerializer<Encoder>::serialize(const SecuredSecret<Cipher> &se
 
 template<class Encoder>
 template<class Cipher>
-SecuredSecret<Cipher> SecretSerializer<Encoder>::unserialize(const std::string &serialized, const Cipher &cipher) const
+SecuredSecret<Cipher> GenericSecretSerializer<Encoder>::unserialize(const std::string &serialized, const Cipher &cipher) const
 {
     SecuredSecret<Cipher> secret(_context, cipher);
     Encoder encoder;
@@ -44,7 +44,7 @@ SecuredSecret<Cipher> SecretSerializer<Encoder>::unserialize(const std::string &
 
 
 template<class Encoder>
-Secret SecretSerializer<Encoder>::unserialize(const std::string &serialized) const
+Secret GenericSecretSerializer<Encoder>::unserialize(const std::string &serialized) const
 {
     Encoder encoder;
     Data data = encoder.decode(serialized.begin(), serialized.end());
