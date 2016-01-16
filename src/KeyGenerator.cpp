@@ -19,8 +19,17 @@ KeyGenerator::KeyGenerator(const Secp256k1ContextPtr &context):
 
 KeyPair KeyGenerator::generate()
 {
-    Secret secret = _secretGenerator.generate();
-    return KeyPair(secret, _pubKeyGenerator.createFromSecret(secret));
+    for(int i=0; i<100; i++)
+    {
+        try
+        {
+            Secret secret = _secretGenerator.generate();
+            return KeyPair(secret, _pubKeyGenerator.createFromSecret(secret));
+        }
+        catch(const std::runtime_error &)
+        {}
+    }
+    throw std::runtime_error("failed to generate keypair");
 }
 
 
