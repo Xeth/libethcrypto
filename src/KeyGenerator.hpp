@@ -15,8 +15,8 @@ class KeyGenerator : public Secp256k1Handler
         KeyGenerator(const Secp256k1ContextPtr &);
 
         KeyPair generate();
-        KeyPair generate(const Data &);
-        KeyPair generate(const char *);
+        KeyPair generate(const Data &entropy);
+        KeyPair generate(const unsigned char *entropy, size_t entropySize);
 
         template<class Cipher, class CipherKey>
         SecuredKeyPair<Cipher> generate(const Cipher &, const CipherKey &);
@@ -25,7 +25,7 @@ class KeyGenerator : public Secp256k1Handler
         SecuredKeyPair<Cipher> generate(const Data &, const Cipher &, const CipherKey &);
 
         template<class Cipher, class CipherKey>
-        SecuredKeyPair<Cipher> generate(const char *, const Cipher &, const CipherKey &);
+        SecuredKeyPair<Cipher> generate(const unsigned char *entropy, size_t entropySize, const Cipher &, const CipherKey &);
 
 
     private:

@@ -30,22 +30,21 @@ Secret SecretGenerator::generate() const
 
 
 
-Secret SecretGenerator::generate(const Data &seed) const
+Secret SecretGenerator::generate(const Data &entropy) const
 {
     Sha256 hasher;
     Secret secret(_context);
-    hasher.hash(seed.begin(), seed.end(), secret.begin());
+    hasher.hash(entropy.begin(), entropy.end(), secret.begin());
     return secret;
 }
 
 
 
-Secret SecretGenerator::generate(const char *seed) const
+Secret SecretGenerator::generate(const unsigned char *entropy, size_t entropySize) const
 {
     Sha256 hasher;
     Secret secret(_context);
-    const unsigned char *ptr = (const unsigned char *)seed;
-    hasher.hash(ptr, ptr + strlen(seed), secret.begin());
+    hasher.hash(entropy, entropy + entropySize, secret.begin());
     return secret;
 }
 

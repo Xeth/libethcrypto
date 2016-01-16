@@ -19,8 +19,8 @@ class SecretGenerator
         SecretGenerator(const Secp256k1ContextPtr &);
 
         Secret generate() const; 
-        Secret generate(const Data &seed) const;
-        Secret generate(const char *seed) const;
+        Secret generate(const Data &entropy) const;
+        Secret generate(const unsigned char *entropy, size_t entropySize) const;
 
     private:
         Secp256k1ContextPtr _context;

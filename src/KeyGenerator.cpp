@@ -40,9 +40,9 @@ KeyPair KeyGenerator::generate(const Data &entropy)
 }
 
 
-KeyPair KeyGenerator::generate(const char *entropy)
+KeyPair KeyGenerator::generate(const unsigned char *entropy, size_t entropySize)
 {
-    Secret secret = _secretGenerator.generate(entropy);
+    Secret secret = _secretGenerator.generate(entropy, entropySize);
     return KeyPair(secret, _pubKeyGenerator.createFromSecret(secret));
 }
 
