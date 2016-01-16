@@ -6,6 +6,8 @@
 #include "bitcrypto/UncompressedPoint.hpp"
 #include "bitcrypto/Secret.hpp"
 #include "bitcrypto/Data.hpp"
+#include "bitcrypto/BinaryPubKeySerializer.hpp"
+
 
 namespace BitCrypto{
 
@@ -21,10 +23,9 @@ class PubKeyFactory : public Secp256k1Handler
         PubKey createFromPoint(const UncompressedPoint &);
         PubKey createFromPoint(const Data &);
 
-
     private:
-        PubKey createFromPointData(const unsigned char *ptr, size_t size);
-
+        template<class Point>
+        PubKey createFromPointData(const Point &);
 };
 
 

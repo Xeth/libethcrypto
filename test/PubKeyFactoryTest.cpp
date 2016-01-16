@@ -2,7 +2,7 @@
 
 #include "bitcrypto/SecretSerializer.hpp"
 #include "bitcrypto/PubKeyFactory.hpp"
-#include "bitcrypto/PubKeySerializer.hpp"
+#include "bitcrypto/Base16PubKeySerializer.hpp"
 
 
 using namespace BitCrypto;

@@ -9,10 +9,8 @@ PubKeyFactory::PubKeyFactory(const Secp256k1ContextPtr &context) :
 {}
 
 
-
 PubKeyFactory::PubKeyFactory()
 {}
-
 
 
 PubKey PubKeyFactory::createFromSecret(const Secret &secret)
@@ -29,36 +27,37 @@ PubKey PubKeyFactory::createFromSecret(const Secret &secret)
 }
 
 
-PubKey PubKeyFactory::createFromPointData(const unsigned char *ptr, size_t size)
+template<class Point>
+PubKey PubKeyFactory::createFromPointData(const Point &point)
 {
-    Secp256k1ContextPtr & context = getContext();
-    PubKey key(context);
+    BinaryPubKeySerializer serializer(getContext());
+    PubKey key(getContext());
 
-    if(!secp256k1_ec_pubkey_parse(context.get(), &key, ptr, size))
-    {
-        throw std::runtime_error("failed to parse compressed point");
-    }
-    return key;
-}
-
-PubKey PubKeyFactory::createFromPoint(const Data &point)
-{
-    if(point.size()!=33&&point.size()!=65)
+    if(!serializer.unserialize(point, key))
     {
         throw std::runtime_error("invalid point");
     }
-    return createFromPointData(&*point.begin(), point.size());
+
+    return key;
 }
+
+
+PubKey PubKeyFactory::createFromPoint(const Data &point)
+{
+    return createFromPointData(point);
+}
+
 
 PubKey PubKeyFactory::createFromPoint(const UncompressedPoint &point)
 {
-    return createFromPointData(point.data(), point.size());
+    return createFromPointData(point);
 }
 
 
 PubKey PubKeyFactory::createFromPoint(const CompressedPoint &point)
 {
-    return createFromPointData(point.data(), point.size());
+    return createFromPointData(point);
 }
+
 
 }
