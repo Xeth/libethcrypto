@@ -1,10 +1,10 @@
 #pragma once 
 
-#include "PubKey.hpp"
-#include "SecuredSecret.hpp"
-#include "SecretGenerator.hpp"
-#include "PubKeyFactory.hpp"
-#include "detail/Secp256k1ContextPtr.hpp"
+#include "bitcrypto/PubKey.hpp"
+#include "bitcrypto/SecuredSecret.hpp"
+#include "bitcrypto/SecretGenerator.hpp"
+#include "bitcrypto/PubKeyFactory.hpp"
+#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
 
 
 namespace BitCrypto{

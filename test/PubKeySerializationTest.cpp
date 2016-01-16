@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "PubKeySerializer.hpp"
+#include "bitcrypto/PubKeySerializer.hpp"
 
 
 using namespace BitCrypto;

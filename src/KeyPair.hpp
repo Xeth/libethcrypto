@@ -1,9 +1,9 @@
 #pragma once 
 
-#include "PubKey.hpp"
-#include "Secret.hpp"
+#include "bitcrypto/PubKey.hpp"
+#include "bitcrypto/Secret.hpp"
 
-#include "detail/Secp256k1ContextPtr.hpp"
+#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
 
 
 namespace BitCrypto{

@@ -1,9 +1,9 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "Data.hpp"
-#include "Base16Encoder.hpp"
-#include "Base58Encoder.hpp"
+#include "bitcrypto/Data.hpp"
+#include "bitcrypto/Base16Encoder.hpp"
+#include "bitcrypto/Base58Encoder.hpp"
 
 #include <iostream>
 

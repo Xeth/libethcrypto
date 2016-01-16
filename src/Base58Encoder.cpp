@@ -1,4 +1,4 @@
-#include "Base58Encoder.hpp"
+#include "bitcrypto/Base58Encoder.hpp"
 
 namespace BitCrypto{
 

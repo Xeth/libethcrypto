@@ -1,7 +1,7 @@
 #pragma once 
 
 #include <boost/shared_ptr.hpp>
-#include "secp256k1/secp256k1.h"
+#include "bitcrypto/secp256k1/secp256k1.h"
 
 #include "Secp256k1ContextPtr.hpp"
 

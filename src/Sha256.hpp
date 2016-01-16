@@ -1,7 +1,7 @@
 #pragma once 
 
-#include "external/hash.h"
-#include "Data.hpp"
+#include "bitcrypto/external/hash.h"
+#include "bitcrypto/Data.hpp"
 
 
 namespace BitCrypto{

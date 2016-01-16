@@ -2,10 +2,10 @@
 
 #include <stdint.h>
 
-#include "secp256k1/secp256k1.h"
-#include "detail/LazySecp256k1Handler.hpp"
-#include "Data.hpp"
-#include "Secret.hpp"
+#include "bitcrypto/secp256k1/secp256k1.h"
+#include "bitcrypto/detail/LazySecp256k1Handler.hpp"
+#include "bitcrypto/Data.hpp"
+#include "bitcrypto/Secret.hpp"
 
 
 namespace BitCrypto{

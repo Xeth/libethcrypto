@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Sha256.hpp"
-#include "DoubleHash.hpp"
+#include "bitcrypto/Sha256.hpp"
+#include "bitcrypto/DoubleHash.hpp"
 
 namespace BitCrypto{
 

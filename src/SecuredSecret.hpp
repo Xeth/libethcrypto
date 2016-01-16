@@ -1,7 +1,7 @@
 #pragma once 
 
-#include "Secret.hpp"
-#include "CipherAdapter.hpp"
+#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/CipherAdapter.hpp"
 
 
 namespace BitCrypto{
@@ -29,4 +29,4 @@ class SecuredSecret
 
 }
 
-#include "SecuredSecret.ipp"
+#include "bitcrypto/SecuredSecret.ipp"

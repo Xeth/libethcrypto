@@ -3,9 +3,9 @@
 #include <boost/random/random_device.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
 
-#include "detail/Secp256k1ContextPtr.hpp"
-#include "Secret.hpp"
-#include "Sha256.hpp"
+#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
+#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/Sha256.hpp"
 
 
 namespace BitCrypto{

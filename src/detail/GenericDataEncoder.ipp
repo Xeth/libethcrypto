@@ -1,6 +1,5 @@
-#include <iostream>
-
 namespace BitCrypto{
+
 
 template<class Alphabet>
 template<class Iterator>

@@ -1,5 +1,5 @@
 
-#include "SecretGenerator.hpp"
+#include "bitcrypto/SecretGenerator.hpp"
 #include <cstring>
 
 

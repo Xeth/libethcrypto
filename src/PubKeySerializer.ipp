@@ -19,30 +19,15 @@ std::string PubKeySerializer<Encoder>::serialize(const PubKey &key, bool compres
     if(compress)
     {
         CompressedPoint point;
-        size_t pointSize = point.size();
-
-        if(!secp256k1_ec_pubkey_serialize(getContext().get(), point.data(), &pointSize, &key, SECP256K1_EC_COMPRESSED))
-        {
-            throw std::runtime_error("failed to compress pubkey");
-        }
-
-        if(pointSize!=point.size())
-        {
-            throw std::runtime_error("invalid compressed point");
-        }
+        serialize(key, point);
 
         return encoder.encode(point.begin(), point.end());
     }
     else
     {
         UncompressedPoint point;
-        size_t pointSize = point.size();
+        serialize(key, point);
 
-        if(!secp256k1_ec_pubkey_serialize(getContext().get(), point.data(), &pointSize, &key, SECP256K1_EC_UNCOMPRESSED))
-        {
-            throw std::runtime_error("failed to compress pubkey");
-        }
-        
         return encoder.encode(point.begin(), point.end());
     }
 }
@@ -100,6 +85,33 @@ PubKey PubKeySerializer<Encoder>::unserialize(const std::string &encoded) const
 }
 
 
+template<class Encoder>
+void PubKeySerializer<Encoder>::serialize(const PubKey &key, CompressedPoint &point) const
+{
 
+    size_t pointSize = point.size();
+
+    if(!secp256k1_ec_pubkey_serialize(getContext().get(), point.data(), &pointSize, &key, SECP256K1_EC_COMPRESSED))
+    {
+        throw std::runtime_error("failed to compress pubkey");
+    }
+
+    if(pointSize!=point.size())
+    {
+        throw std::runtime_error("invalid compressed point");
+    }
+
+}
+
+template<class Encoder>
+void PubKeySerializer<Encoder>::serialize(const PubKey &key, UncompressedPoint &point) const
+{
+    size_t pointSize = point.size();
+
+    if(!secp256k1_ec_pubkey_serialize(getContext().get(), point.data(), &pointSize, &key, SECP256K1_EC_UNCOMPRESSED))
+    {
+        throw std::runtime_error("failed to compress pubkey");
+    }
+}
 
 }

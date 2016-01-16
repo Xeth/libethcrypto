@@ -2,7 +2,7 @@ find_package(Boost COMPONENTS system REQUIRED)
 
 #add_definitions(-D__DEBUG__)
 
-include_directories(${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/include/bitcrypto)
+include_directories(${CMAKE_BINARY_DIR}/include)
 
 
 file(GLOB SOURCES 
@@ -18,14 +18,17 @@ file(GLOB HEADERS RELATIVE ${CMAKE_SOURCE_DIR}/src
     "src/*.ipp"
     "src/external/*.h"
     "src/detail/*.hpp"
+    "src/detail/*.ipp"
 )
 
 
+add_library(bitcrypto-dummy STATIC ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 
 
 add_library(bitcrypto-core STATIC ${SOURCES})
-add_dependencies(bitcrypto-core libsecp256k1)
+add_dependencies(bitcrypto-core libsecp256k1 bitcrypto-dummy)
+
 
 #add_custom_command(
 #    TARGET bitcrypto-core
@@ -35,8 +38,8 @@ add_dependencies(bitcrypto-core libsecp256k1)
 
 foreach(HEADER ${HEADERS})
     add_custom_command(
-        TARGET bitcrypto-core
-        POST_BUILD
+        TARGET bitcrypto-dummy
+        PRE_BUILD
         COMMAND ${CMAKE_COMMAND}
         ARGS -E copy ${CMAKE_SOURCE_DIR}/src/${HEADER} ${CMAKE_BINARY_DIR}/include/bitcrypto/${HEADER}
 )

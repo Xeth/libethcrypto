@@ -1,8 +1,8 @@
 #pragma once 
 
 #include <string>
-#include "Data.hpp"
-#include "Secret.hpp"
+#include "bitcrypto/Data.hpp"
+#include "bitcrypto/Secret.hpp"
 
 
 namespace BitCrypto{

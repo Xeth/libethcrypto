@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "DoubleSha256CheckSum.hpp"
+#include "bitcrypto/DoubleSha256CheckSum.hpp"
 
 
 using namespace BitCrypto;

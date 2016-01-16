@@ -1,5 +1,5 @@
 
-#include "external/hash_impl.h"
+#include "bitcrypto/external/hash_impl.h"
 
 namespace BitCrypto{
 

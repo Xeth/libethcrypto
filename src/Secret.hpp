@@ -2,8 +2,8 @@
 
 #include <boost/array.hpp>
 
-#include "detail/LazySecp256k1Handler.hpp"
-#include "Data.hpp"
+#include "bitcrypto/detail/LazySecp256k1Handler.hpp"
+#include "bitcrypto/Data.hpp"
 
 
 namespace BitCrypto{

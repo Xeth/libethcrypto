@@ -1,4 +1,4 @@
-#include "KeyGenerator.hpp"
+#include "bitcrypto/KeyGenerator.hpp"
 
 
 namespace BitCrypto{

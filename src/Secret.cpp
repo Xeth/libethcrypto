@@ -1,4 +1,4 @@
-#include "Secret.hpp"
+#include "bitcrypto/Secret.hpp"
 
 namespace BitCrypto{
 

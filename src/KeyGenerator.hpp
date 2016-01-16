@@ -1,8 +1,8 @@
 #pragma once 
 
-#include "KeyPair.hpp"
-#include "SecuredKeyPair.hpp"
-#include "detail/Secp256k1Handler.hpp"
+#include "bitcrypto/KeyPair.hpp"
+#include "bitcrypto/SecuredKeyPair.hpp"
+#include "bitcrypto/detail/Secp256k1Handler.hpp"
 
 
 namespace BitCrypto{

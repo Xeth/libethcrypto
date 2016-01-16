@@ -1,11 +1,11 @@
 #pragma once 
 
-#include "detail/Secp256k1Handler.hpp"
-#include "PubKey.hpp"
-#include "CompressedPoint.hpp"
-#include "UncompressedPoint.hpp"
-#include "Secret.hpp"
-#include "Data.hpp"
+#include "bitcrypto/detail/Secp256k1Handler.hpp"
+#include "bitcrypto/PubKey.hpp"
+#include "bitcrypto/CompressedPoint.hpp"
+#include "bitcrypto/UncompressedPoint.hpp"
+#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/Data.hpp"
 
 namespace BitCrypto{
 

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "PubKey.hpp"
-#include "CompressedPoint.hpp"
-#include "UncompressedPoint.hpp"
-#include "detail/Secp256k1Handler.hpp"
-#include "Base58Encoder.hpp"
-#include "Base16Encoder.hpp"
-#include "PubKeyFactory.hpp"
+#include "bitcrypto/PubKey.hpp"
+#include "bitcrypto/CompressedPoint.hpp"
+#include "bitcrypto/UncompressedPoint.hpp"
+#include "bitcrypto/detail/Secp256k1Handler.hpp"
+#include "bitcrypto/Base58Encoder.hpp"
+#include "bitcrypto/Base16Encoder.hpp"
+#include "bitcrypto/PubKeyFactory.hpp"
 
 namespace BitCrypto{
 
@@ -28,6 +28,8 @@ class PubKeySerializer : public Secp256k1Handler
         std::string serialize(const CompressedPoint &) const;
         std::string serialize(const UncompressedPoint &) const;
         std::string serialize(const PubKey &, bool compress=true) const;
+        void serialize(const PubKey &, CompressedPoint &) const;
+        void serialize(const PubKey &, UncompressedPoint &) const;
 
 };
 

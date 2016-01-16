@@ -1,4 +1,4 @@
-#include "KeyPair.hpp"
+#include "bitcrypto/KeyPair.hpp"
 
 
 namespace BitCrypto{

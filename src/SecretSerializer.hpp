@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Secret.hpp"
-#include "SecuredSecret.hpp"
+#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/SecuredSecret.hpp"
 
-#include "Base58Encoder.hpp"
-#include "Base16Encoder.hpp"
+#include "bitcrypto/Base58Encoder.hpp"
+#include "bitcrypto/Base16Encoder.hpp"
 
-#include "detail/Secp256k1ContextPtr.hpp"
+#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
 
 namespace BitCrypto{
 

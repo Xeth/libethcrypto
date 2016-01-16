@@ -5,7 +5,7 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "Data.hpp"
+#include "bitcrypto/Data.hpp"
 
 
 namespace BitCrypto{
