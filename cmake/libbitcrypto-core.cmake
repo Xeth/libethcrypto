@@ -9,6 +9,10 @@ file(GLOB SOURCES
     "src/*.cpp"
     "src/external/*.cpp"
     "src/detail/*.cpp"
+    "src/serialization/*.cpp"
+    "src/serialization/detail/*.cpp"
+    "src/encoding/*.cpp"
+    "src/encoding/detail/*.cpp"
 )
 
 
@@ -19,6 +23,14 @@ file(GLOB HEADERS RELATIVE ${CMAKE_SOURCE_DIR}/src
     "src/external/*.h"
     "src/detail/*.hpp"
     "src/detail/*.ipp"
+    "src/serialization/*.hpp"
+    "src/serialization/*.ipp"
+    "src/serialization/detail/*.hpp"
+    "src/serialization/detail/*.ipp"
+    "src/encoding/*.hpp"
+    "src/encoding/*.ipp"
+    "src/encoding/detail/*.hpp"
+    "src/encoding/detail/*.ipp"
 )
 
 

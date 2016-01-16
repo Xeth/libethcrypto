@@ -1,6 +1,7 @@
 #pragma once 
 
-#include "bitcrypto/detail/GenericPubKeySerializer.hpp"
+#include "detail/GenericPubKeySerializer.hpp"
+#include "bitcrypto/encoding/Base16Encoder.hpp"
 
 namespace BitCrypto{
 

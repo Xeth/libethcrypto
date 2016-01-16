@@ -1,7 +1,7 @@
 #pragma once 
 
-#include "bitcrypto/detail/GenericSecretSerializer.hpp"
-#include "bitcrypto/Base58Encoder.hpp"
+#include "detail/GenericSecretSerializer.hpp"
+#include "bitcrypto/encoding/Base58Encoder.hpp"
 
 
 namespace BitCrypto{

@@ -1,4 +1,4 @@
-#include "bitcrypto/Base16Encoder.hpp"
+#include "Base16Encoder.hpp"
 
 namespace BitCrypto{
 

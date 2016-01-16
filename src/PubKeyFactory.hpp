@@ -6,7 +6,7 @@
 #include "bitcrypto/UncompressedPoint.hpp"
 #include "bitcrypto/Secret.hpp"
 #include "bitcrypto/Data.hpp"
-#include "bitcrypto/BinaryPubKeySerializer.hpp"
+#include "bitcrypto/serialization/BinaryPubKeySerializer.hpp"
 
 
 namespace BitCrypto{

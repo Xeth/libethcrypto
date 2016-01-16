@@ -1,8 +1,9 @@
 #include <boost/test/unit_test.hpp>
 
-#include "bitcrypto/SecretSerializer.hpp"
+#include "bitcrypto/serialization/Base16SecretSerializer.hpp"
+#include "bitcrypto/serialization/Base16PubKeySerializer.hpp"
+
 #include "bitcrypto/PubKeyFactory.hpp"
-#include "bitcrypto/Base16PubKeySerializer.hpp"
 
 
 using namespace BitCrypto;

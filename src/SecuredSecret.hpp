@@ -1,7 +1,6 @@
 #pragma once 
 
 #include "bitcrypto/Secret.hpp"
-#include "bitcrypto/CipherAdapter.hpp"
 
 
 namespace BitCrypto{

@@ -2,7 +2,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "bitcrypto/Data.hpp"
-#include "bitcrypto/Base16Encoder.hpp"
+#include "bitcrypto/encoding/Base16Encoder.hpp"
 #include "bitcrypto/Sha256.hpp"
 
 #include <iostream>

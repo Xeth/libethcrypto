@@ -4,9 +4,7 @@
 #include "bitcrypto/CompressedPoint.hpp"
 #include "bitcrypto/UncompressedPoint.hpp"
 #include "bitcrypto/detail/Secp256k1Handler.hpp"
-#include "bitcrypto/Base58Encoder.hpp"
-#include "bitcrypto/Base16Encoder.hpp"
-#include "bitcrypto/BinaryPubKeySerializer.hpp"
+#include "bitcrypto/serialization/BinaryPubKeySerializer.hpp"
 
 
 

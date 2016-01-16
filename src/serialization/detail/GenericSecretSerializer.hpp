@@ -3,7 +3,7 @@
 #include "bitcrypto/Secret.hpp"
 #include "bitcrypto/SecuredSecret.hpp"
 
-#include "Secp256k1ContextPtr.hpp"
+#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
 
 namespace BitCrypto{
 
