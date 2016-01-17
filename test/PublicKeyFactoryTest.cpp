@@ -4,6 +4,7 @@
 #include "bitcrypto/serialization/Base16PublicKeySerializer.hpp"
 
 #include "bitcrypto/PublicKeyFactory.hpp"
+#include "bitcrypto/Literal.hpp"
 
 
 using namespace BitCrypto;
@@ -14,12 +15,10 @@ BOOST_AUTO_TEST_SUITE(PublicKeyFactoryTest)
 
 BOOST_AUTO_TEST_CASE(fromPrivateKey)
 {
-    Base16PrivateKeySerializer privateKeySerializer;
-    PrivateKey privateKey = privateKeySerializer.unserialize("8010b1bb119ad37d4b65a1022a314897b1b3614b345974332cb1b9582cf03536");
+    PrivateKey privateKey = Literal<PrivateKey>("8010b1bb119ad37d4b65a1022a314897b1b3614b345974332cb1b9582cf03536");
     PublicKeyFactory factory;
     PublicKey pub = factory.createFromSecret(privateKey);
-    Base16PublicKeySerializer pubSerializer;
-    BOOST_REQUIRE_EQUAL(pubSerializer.serialize(pub), "0309ba8621aefd3b6ba4ca6d11a4746e8df8d35d9b51b383338f627ba7fc732731");
+    BOOST_REQUIRE_EQUAL(Literal(pub), "0309ba8621aefd3b6ba4ca6d11a4746e8df8d35d9b51b383338f627ba7fc732731");
 }
 
 BOOST_AUTO_TEST_CASE(fromCompressedPoint)
