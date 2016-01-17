@@ -5,7 +5,7 @@
 namespace BitCrypto{
 
 
-PrivateKey DummyCipher::decrypt(const Data &data, const DummyKey &)
+PrivateKey DummyCipher::decrypt(const Data &data, const DummyKey &) const
 {
     if(data.size() != 32)
     {
@@ -17,7 +17,7 @@ PrivateKey DummyCipher::decrypt(const Data &data, const DummyKey &)
 }
 
 
-Data DummyCipher::encrypt(const PrivateKey &PrivateKey, const DummyKey &)
+Data DummyCipher::encrypt(const PrivateKey &PrivateKey, const DummyKey &) const
 {
     Data data;
     data.resize(32);

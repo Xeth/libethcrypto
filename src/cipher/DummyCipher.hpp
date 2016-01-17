@@ -17,8 +17,8 @@ class DummyKey
 class DummyCipher
 {
     public:
-        PrivateKey decrypt(const Data &, const DummyKey &);
-        Data encrypt(const PrivateKey &, const DummyKey &);
+        PrivateKey decrypt(const Data &, const DummyKey &) const;
+        Data encrypt(const PrivateKey &, const DummyKey &) const;
 };
 
 
