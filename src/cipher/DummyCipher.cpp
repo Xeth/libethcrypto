@@ -5,23 +5,23 @@
 namespace BitCrypto{
 
 
-Secret DummyCipher::decrypt(const Data &data, const DummyKey &)
+PrivateKey DummyCipher::decrypt(const Data &data, const DummyKey &)
 {
     if(data.size() != 32)
     {
         throw std::runtime_error("invalid data");
     }
-    Secret secret;
-    std::copy(data.begin(), data.end(), secret.begin());
-    return secret;
+    PrivateKey PrivateKey;
+    std::copy(data.begin(), data.end(), PrivateKey.begin());
+    return PrivateKey;
 }
 
 
-Data DummyCipher::encrypt(const Secret &secret, const DummyKey &)
+Data DummyCipher::encrypt(const PrivateKey &PrivateKey, const DummyKey &)
 {
     Data data;
     data.resize(32);
-    std::copy(secret.begin(), secret.end(), data.begin());
+    std::copy(PrivateKey.begin(), PrivateKey.end(), data.begin());
     return data;
 }
 

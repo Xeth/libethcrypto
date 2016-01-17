@@ -29,8 +29,8 @@ class KeyGenerator : public Secp256k1Handler
 
 
     private:
-        SecretGenerator _secretGenerator;
-        PubKeyFactory _pubKeyGenerator;
+        PrivateKeyGenerator _privateKeyGenerator;
+        PublicKeyFactory _publicKeyGenerator;
 };
 
 

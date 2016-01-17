@@ -9,36 +9,36 @@ KeyPair::KeyPair()
 
 
 KeyPair::KeyPair(const Secp256k1ContextPtr &context) : 
-    _pubKey(context)
+    _publicKey(context)
 {}
 
 
-KeyPair::KeyPair(const Secret &secret, const PubKey &pubKey) :
-    _secret(secret),
-    _pubKey(pubKey)
+KeyPair::KeyPair(const PrivateKey &privateKey, const PublicKey &PublicKey) :
+    _privateKey(privateKey),
+    _publicKey(PublicKey)
 {}
 
 
-Secret & KeyPair::getSecret()
+PrivateKey & KeyPair::getPrivateKey()
 {
-    return _secret;
+    return _privateKey;
 }
 
-const Secret & KeyPair::getSecret() const
+const PrivateKey & KeyPair::getPrivateKey() const
 {
-    return _secret;
-}
-
-
-PubKey & KeyPair::getPubKey()
-{
-    return _pubKey;
+    return _privateKey;
 }
 
 
-const PubKey & KeyPair::getPubKey() const
+PublicKey & KeyPair::getPublicKey()
 {
-    return _pubKey;
+    return _publicKey;
+}
+
+
+const PublicKey & KeyPair::getPublicKey() const
+{
+    return _publicKey;
 }
 
 

@@ -4,39 +4,39 @@ namespace BitCrypto{
 
 template<class Cipher>
 template<class CipherKey>
-SecuredKeyPair<Cipher>::SecuredKeyPair(const Secret &secret, const PubKey &pubKey, const Cipher &cipher, const CipherKey &cipherKey) :
-    _secret(secret, cipher, cipherKey),
-    _pubKey(pubKey)
+SecuredKeyPair<Cipher>::SecuredKeyPair(const PrivateKey &privateKey, const PublicKey &publicKey, const Cipher &cipher, const CipherKey &cipherKey) :
+    _privateKey(privateKey, cipher, cipherKey),
+    _publicKey(publicKey)
 {}
 
 template<class Cipher>
-SecuredKeyPair<Cipher>::SecuredKeyPair(const Data &secret, const PubKey &pubKey, const Cipher &cipher) :
-    _secret(secret, cipher),
-    _pubKey(pubKey)
+SecuredKeyPair<Cipher>::SecuredKeyPair(const Data &privateKey, const PublicKey &publicKey, const Cipher &cipher) :
+    _privateKey(PrivateKey, cipher),
+    _publicKey(publicKey)
 {}
 
 template<class Cipher>
-SecuredSecret<Cipher> & SecuredKeyPair<Cipher>::getSecret()
+SecuredPrivateKey<Cipher> & SecuredKeyPair<Cipher>::getPrivateKey()
 {
-    return _secret;
+    return _privateKey;
 }
 
 template<class Cipher>
-const SecuredSecret<Cipher> & SecuredKeyPair<Cipher>::getSecret() const
+const SecuredPrivateKey<Cipher> & SecuredKeyPair<Cipher>::getPrivateKey() const
 {
-    return _secret;
+    return _privateKey;
 }
 
 template<class Cipher>
-PubKey & SecuredKeyPair<Cipher>::getPubKey()
+PublicKey & SecuredKeyPair<Cipher>::getPublicKey()
 {
-    return _pubKey;
+    return _publicKey;
 }
 
 template<class Cipher>
-const PubKey & SecuredKeyPair<Cipher>::getPubKey() const
+const PublicKey & SecuredKeyPair<Cipher>::getPublicKey() const
 {
-    return _pubKey;
+    return _publicKey;
 }
 
 }

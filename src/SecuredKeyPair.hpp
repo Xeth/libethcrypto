@@ -1,9 +1,9 @@
 #pragma once 
 
-#include "bitcrypto/PubKey.hpp"
-#include "bitcrypto/SecuredSecret.hpp"
-#include "bitcrypto/SecretGenerator.hpp"
-#include "bitcrypto/PubKeyFactory.hpp"
+#include "bitcrypto/PublicKey.hpp"
+#include "bitcrypto/SecuredPrivateKey.hpp"
+#include "bitcrypto/PrivateKeyGenerator.hpp"
+#include "bitcrypto/PublicKeyFactory.hpp"
 #include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
 
 
@@ -14,23 +14,23 @@ template<class Cipher>
 class SecuredKeyPair
 {
     public:
-        typedef BitCrypto::SecuredSecret<Cipher> Secret;
+        typedef BitCrypto::SecuredPrivateKey<Cipher> PrivateKey;
 
     public:
 
         template<class CipherKey>
-        SecuredKeyPair(const Secret &, const PubKey &, const Cipher &, const CipherKey &);
+        SecuredKeyPair(const PrivateKey &, const PublicKey &, const Cipher &, const CipherKey &);
 
-        SecuredKeyPair(const Data &, const PubKey &, const Cipher &);
+        SecuredKeyPair(const Data &, const PublicKey &, const Cipher &);
 
-        Secret & getSecret();
-        const Secret & getSecret() const;
-        PubKey & getPubKey();
-        const PubKey & getPubKey() const;
+        PrivateKey & getPrivateKey();
+        const PrivateKey & getPrivateKey() const;
+        PublicKey & getPublicKey();
+        const PublicKey & getPublicKey() const;
 
     private:
-        Secret _secret;
-        PubKey _pubKey;
+        SecuredPrivateKey<Cipher>  _privateKey;
+        PublicKey _publicKey;
 };
 
 

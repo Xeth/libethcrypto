@@ -3,17 +3,17 @@
 namespace BitCrypto{
 
 
-inline BinaryPubKeySerializer::BinaryPubKeySerializer()
+inline BinaryPublicKeySerializer::BinaryPublicKeySerializer()
 {}
 
 
-inline BinaryPubKeySerializer::BinaryPubKeySerializer(const Secp256k1ContextPtr &context) :
+inline BinaryPublicKeySerializer::BinaryPublicKeySerializer(const Secp256k1ContextPtr &context) :
     Secp256k1Handler(context)
 {}
 
 
 template<class Iterator>
-bool BinaryPubKeySerializer::unserializeNoCheck(Iterator begin, size_t size, PubKey &key) const
+bool BinaryPublicKeySerializer::unserializeNoCheck(Iterator begin, size_t size, PublicKey &key) const
 {
     if(!secp256k1_ec_pubkey_parse(getContext().get(), &key, (const unsigned char *)(&*begin), size))
     {
@@ -25,7 +25,7 @@ bool BinaryPubKeySerializer::unserializeNoCheck(Iterator begin, size_t size, Pub
 
 
 template<class Iterator>
-bool BinaryPubKeySerializer::unserialize(Iterator begin, Iterator end, PubKey &key) const
+bool BinaryPublicKeySerializer::unserialize(Iterator begin, Iterator end, PublicKey &key) const
 {
     size_t size = end - begin;
     
@@ -39,9 +39,9 @@ bool BinaryPubKeySerializer::unserialize(Iterator begin, Iterator end, PubKey &k
 
 
 template<class Iterator>
-PubKey BinaryPubKeySerializer::unserialize(Iterator begin, Iterator end) const
+PublicKey BinaryPublicKeySerializer::unserialize(Iterator begin, Iterator end) const
 {
-    PubKey key(getContext());
+    PublicKey key(getContext());
     if(!unserialize(begin, end, key))
     {
         throw std::runtime_error("failed to unserialize point");
@@ -51,7 +51,7 @@ PubKey BinaryPubKeySerializer::unserialize(Iterator begin, Iterator end) const
 
 
 template<class Point>
-bool BinaryPubKeySerializer::unserialize(const Point &point, PubKey &key) const
+bool BinaryPublicKeySerializer::unserialize(const Point &point, PublicKey &key) const
 {
     if(!validatePointSize(point))
     {
@@ -62,9 +62,9 @@ bool BinaryPubKeySerializer::unserialize(const Point &point, PubKey &key) const
 
 
 template<class Point>
-PubKey BinaryPubKeySerializer::unserialize(const Point &point)  const
+PublicKey BinaryPublicKeySerializer::unserialize(const Point &point)  const
 {
-    PubKey key(getContext());
+    PublicKey key(getContext());
     if(!unserialize(point, key))
     {
         throw std::runtime_error("invalid compressed point");
@@ -74,7 +74,7 @@ PubKey BinaryPubKeySerializer::unserialize(const Point &point)  const
 
 
 template<class Point>
-bool BinaryPubKeySerializer::serialize(const PubKey &key, Point &point) const
+bool BinaryPublicKeySerializer::serialize(const PublicKey &key, Point &point) const
 {
     size_t pointSize = point.size();
 
@@ -92,7 +92,7 @@ bool BinaryPubKeySerializer::serialize(const PubKey &key, Point &point) const
 
 
 template<class Point>
-Point BinaryPubKeySerializer::serialize(const PubKey &key) const
+Point BinaryPublicKeySerializer::serialize(const PublicKey &key) const
 {
     Point point;
     if(!serialize(key, point))
@@ -103,32 +103,32 @@ Point BinaryPubKeySerializer::serialize(const PubKey &key) const
 }
 
 
-inline int BinaryPubKeySerializer::getPointFlag(PointTag<CompressedPoint>) const
+inline int BinaryPublicKeySerializer::getPointFlag(PointTag<CompressedPoint>) const
 {
     return SECP256K1_EC_COMPRESSED;
 }
 
 
-inline int BinaryPubKeySerializer::getPointFlag(PointTag<UncompressedPoint>) const
+inline int BinaryPublicKeySerializer::getPointFlag(PointTag<UncompressedPoint>) const
 {
     return SECP256K1_EC_UNCOMPRESSED;
 }
 
 
-inline bool BinaryPubKeySerializer::validatePointSize(const UncompressedPoint &point) const
+inline bool BinaryPublicKeySerializer::validatePointSize(const UncompressedPoint &point) const
 {
     return true;
 }
 
 
-inline bool BinaryPubKeySerializer::validatePointSize(const CompressedPoint &point) const
+inline bool BinaryPublicKeySerializer::validatePointSize(const CompressedPoint &point) const
 {
     return true;
 }
 
 
 template<class Point>
-bool BinaryPubKeySerializer::validatePointSize(const Point &point) const
+bool BinaryPublicKeySerializer::validatePointSize(const Point &point) const
 {
     size_t size = point.size();
     return size==33||size==65;

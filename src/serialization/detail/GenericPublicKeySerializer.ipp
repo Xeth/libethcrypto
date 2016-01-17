@@ -4,21 +4,21 @@ namespace BitCrypto{
 
 
 template<class Encoder>
-GenericPubKeySerializer<Encoder>::GenericPubKeySerializer()
+GenericPublicKeySerializer<Encoder>::GenericPublicKeySerializer()
 {}
 
 
 template<class Encoder>
-GenericPubKeySerializer<Encoder>::GenericPubKeySerializer(const Secp256k1ContextPtr &context) :
+GenericPublicKeySerializer<Encoder>::GenericPublicKeySerializer(const Secp256k1ContextPtr &context) :
     Secp256k1Handler(context)
 {}
 
 
 template<class Encoder>
-std::string GenericPubKeySerializer<Encoder>::serialize(const PubKey &key, bool compress) const
+std::string GenericPublicKeySerializer<Encoder>::serialize(const PublicKey &key, bool compress) const
 {
     Encoder encoder;
-    BinaryPubKeySerializer serializer;
+    BinaryPublicKeySerializer serializer;
     if(compress)
     {
         CompressedPoint point = serializer.serialize<CompressedPoint>(key);
@@ -32,21 +32,21 @@ std::string GenericPubKeySerializer<Encoder>::serialize(const PubKey &key, bool 
 }
 
 template<class Encoder>
-std::string GenericPubKeySerializer<Encoder>::serialize(const CompressedPoint &point) const
+std::string GenericPublicKeySerializer<Encoder>::serialize(const CompressedPoint &point) const
 {
     Encoder encoder;
     return encoder.encode(point.begin(), point.end());
 }
 
 template<class Encoder>
-std::string GenericPubKeySerializer<Encoder>::serialize(const UncompressedPoint &point) const
+std::string GenericPublicKeySerializer<Encoder>::serialize(const UncompressedPoint &point) const
 {
     Encoder encoder;
     return encoder.encode(point.begin(), point.end());
 }
 
 template<class Encoder>
-void GenericPubKeySerializer<Encoder>::unserialize(const std::string &encoded, CompressedPoint &point) const
+void GenericPublicKeySerializer<Encoder>::unserialize(const std::string &encoded, CompressedPoint &point) const
 {
     Encoder encoder;
     Data data = encoder.decode(encoded.begin(), encoded.end());
@@ -60,7 +60,7 @@ void GenericPubKeySerializer<Encoder>::unserialize(const std::string &encoded, C
 
 
 template<class Encoder>
-void GenericPubKeySerializer<Encoder>::unserialize(const std::string &encoded, UncompressedPoint &point) const
+void GenericPublicKeySerializer<Encoder>::unserialize(const std::string &encoded, UncompressedPoint &point) const
 {
     Encoder encoder;
     Data data = encoder.decode(encoded.begin(), encoded.end());
@@ -75,9 +75,9 @@ void GenericPubKeySerializer<Encoder>::unserialize(const std::string &encoded, U
 
 
 template<class Encoder>
-PubKey GenericPubKeySerializer<Encoder>::unserialize(const std::string &encoded) const
+PublicKey GenericPublicKeySerializer<Encoder>::unserialize(const std::string &encoded) const
 {
-    BinaryPubKeySerializer serializer(getContext());
+    BinaryPublicKeySerializer serializer(getContext());
     Encoder encoder;
     Data data = encoder.decode(encoded.begin(), encoded.end());
     return serializer.unserialize(data);

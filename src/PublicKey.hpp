@@ -5,24 +5,24 @@
 #include "bitcrypto/secp256k1/secp256k1.h"
 #include "bitcrypto/detail/LazySecp256k1Handler.hpp"
 #include "bitcrypto/Data.hpp"
-#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/PrivateKey.hpp"
 
 
 namespace BitCrypto{
 
 
-class PubKey : public LazySecp256k1Handler
+class PublicKey : public LazySecp256k1Handler
 {
     public:
         typedef  uint8_t * Iterator;
         typedef const uint8_t * ConstIterator;
 
     public:
-        PubKey();
-        PubKey(const PubKey &);
-        PubKey(const Data &);
-        PubKey(const Secp256k1ContextPtr &);
-        PubKey(const Data &, const Secp256k1ContextPtr &);
+        PublicKey();
+        PublicKey(const PublicKey &);
+        PublicKey(const Data &);
+        PublicKey(const Secp256k1ContextPtr &);
+        PublicKey(const Data &, const Secp256k1ContextPtr &);
 
         operator secp256k1_pubkey & ();
         operator const secp256k1_pubkey & () const;
@@ -38,14 +38,16 @@ class PubKey : public LazySecp256k1Handler
         Iterator begin();
         Iterator end();
 
-        PubKey operator + (const PubKey &);
-        PubKey operator + (const Secret &);
-        PubKey operator * (const Secret &);
-        PubKey & operator += (const PubKey &);
-        PubKey & operator += (const Secret &);
-        PubKey & operator *= (const Secret &);
-        PubKey & operator = (const PubKey &);
+        PublicKey operator + (const PublicKey &);
+        PublicKey operator + (const PrivateKey &);
+        PublicKey operator * (const PrivateKey &);
+        PublicKey & operator += (const PublicKey &);
+        PublicKey & operator += (const PrivateKey &);
+        PublicKey & operator *= (const PrivateKey &);
+        PublicKey & operator = (const PublicKey &);
 
+        bool verify(const Signature &, const Data &hash);
+        bool verify(const Signature &, const unsigned char *);
 
     private:
         secp256k1_pubkey _data;

@@ -2,7 +2,7 @@
 
 #include "bitcrypto/CompressedPoint.hpp"
 #include "bitcrypto/UncompressedPoint.hpp"
-#include "bitcrypto/PubKey.hpp"
+#include "bitcrypto/PublicKey.hpp"
 #include "bitcrypto/detail/Secp256k1Handler.hpp"
 
 
@@ -14,36 +14,36 @@ class PointTag
 {};
 
 
-class BinaryPubKeySerializer : public Secp256k1Handler
+class BinaryPublicKeySerializer : public Secp256k1Handler
 {
 
     public:
 
-        BinaryPubKeySerializer();
-        BinaryPubKeySerializer(const Secp256k1ContextPtr &);
+        BinaryPublicKeySerializer();
+        BinaryPublicKeySerializer(const Secp256k1ContextPtr &);
 
         template<class Point>
-        bool serialize(const PubKey &, Point &) const;
+        bool serialize(const PublicKey &, Point &) const;
 
         template<class Point>
-        Point serialize(const PubKey &) const;
+        Point serialize(const PublicKey &) const;
 
         template<class Iterator>
-        bool unserialize(Iterator begin, Iterator end, PubKey &) const;
+        bool unserialize(Iterator begin, Iterator end, PublicKey &) const;
 
         template<class Iterator>
-        PubKey unserialize(Iterator begin, Iterator end) const;
+        PublicKey unserialize(Iterator begin, Iterator end) const;
 
         template<class Point>
-        bool unserialize(const Point &, PubKey &) const;
+        bool unserialize(const Point &, PublicKey &) const;
 
         template<class Point>
-        PubKey unserialize(const Point &) const;
+        PublicKey unserialize(const Point &) const;
 
     private:
 
         template<class Iterator>
-        bool unserializeNoCheck(Iterator, size_t, PubKey &) const;
+        bool unserializeNoCheck(Iterator, size_t, PublicKey &) const;
 
         int getPointFlag(PointTag<UncompressedPoint>) const;
         int getPointFlag(PointTag<CompressedPoint>) const;
@@ -60,4 +60,4 @@ class BinaryPubKeySerializer : public Secp256k1Handler
 }
 
 
-#include "BinaryPubKeySerializer.ipp"
+#include "BinaryPublicKeySerializer.ipp"

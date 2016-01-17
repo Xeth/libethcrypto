@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 #include "bitcrypto/Data.hpp"
-#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/PrivateKey.hpp"
 
 
 namespace BitCrypto{
@@ -17,8 +17,8 @@ class DummyKey
 class DummyCipher
 {
     public:
-        Secret decrypt(const Data &, const DummyKey &);
-        Data encrypt(const Secret &, const DummyKey &);
+        PrivateKey decrypt(const Data &, const DummyKey &);
+        Data encrypt(const PrivateKey &, const DummyKey &);
 };
 
 

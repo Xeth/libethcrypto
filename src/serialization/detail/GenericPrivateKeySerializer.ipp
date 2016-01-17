@@ -4,18 +4,18 @@ namespace BitCrypto{
 
 
 template<class Encoder>
-GenericSecretSerializer<Encoder>::GenericSecretSerializer()
+GenericPrivateKeySerializer<Encoder>::GenericPrivateKeySerializer()
 {}
 
 
 template<class Encoder>
-GenericSecretSerializer<Encoder>::GenericSecretSerializer(const Secp256k1ContextPtr &context) : 
+GenericPrivateKeySerializer<Encoder>::GenericPrivateKeySerializer(const Secp256k1ContextPtr &context) : 
     _context(context)
 {}
 
 
 template<class Encoder>
-std::string GenericSecretSerializer<Encoder>::serialize(const Secret &secret) const 
+std::string GenericPrivateKeySerializer<Encoder>::serialize(const PrivateKey &secret) const 
 {
     Encoder encoder;
     return encoder.encode(secret.begin(), secret.end());
@@ -24,7 +24,7 @@ std::string GenericSecretSerializer<Encoder>::serialize(const Secret &secret) co
 
 template<class Encoder>
 template<class Cipher>
-std::string GenericSecretSerializer<Encoder>::serialize(const SecuredSecret<Cipher> &secret) const
+std::string GenericPrivateKeySerializer<Encoder>::serialize(const SecuredPrivateKey<Cipher> &secret) const
 {
     Encoder encoder;
     const Data & secretData = secret.getData();
@@ -34,9 +34,9 @@ std::string GenericSecretSerializer<Encoder>::serialize(const SecuredSecret<Ciph
 
 template<class Encoder>
 template<class Cipher>
-SecuredSecret<Cipher> GenericSecretSerializer<Encoder>::unserialize(const std::string &serialized, const Cipher &cipher) const
+SecuredPrivateKey<Cipher> GenericPrivateKeySerializer<Encoder>::unserialize(const std::string &serialized, const Cipher &cipher) const
 {
-    SecuredSecret<Cipher> secret(_context, cipher);
+    SecuredPrivateKey<Cipher> secret(_context, cipher);
     Encoder encoder;
     encoder.decode(serialized.begin(), serialized.end(), secret.getData());
     return secret;
@@ -44,7 +44,7 @@ SecuredSecret<Cipher> GenericSecretSerializer<Encoder>::unserialize(const std::s
 
 
 template<class Encoder>
-Secret GenericSecretSerializer<Encoder>::unserialize(const std::string &serialized) const
+PrivateKey GenericPrivateKeySerializer<Encoder>::unserialize(const std::string &serialized) const
 {
     Encoder encoder;
     Data data = encoder.decode(serialized.begin(), serialized.end());
@@ -52,7 +52,7 @@ Secret GenericSecretSerializer<Encoder>::unserialize(const std::string &serializ
     {
         throw std::runtime_error("Invalid serialized secret");
     }
-    Secret secret(_context);
+    PrivateKey secret(_context);
     std::copy(data.begin(), data.end(), secret.begin());
     return secret;
 }

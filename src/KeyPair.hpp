@@ -1,7 +1,7 @@
 #pragma once 
 
-#include "bitcrypto/PubKey.hpp"
-#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/PublicKey.hpp"
+#include "bitcrypto/PrivateKey.hpp"
 
 #include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
 
@@ -14,17 +14,17 @@ class KeyPair
     public:
         KeyPair();
         KeyPair(const Secp256k1ContextPtr &);
-        KeyPair(const Secret &, const PubKey &);
+        KeyPair(const PrivateKey &, const PublicKey &);
 
-        PubKey & getPubKey();
-        Secret & getSecret();
+        PublicKey & getPublicKey();
+        PrivateKey & getPrivateKey();
 
-        const PubKey & getPubKey() const;
-        const Secret & getSecret() const;
+        const PublicKey & getPublicKey() const;
+        const PrivateKey & getPrivateKey() const;
 
     private:
-        Secret _secret;
-        PubKey _pubKey;
+        PrivateKey _privateKey;
+        PublicKey _publicKey;
 };
 
 

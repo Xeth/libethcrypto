@@ -1,10 +1,10 @@
 #pragma once
 
-#include "bitcrypto/PubKey.hpp"
+#include "bitcrypto/PublicKey.hpp"
 #include "bitcrypto/CompressedPoint.hpp"
 #include "bitcrypto/UncompressedPoint.hpp"
 #include "bitcrypto/detail/Secp256k1Handler.hpp"
-#include "bitcrypto/serialization/BinaryPubKeySerializer.hpp"
+#include "bitcrypto/serialization/BinaryPublicKeySerializer.hpp"
 
 
 
@@ -12,15 +12,15 @@ namespace BitCrypto{
 
 
 template<class Encoder>
-class GenericPubKeySerializer : public Secp256k1Handler
+class GenericPublicKeySerializer : public Secp256k1Handler
 {
 
     public:
 
-        GenericPubKeySerializer();
-        GenericPubKeySerializer(const Secp256k1ContextPtr &);
+        GenericPublicKeySerializer();
+        GenericPublicKeySerializer(const Secp256k1ContextPtr &);
 
-        PubKey unserialize(const std::string &) const;
+        PublicKey unserialize(const std::string &) const;
 
         void unserialize(const std::string &encoded, CompressedPoint &) const;
         void unserialize(const std::string &encoded, UncompressedPoint &) const;
@@ -28,7 +28,7 @@ class GenericPubKeySerializer : public Secp256k1Handler
         std::string serialize(const CompressedPoint &) const;
         std::string serialize(const UncompressedPoint &) const;
 
-        std::string serialize(const PubKey &, bool compress=true) const;
+        std::string serialize(const PublicKey &, bool compress=true) const;
 
 };
 
@@ -36,4 +36,4 @@ class GenericPubKeySerializer : public Secp256k1Handler
 
 }
 
-#include "GenericPubKeySerializer.ipp"
+#include "GenericPublicKeySerializer.ipp"

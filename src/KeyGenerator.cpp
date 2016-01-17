@@ -5,15 +5,15 @@ namespace BitCrypto{
 
 
 KeyGenerator::KeyGenerator() :
-    _secretGenerator(getContext()),
-    _pubKeyGenerator(getContext())
+    _privateKeyGenerator(getContext()),
+    _publicKeyGenerator(getContext())
 {}
 
 
 KeyGenerator::KeyGenerator(const Secp256k1ContextPtr &context):
     Secp256k1Handler(context),
-    _secretGenerator(getContext()),
-    _pubKeyGenerator(getContext())
+    _privateKeyGenerator(getContext()),
+    _publicKeyGenerator(getContext())
 {}
 
 
@@ -23,8 +23,8 @@ KeyPair KeyGenerator::generate()
     {
         try
         {
-            Secret secret = _secretGenerator.generate();
-            return KeyPair(secret, _pubKeyGenerator.createFromSecret(secret));
+            PrivateKey privateKey = _privateKeyGenerator.generate();
+            return KeyPair(privateKey, _publicKeyGenerator.createFromSecret(privateKey));
         }
         catch(const std::runtime_error &)
         {}
@@ -35,15 +35,15 @@ KeyPair KeyGenerator::generate()
 
 KeyPair KeyGenerator::generate(const Data &entropy)
 {
-    Secret secret = _secretGenerator.generate(entropy);
-    return KeyPair(secret, _pubKeyGenerator.createFromSecret(secret));
+    PrivateKey privateKey = _privateKeyGenerator.generate(entropy);
+    return KeyPair(privateKey, _publicKeyGenerator.createFromSecret(privateKey));
 }
 
 
 KeyPair KeyGenerator::generate(const unsigned char *entropy, size_t entropySize)
 {
-    Secret secret = _secretGenerator.generate(entropy, entropySize);
-    return KeyPair(secret, _pubKeyGenerator.createFromSecret(secret));
+    PrivateKey privateKey = _privateKeyGenerator.generate(entropy, entropySize);
+    return KeyPair(privateKey, _publicKeyGenerator.createFromSecret(privateKey));
 }
 
 
