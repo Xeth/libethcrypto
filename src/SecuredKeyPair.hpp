@@ -13,8 +13,6 @@ namespace BitCrypto{
 template<class Cipher>
 class SecuredKeyPair
 {
-    public:
-        typedef BitCrypto::SecuredPrivateKey<Cipher> PrivateKey;
 
     public:
 
@@ -23,8 +21,8 @@ class SecuredKeyPair
 
         SecuredKeyPair(const Data &, const PublicKey &, const Cipher &);
 
-        PrivateKey & getPrivateKey();
-        const PrivateKey & getPrivateKey() const;
+        SecuredPrivateKey<Cipher> & getPrivateKey();
+        const SecuredPrivateKey<Cipher> & getPrivateKey() const;
         PublicKey & getPublicKey();
         const PublicKey & getPublicKey() const;
 
@@ -35,3 +33,5 @@ class SecuredKeyPair
 
 
 }
+
+#include "SecuredKeyPair.ipp"

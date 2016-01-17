@@ -11,7 +11,7 @@ SecuredKeyPair<Cipher>::SecuredKeyPair(const PrivateKey &privateKey, const Publi
 
 template<class Cipher>
 SecuredKeyPair<Cipher>::SecuredKeyPair(const Data &privateKey, const PublicKey &publicKey, const Cipher &cipher) :
-    _privateKey(PrivateKey, cipher),
+    _privateKey(privateKey, cipher),
     _publicKey(publicKey)
 {}
 
