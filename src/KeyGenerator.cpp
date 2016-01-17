@@ -35,15 +35,36 @@ KeyPair KeyGenerator::generate()
 
 KeyPair KeyGenerator::generate(const Data &entropy)
 {
-    PrivateKey privateKey = _privateKeyGenerator.generate(entropy);
-    return KeyPair(privateKey, _publicKeyGenerator.createFromSecret(privateKey));
+    return generate(&*entropy.begin(), entropy.size());
 }
 
 
 KeyPair KeyGenerator::generate(const unsigned char *entropy, size_t entropySize)
 {
-    PrivateKey privateKey = _privateKeyGenerator.generate(entropy, entropySize);
-    return KeyPair(privateKey, _publicKeyGenerator.createFromSecret(privateKey));
+
+    if(entropySize<32)
+    {
+        throw std::runtime_error("not enough entropy");
+    }
+
+    for(int i=0; i<100; i++)
+    {
+        try
+        {
+            PrivateKey privateKey = _privateKeyGenerator.generate(entropy, entropySize);
+            return KeyPair(privateKey, _publicKeyGenerator.createFromSecret(privateKey));
+        }
+        catch(const std::runtime_error &)
+        {}
+        entropy++;
+        entropySize--;
+
+        if(entropySize<32)
+        {
+            break;
+        }
+    }
+    throw std::runtime_error("key generation failed");
 }
 
 
