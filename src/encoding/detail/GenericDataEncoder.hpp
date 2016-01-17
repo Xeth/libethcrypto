@@ -38,6 +38,8 @@ class GenericDataEncoder
 
         Data decode(const std::string &);
 
+        std::string encode(const Data &);
+
     protected:
         template<class Iterator>
         size_t strip(Iterator &begin, Iterator end, unsigned char c);

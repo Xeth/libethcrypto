@@ -170,4 +170,11 @@ Data GenericDataEncoder<Alphabet>::decode(const std::string &input)
     return decode<Data>(input.begin(), input.end());
 }
 
+
+template<class Alphabet>
+std::string GenericDataEncoder<Alphabet>::encode(const Data &input)
+{
+    return encode(input.begin(), input.end());
+}
+
 }
