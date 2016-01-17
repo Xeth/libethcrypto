@@ -15,18 +15,18 @@ PublicKey::PublicKey(const Secp256k1ContextPtr &context) :
 PublicKey::PublicKey(const PublicKey &copy) :
     LazySecp256k1Handler(copy.getContext())
 {
-    std::copy(copy._data.data, copy._data.data+33, _data.data);
+    std::copy(copy._data.data, copy._data.data+64, _data.data);
 }
 
 PublicKey::PublicKey(const Data &bin)
 {
-    std::copy(bin.begin(), bin.begin()+33, _data.data);
+    std::copy(bin.begin(), bin.begin()+64, _data.data);
 }
 
 PublicKey::PublicKey(const Data &bin, const Secp256k1ContextPtr &context) :
     LazySecp256k1Handler(context)
 {
-    std::copy(bin.begin(), bin.begin()+33, _data.data);
+    std::copy(bin.begin(), bin.begin()+64, _data.data);
 }
 
 PublicKey::operator secp256k1_pubkey & ()
