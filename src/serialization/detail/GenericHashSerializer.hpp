@@ -16,8 +16,6 @@ class GenericHashSerializer
         std::string serialize(const Data &) const;
         Data unserialize(const std::string &) const;
 
-    private:
-        Encoder _encoder;
 };
 
 
