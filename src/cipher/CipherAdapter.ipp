@@ -11,9 +11,9 @@ class CipherAdapter::CipherHolder
         virtual Data decrypt(const Data &in, const void *) = 0;
 
 
-        virtual bool encrypt(const Secret &in, Data &out, const void *) = 0;
-        virtual bool decrypt(const Data &in, Secret &out, const void *) = 0;
-        virtual Data encrypt(const Secret &in, const void *) = 0;
+        virtual bool encrypt(const PrivateKey &in, Data &out, const void *) = 0;
+        virtual bool decrypt(const Data &in, PrivateKey &out, const void *) = 0;
+        virtual Data encrypt(const PrivateKey &in, const void *) = 0;
 
 };
 
@@ -27,9 +27,9 @@ class CipherAdapter::CipherHolderImpl : public CipherAdapter::CipherHolder
         Data encrypt(const Data &in, const void *);
         Data decrypt(const Data &in, const void *);
 
-        bool encrypt(const Secret &in, Data &out, const void *);
-        bool decrypt(const Data &in, Secret &out, const void *);
-        Data encrypt(const Secret &in, const void *);
+        bool encrypt(const PrivateKey &in, Data &out, const void *);
+        bool decrypt(const Data &in, PrivateKey &out, const void *);
+        Data encrypt(const PrivateKey &in, const void *);
 
     private:
         Cipher _cipher;
@@ -102,20 +102,20 @@ Data CipherAdapter::CipherHolderImpl<Cipher>::decrypt(const Data &in, const void
 }
 
 template<class Cipher>
-bool CipherAdapter::CipherHolderImpl<Cipher>::encrypt(const Secret &in, Data &out, const void *key)
+bool CipherAdapter::CipherHolderImpl<Cipher>::encrypt(const PrivateKey &in, Data &out, const void *key)
 {
     return _cipher.encrypt(in, out, *reinterpret_cast<const typename Cipher::Key *>(key));
 }
 
 template<class Cipher>
-bool CipherAdapter::CipherHolderImpl<Cipher>::decrypt(const Data &in, Secret &out, const void *key)
+bool CipherAdapter::CipherHolderImpl<Cipher>::decrypt(const Data &in, PrivateKey &out, const void *key)
 {
     return _cipher.decrypt(in, out, *reinterpret_cast<const typename Cipher::Key *>(key));
 }
 
 
 template<class Cipher>
-Data CipherAdapter::CipherHolderImpl<Cipher>::encrypt(const Secret &in, const void *key)
+Data CipherAdapter::CipherHolderImpl<Cipher>::encrypt(const PrivateKey &in, const void *key)
 {
     return _cipher.encrypt(in, *reinterpret_cast<const typename Cipher::Key *>(key));
 }

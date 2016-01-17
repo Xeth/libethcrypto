@@ -2,7 +2,7 @@
 
 #include <string>
 #include "bitcrypto/Data.hpp"
-#include "bitcrypto/Secret.hpp"
+#include "bitcrypto/PrivateKey.hpp"
 
 
 namespace BitCrypto{

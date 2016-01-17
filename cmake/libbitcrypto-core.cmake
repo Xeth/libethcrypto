@@ -13,6 +13,7 @@ file(GLOB SOURCES
     "src/serialization/detail/*.cpp"
     "src/encoding/*.cpp"
     "src/encoding/detail/*.cpp"
+    "src/cipher/*.cpp"
 )
 
 
@@ -31,6 +32,8 @@ file(GLOB HEADERS RELATIVE ${CMAKE_SOURCE_DIR}/src
     "src/encoding/*.ipp"
     "src/encoding/detail/*.hpp"
     "src/encoding/detail/*.ipp"
+    "src/cipher/*.hpp"
+    "src/cipher/*.ipp"
 )
 
 

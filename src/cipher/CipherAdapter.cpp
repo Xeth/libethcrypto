@@ -1,4 +1,4 @@
-#include "bitcrypto/CipherAdapter.hpp"
+#include "bitcrypto/cipher/CipherAdapter.hpp"
 
 
 namespace BitCrypto{
