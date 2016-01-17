@@ -1,4 +1,4 @@
-find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS system filesystem unit_test_framework random REQUIRED)
 
 file(GLOB TEST_SOURCES 
     "test/*.cpp"
@@ -19,4 +19,4 @@ include_directories(${CMAKE_BINARY_DIR}/include)
 add_executable(unit-tests ${TEST_SOURCES})
 add_dependencies(unit-tests bitcrypto)
 
-target_link_libraries(unit-tests bitcrypto ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${GMP_LIBRARY})
+target_link_libraries(unit-tests bitcrypto ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${Boost_RANDOM_LIBRARY} ${GMP_LIBRARY})
