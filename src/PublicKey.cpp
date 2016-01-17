@@ -157,19 +157,7 @@ PublicKey & PublicKey::operator = (const PublicKey &key)
 }
 
 
-bool PublicKey::verify(const Signature &signature, const Data &hash)
-{
-    if(hash.size() != 32)
-    {
-        return false;
-    }
-    return  secp256k1_ecdsa_verify(getContext().get(), &signature, &*hash.begin(), &_data);
-}
 
-bool PublicKey::verify(const Signature &signature, const unsigned char *hash)
-{
-    return  secp256k1_ecdsa_verify(getContext().get(), &signature, hash, &_data);
-}
 
 
 }

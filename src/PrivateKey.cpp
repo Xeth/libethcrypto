@@ -70,45 +70,6 @@ PrivateKey & PrivateKey::operator *= (const PrivateKey &privateKey)
 }
 
 
-bool PrivateKey::sign(const unsigned char *hash, Signature &result)
-{
-    if(!secp256k1_ecdsa_sign(getContext().get(), &result, hash, data(), NULL, NULL))
-    {
-        return false;
-    }
-    return true;
-}
 
-
-bool PrivateKey::sign(const Data &data, Signature &result)
-{
-    if(data.size()!=32)
-    {
-        return false;
-    }
-    return sign(&*data.begin(), result);
-}
-
-
-Signature PrivateKey::sign(const unsigned char *hash)
-{
-    Signature result;
-    if(!sign(hash, result))
-    {
-        throw std::runtime_error("signature failed");
-    }
-    return result;
-}
-
-
-Signature PrivateKey::sign(const Data &hash)
-{
-    Signature result;
-    if(!sign(hash, result))
-    {
-        throw std::runtime_error("signature failed");
-    }
-    return result;
-}
 
 }

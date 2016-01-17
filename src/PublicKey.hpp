@@ -46,8 +46,7 @@ class PublicKey : public LazySecp256k1Handler
         PublicKey & operator *= (const PrivateKey &);
         PublicKey & operator = (const PublicKey &);
 
-        bool verify(const Signature &, const Data &hash);
-        bool verify(const Signature &, const unsigned char *);
+
 
     private:
         secp256k1_pubkey _data;

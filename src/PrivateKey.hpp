@@ -28,10 +28,7 @@ class PrivateKey :
         PrivateKey & operator *= (const PrivateKey &);
 
 
-        bool sign(const unsigned char *hash, Signature &);
-        bool sign(const Data &hash, Signature &);
-        Signature sign(const Data &hash);
-        Signature sign(const unsigned char *hash);
+
 };
 
 
