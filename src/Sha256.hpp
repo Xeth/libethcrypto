@@ -26,9 +26,9 @@ class Sha256
         Data hash(Iterator begin, Iterator end) const;
 
 
-        template<class Input>
-        Data hash(const Input &input) const;
+        Data hash(const Data &) const;
 
+        Data hash(const std::string &) const;
 
 };
 

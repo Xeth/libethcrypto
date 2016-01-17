@@ -32,11 +32,17 @@ Data Sha256::hash(Iterator begin, Iterator end) const
 }
 
 
-template<class Input>
-Data Sha256::hash(const Input &input) const
+
+
+inline Data Sha256::hash(const std::string &input) const
 {
     return hash(input.begin(), input.end());
 }
 
+
+inline Data Sha256::hash(const Data &input) const
+{
+    return hash(input.begin(), input.end());
+}
 
 }
