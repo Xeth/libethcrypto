@@ -47,9 +47,7 @@ BOOST_AUTO_TEST_CASE(validSignature)
     
     Data hash = encoder.decode("ed8f9b40c2d349c8a7e58cebe79faa25c21b6bb85b874901f72a1b3f1ad0a67f");
     std::reverse(hash.begin(), hash.end());
-    std::cout<<"hash size = "<<hash.size()<<"\n";
     Signature signature = sigSerializer.unserialize("3045022100bc494fbd09a8e77d8266e2abdea9aef08b9e71b451c7d8de9f63cda33a62437802206b93edd6af7c659db42c579eb34a3a4cb60c28b5a6bc86fd5266d42f6b8bb67d");
-    std::cout<<"serialized: "<<sigSerializer.serialize(signature)<<"\n";
 
     BOOST_REQUIRE(validator.verify(key, signature, hash));
 }
