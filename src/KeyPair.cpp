@@ -1,6 +1,6 @@
 #include "bitcrypto/KeyPair.hpp"
 
-
+#include <iostream>
 namespace BitCrypto{
 
 
@@ -9,13 +9,14 @@ KeyPair::KeyPair()
 
 
 KeyPair::KeyPair(const Secp256k1ContextPtr &context) : 
+    _privateKey(context),
     _publicKey(context)
 {}
 
 
-KeyPair::KeyPair(const PrivateKey &privateKey, const PublicKey &PublicKey) :
+KeyPair::KeyPair(const PrivateKey &privateKey, const PublicKey &publicKey) :
     _privateKey(privateKey),
-    _publicKey(PublicKey)
+    _publicKey(publicKey)
 {}
 
 
