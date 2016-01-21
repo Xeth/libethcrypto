@@ -20,7 +20,7 @@ SecuredPrivateKey<Cipher>::SecuredPrivateKey(const Data &privateKey, const Ciphe
 
 template<class Cipher>
 template<class CipherKey>
-PrivateKey SecuredPrivateKey<Cipher>::unlock(const CipherKey &key) 
+PrivateKey SecuredPrivateKey<Cipher>::unlock(const CipherKey &key) const
 {
     return _cipher.decrypt(_privateKey, key);
 }
