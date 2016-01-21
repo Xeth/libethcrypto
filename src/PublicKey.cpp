@@ -81,7 +81,7 @@ PublicKey::ConstIterator PublicKey::end() const
 }
 
 
-PublicKey PublicKey::operator + (const PublicKey &key)
+PublicKey PublicKey::operator + (const PublicKey &key) const
 {
     PublicKey result(getContext());
     const secp256k1_pubkey * keys[2] = {&_data, &key._data};
@@ -93,7 +93,7 @@ PublicKey PublicKey::operator + (const PublicKey &key)
 }
 
 
-PublicKey PublicKey::operator + (const PrivateKey &secret)
+PublicKey PublicKey::operator + (const PrivateKey &secret) const
 {
     PublicKey result(*this);
     if(!secp256k1_ec_pubkey_tweak_add(getContext().get(), &result, secret.data()))
@@ -104,7 +104,7 @@ PublicKey PublicKey::operator + (const PrivateKey &secret)
     return result;
 }
 
-PublicKey PublicKey::operator * (const PrivateKey &secret)
+PublicKey PublicKey::operator * (const PrivateKey &secret) const
 {
     PublicKey result(*this);
     if(!secp256k1_ec_pubkey_tweak_mul(getContext().get(), &result, secret.data()))

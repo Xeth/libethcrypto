@@ -38,9 +38,9 @@ class PublicKey : public LazySecp256k1Handler
         Iterator begin();
         Iterator end();
 
-        PublicKey operator + (const PublicKey &);
-        PublicKey operator + (const PrivateKey &);
-        PublicKey operator * (const PrivateKey &);
+        PublicKey operator + (const PublicKey &) const;
+        PublicKey operator + (const PrivateKey &) const;
+        PublicKey operator * (const PrivateKey &) const;
         PublicKey & operator += (const PublicKey &);
         PublicKey & operator += (const PrivateKey &);
         PublicKey & operator *= (const PrivateKey &);
@@ -50,7 +50,6 @@ class PublicKey : public LazySecp256k1Handler
 
     private:
         secp256k1_pubkey _data;
-        Secp256k1ContextPtr _context;
 
 };
 
