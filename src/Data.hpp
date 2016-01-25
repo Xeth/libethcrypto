@@ -3,7 +3,7 @@
 #include <vector>
 #include <ostream>
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 typedef std::vector<unsigned char> Data;

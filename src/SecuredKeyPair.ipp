@@ -1,5 +1,5 @@
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Cipher>

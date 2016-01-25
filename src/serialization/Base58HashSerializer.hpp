@@ -1,9 +1,9 @@
 #pragma once 
 
-#include "bitcrypto/serialization/detail/GenericHashSerializer.hpp"
-#include "bitcrypto/encoding/Base58Encoder.hpp"
+#include "ethkey/serialization/detail/GenericHashSerializer.hpp"
+#include "ethkey/encoding/Base58Encoder.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 typedef GenericHashSerializer<Base58Encoder> Base58HashSerializer;
 

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "bitcrypto/Data.hpp"
+#include "ethkey/Data.hpp"
 #include "detail/GenericDataEncoder.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 struct Base58Alphabet

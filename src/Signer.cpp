@@ -1,7 +1,7 @@
 #include "Signer.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 Signer::Signer()

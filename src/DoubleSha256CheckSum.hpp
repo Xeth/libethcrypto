@@ -1,9 +1,9 @@
 #pragma once
 
-#include "bitcrypto/Sha256.hpp"
-#include "bitcrypto/DoubleHash.hpp"
+#include "Sha256.hpp"
+#include "DoubleHash.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class DoubleSha256CheckSum

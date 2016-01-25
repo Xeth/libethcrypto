@@ -1,7 +1,7 @@
 
-#include "bitcrypto/external/hash_impl.h"
+#include "external/hash_impl.h"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 

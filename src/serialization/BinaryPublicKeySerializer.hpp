@@ -1,12 +1,12 @@
 #pragma once
 
-#include "bitcrypto/CompressedPoint.hpp"
-#include "bitcrypto/UncompressedPoint.hpp"
-#include "bitcrypto/PublicKey.hpp"
-#include "bitcrypto/detail/Secp256k1Handler.hpp"
+//#include "ethkey/CompressedPoint.hpp"
+//#include "ethkey/UncompressedPoint.hpp"
+//#include "ethkey/PublicKey.hpp"
+//#include "ethkey/detail/Secp256k1Handler.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Point>

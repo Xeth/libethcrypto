@@ -1,12 +1,12 @@
 #pragma once 
 
-#include "bitcrypto/PublicKey.hpp"
-#include "bitcrypto/PrivateKey.hpp"
+#include "PublicKey.hpp"
+#include "PrivateKey.hpp"
 
-#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
+#include "detail/Secp256k1ContextPtr.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class KeyPair

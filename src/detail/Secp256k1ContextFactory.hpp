@@ -1,11 +1,11 @@
 #pragma once 
 
 #include <boost/shared_ptr.hpp>
-#include "bitcrypto/secp256k1/secp256k1.h"
+#include "ethkey/secp256k1/secp256k1.h"
 
 #include "Secp256k1ContextPtr.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class Secp256k1ContextDisposer

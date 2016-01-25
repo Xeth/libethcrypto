@@ -1,4 +1,4 @@
-namespace BitCrypto{
+namespace Ethereum{
 
 template<class Encoder>
 std::string GenericSignatureSerializer<Encoder>::serialize(const Signature &signature, bool compact) const

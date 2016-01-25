@@ -1,9 +1,9 @@
 #pragma once 
 
-#include "bitcrypto/serialization/detail/GenericSignatureSerializer.hpp"
-#include "bitcrypto/encoding/Base16Encoder.hpp"
+#include "ethkey/serialization/detail/GenericSignatureSerializer.hpp"
+#include "ethkey/encoding/Base16Encoder.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 typedef GenericSignatureSerializer<Base16Encoder> Base16SignatureSerializer;

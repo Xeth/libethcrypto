@@ -3,11 +3,11 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include "bitcrypto/Data.hpp"
-#include "bitcrypto/PrivateKey.hpp"
+#include "ethkey/Data.hpp"
+#include "ethkey/PrivateKey.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class DummyKey

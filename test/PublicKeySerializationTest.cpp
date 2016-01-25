@@ -1,9 +1,9 @@
 #include <boost/test/unit_test.hpp>
 
-#include "bitcrypto/serialization/Base16PublicKeySerializer.hpp"
+#include "ethkey/serialization/Base16PublicKeySerializer.hpp"
 
 
-using namespace BitCrypto;
+using namespace Ethereum;
 
 BOOST_AUTO_TEST_SUITE(PublicKeySerializerTest)
 

@@ -1,7 +1,7 @@
-#include "bitcrypto/KeyGenerator.hpp"
+#include "KeyGenerator.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 KeyGenerator::KeyGenerator() :

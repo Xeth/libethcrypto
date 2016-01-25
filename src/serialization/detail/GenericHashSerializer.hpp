@@ -2,10 +2,10 @@
 
 #include <algorithm>
 
-#include "bitcrypto/Data.hpp"
+#include "ethkey/Data.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Encoder>

@@ -1,3 +1,3 @@
-#define Bit_Crypto_VERSION_MAJOR @Bit_Crypto_VERSION_MAJOR@
-#define Bit_Crypto_VERSION_MINOR @Bit_Crypto_VERSION_MINOR@
-#define Bit_Crypto_VERSION_PATCH @Bit_Crypto_VERSION_PATCH@
+#define Eth_Key_VERSION_MAJOR @Eth_Key_VERSION_MAJOR@
+#define Eth_Key_VERSION_MINOR @Eth_Key_VERSION_MINOR@
+#define Eth_Key_VERSION_PATCH @Eth_Key_VERSION_PATCH@

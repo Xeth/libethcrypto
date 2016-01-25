@@ -1,6 +1,6 @@
 #include "SignatureValidator.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 SignatureValidator::SignatureValidator()

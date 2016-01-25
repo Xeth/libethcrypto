@@ -37,26 +37,21 @@ file(GLOB HEADERS RELATIVE ${CMAKE_SOURCE_DIR}/src
 )
 
 
-add_library(bitcrypto-dummy STATIC ${CMAKE_SOURCE_DIR}/src/main.cpp)
+add_library(ethkey-dummy STATIC ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 
 
-add_library(bitcrypto-core STATIC ${SOURCES})
-add_dependencies(bitcrypto-core libsecp256k1 bitcrypto-dummy)
+add_library(ethkey-core STATIC ${SOURCES})
+add_dependencies(ethkey-core libsecp256k1 ethkey-dummy)
 
 
-#add_custom_command(
-#    TARGET bitcrypto-core
-#    PRE_BUILD
-#    COMMAND ${CMAKE_COMMAND} ARGS -E make_directory ${CMAKE_BINARY_DIR}/include/bitcrypto/external
-#)
 
 foreach(HEADER ${HEADERS})
     add_custom_command(
-        TARGET bitcrypto-dummy
+        TARGET ethkey-dummy
         PRE_BUILD
         COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${CMAKE_SOURCE_DIR}/src/${HEADER} ${CMAKE_BINARY_DIR}/include/bitcrypto/${HEADER}
+        ARGS -E copy ${CMAKE_SOURCE_DIR}/src/${HEADER} ${CMAKE_BINARY_DIR}/include/ethkey/${HEADER}
 )
 endforeach(HEADER )
 

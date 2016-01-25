@@ -6,7 +6,7 @@
 #include "Data.hpp"
 #include "Signature.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class PrivateKey : 

@@ -1,13 +1,13 @@
 #pragma once 
 
-#include "bitcrypto/PublicKey.hpp"
-#include "bitcrypto/SecuredPrivateKey.hpp"
-#include "bitcrypto/PrivateKeyGenerator.hpp"
-#include "bitcrypto/PublicKeyFactory.hpp"
-#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
+#include "PublicKey.hpp"
+#include "SecuredPrivateKey.hpp"
+#include "PrivateKeyGenerator.hpp"
+#include "PublicKeyFactory.hpp"
+#include "detail/Secp256k1ContextPtr.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Cipher>

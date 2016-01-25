@@ -1,9 +1,9 @@
 
-#include "bitcrypto/PrivateKeyGenerator.hpp"
+#include "PrivateKeyGenerator.hpp"
 #include <cstring>
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 PrivateKeyGenerator::PrivateKeyGenerator()

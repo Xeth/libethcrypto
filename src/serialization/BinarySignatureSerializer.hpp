@@ -1,10 +1,10 @@
 #pragma once 
 
-#include "bitcrypto/detail/Secp256k1Handler.hpp"
-#include "bitcrypto/Data.hpp"
-#include "bitcrypto/Signature.hpp"
+#include "ethkey/detail/Secp256k1Handler.hpp"
+#include "ethkey/Data.hpp"
+#include "ethkey/Signature.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class BinarySignatureSerializer : public Secp256k1Handler

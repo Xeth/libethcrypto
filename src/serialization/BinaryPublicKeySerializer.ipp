@@ -1,6 +1,6 @@
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 inline BinaryPublicKeySerializer::BinaryPublicKeySerializer()

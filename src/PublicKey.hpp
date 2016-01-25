@@ -2,13 +2,13 @@
 
 #include <stdint.h>
 
-#include "bitcrypto/secp256k1/secp256k1.h"
-#include "bitcrypto/detail/LazySecp256k1Handler.hpp"
-#include "bitcrypto/Data.hpp"
-#include "bitcrypto/PrivateKey.hpp"
+#include "ethkey/secp256k1/secp256k1.h"
+#include "detail/LazySecp256k1Handler.hpp"
+#include "Data.hpp"
+#include "PrivateKey.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class PublicKey : public LazySecp256k1Handler

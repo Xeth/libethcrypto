@@ -1,14 +1,14 @@
 #pragma once
 
-#include "bitcrypto/PublicKey.hpp"
-#include "bitcrypto/CompressedPoint.hpp"
-#include "bitcrypto/UncompressedPoint.hpp"
-#include "bitcrypto/detail/Secp256k1Handler.hpp"
-#include "bitcrypto/serialization/BinaryPublicKeySerializer.hpp"
+#include "ethkey/PublicKey.hpp"
+#include "ethkey/CompressedPoint.hpp"
+#include "ethkey/UncompressedPoint.hpp"
+#include "ethkey/detail/Secp256k1Handler.hpp"
+#include "ethkey/serialization/BinaryPublicKeySerializer.hpp"
 
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Encoder>

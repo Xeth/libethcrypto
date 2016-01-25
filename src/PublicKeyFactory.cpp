@@ -1,7 +1,7 @@
-#include "bitcrypto/PublicKeyFactory.hpp"
+#include "PublicKeyFactory.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 PublicKeyFactory::PublicKeyFactory(const Secp256k1ContextPtr &context) : 

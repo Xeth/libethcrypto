@@ -1,13 +1,13 @@
 #include <boost/test/unit_test.hpp>
 
-#include "bitcrypto/serialization/Base16PrivateKeySerializer.hpp"
-#include "bitcrypto/serialization/Base16PublicKeySerializer.hpp"
+#include "ethkey/serialization/Base16PrivateKeySerializer.hpp"
+#include "ethkey/serialization/Base16PublicKeySerializer.hpp"
 
-#include "bitcrypto/PublicKeyFactory.hpp"
-#include "bitcrypto/Literal.hpp"
+#include "ethkey/PublicKeyFactory.hpp"
+#include "ethkey/Literal.hpp"
 
 
-using namespace BitCrypto;
+using namespace Ethereum;
 
 BOOST_AUTO_TEST_SUITE(PublicKeyFactoryTest)
 

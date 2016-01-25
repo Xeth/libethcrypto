@@ -2,7 +2,7 @@
 #include "DummyCipher.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 PrivateKey DummyCipher::decrypt(const Data &data, const DummyKey &) const

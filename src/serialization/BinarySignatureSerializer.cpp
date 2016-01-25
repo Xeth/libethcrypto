@@ -1,6 +1,6 @@
 #include "BinarySignatureSerializer.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 BinarySignatureSerializer::BinarySignatureSerializer()

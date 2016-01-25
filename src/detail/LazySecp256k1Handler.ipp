@@ -1,4 +1,5 @@
-namespace BitCrypto{
+
+namespace Ethereum{
 
 inline LazySecp256k1Handler::LazySecp256k1Handler()
 {}

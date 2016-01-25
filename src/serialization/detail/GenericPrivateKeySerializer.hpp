@@ -1,11 +1,11 @@
 #pragma once
 
-#include "bitcrypto/PrivateKey.hpp"
-#include "bitcrypto/SecuredPrivateKey.hpp"
+#include "ethkey/PrivateKey.hpp"
+#include "ethkey/SecuredPrivateKey.hpp"
 
-#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
+#include "ethkey/detail/Secp256k1ContextPtr.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Encoder>

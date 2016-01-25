@@ -1,16 +1,16 @@
 #include <boost/test/unit_test.hpp>
 
-#include "bitcrypto/PublicKeyFactory.hpp"
-#include "bitcrypto/Signer.hpp"
-#include "bitcrypto/SignatureValidator.hpp"
-#include "bitcrypto/serialization/Base16PrivateKeySerializer.hpp"
-#include "bitcrypto/serialization/Base16PublicKeySerializer.hpp"
-#include "bitcrypto/serialization/Base16SignatureSerializer.hpp"
-#include "bitcrypto/Sha256.hpp"
-#include "bitcrypto/Literal.hpp"
+#include "ethkey/PublicKeyFactory.hpp"
+#include "ethkey/Signer.hpp"
+#include "ethkey/SignatureValidator.hpp"
+#include "ethkey/serialization/Base16PrivateKeySerializer.hpp"
+#include "ethkey/serialization/Base16PublicKeySerializer.hpp"
+#include "ethkey/serialization/Base16SignatureSerializer.hpp"
+#include "ethkey/Sha256.hpp"
+#include "ethkey/Literal.hpp"
 #include <iostream>
 
-using namespace BitCrypto;
+using namespace Ethereum;
 
 
 BOOST_AUTO_TEST_SUITE(SignatureTest)

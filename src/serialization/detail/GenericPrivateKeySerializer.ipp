@@ -1,6 +1,6 @@
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Encoder>

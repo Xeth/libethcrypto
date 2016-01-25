@@ -1,10 +1,10 @@
 #pragma once 
 
-#include "bitcrypto/external/hash.h"
-#include "bitcrypto/Data.hpp"
+#include "external/hash.h"
+#include "Data.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 

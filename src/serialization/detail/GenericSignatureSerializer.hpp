@@ -1,10 +1,10 @@
 #pragma once 
 
-#include "bitcrypto/serialization/BinarySignatureSerializer.hpp"
-#include "bitcrypto/Data.hpp"
-#include "bitcrypto/Signature.hpp"
+#include "ethkey/serialization/BinarySignatureSerializer.hpp"
+#include "ethkey/Data.hpp"
+#include "ethkey/Signature.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Encoder>

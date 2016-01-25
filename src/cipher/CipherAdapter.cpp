@@ -1,7 +1,7 @@
-#include "bitcrypto/cipher/CipherAdapter.hpp"
+#include "ethkey/cipher/CipherAdapter.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 CipherAdapter::~CipherAdapter()

@@ -4,7 +4,7 @@
 #include "Secp256k1ContextFactory.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 

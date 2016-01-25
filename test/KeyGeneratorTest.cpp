@@ -1,14 +1,14 @@
 #include <boost/test/unit_test.hpp>
 
-#include "bitcrypto/KeyGenerator.hpp"
-#include "bitcrypto/Signer.hpp"
-#include "bitcrypto/SignatureValidator.hpp"
-#include "bitcrypto/Sha256.hpp"
-#include "bitcrypto/Literal.hpp"
+#include "ethkey/KeyGenerator.hpp"
+#include "ethkey/Signer.hpp"
+#include "ethkey/SignatureValidator.hpp"
+#include "ethkey/Sha256.hpp"
+#include "ethkey/Literal.hpp"
 
 #include <iostream>
 
-using namespace BitCrypto;
+using namespace Ethereum;
 
 
 BOOST_AUTO_TEST_SUITE(KeyGeneratorTest)

@@ -1,12 +1,12 @@
 #pragma once 
 
-#include "bitcrypto/serialization/Base16HashSerializer.hpp"
-#include "bitcrypto/serialization/Base16PublicKeySerializer.hpp"
-#include "bitcrypto/serialization/Base16PrivateKeySerializer.hpp"
-#include "bitcrypto/serialization/Base16SignatureSerializer.hpp"
+#include "serialization/Base16HashSerializer.hpp"
+#include "serialization/Base16PublicKeySerializer.hpp"
+#include "serialization/Base16PrivateKeySerializer.hpp"
+#include "serialization/Base16SignatureSerializer.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 //hash
 

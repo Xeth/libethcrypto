@@ -1,11 +1,11 @@
 #pragma once 
 
-#include "bitcrypto/KeyPair.hpp"
-#include "bitcrypto/SecuredKeyPair.hpp"
-#include "bitcrypto/detail/Secp256k1Handler.hpp"
+#include "KeyPair.hpp"
+#include "SecuredKeyPair.hpp"
+#include "detail/Secp256k1Handler.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class KeyGenerator : public Secp256k1Handler

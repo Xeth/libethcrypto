@@ -1,15 +1,15 @@
 #pragma once 
 
-#include "bitcrypto/detail/Secp256k1Handler.hpp"
-#include "bitcrypto/PublicKey.hpp"
-#include "bitcrypto/CompressedPoint.hpp"
-#include "bitcrypto/UncompressedPoint.hpp"
-#include "bitcrypto/PrivateKey.hpp"
-#include "bitcrypto/Data.hpp"
-#include "bitcrypto/serialization/BinaryPublicKeySerializer.hpp"
+#include "detail/Secp256k1Handler.hpp"
+#include "PublicKey.hpp"
+#include "CompressedPoint.hpp"
+#include "UncompressedPoint.hpp"
+#include "PrivateKey.hpp"
+#include "Data.hpp"
+#include "serialization/BinaryPublicKeySerializer.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class PublicKeyFactory : public Secp256k1Handler

@@ -1,4 +1,4 @@
-namespace BitCrypto{
+namespace Ethereum{
 
 template<class Data>
 Data Literal(const std::string &serialized)

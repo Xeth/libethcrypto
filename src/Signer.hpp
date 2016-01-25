@@ -1,12 +1,12 @@
 #pragma once
 
-#include "bitcrypto/detail/Secp256k1Handler.hpp"
-#include "bitcrypto/PrivateKey.hpp"
-#include "bitcrypto/Signature.hpp"
-#include "bitcrypto/Data.hpp"
+#include "detail/Secp256k1Handler.hpp"
+#include "PrivateKey.hpp"
+#include "Signature.hpp"
+#include "Data.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class Signer : public Secp256k1Handler

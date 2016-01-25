@@ -1,8 +1,8 @@
 #pragma once 
 
-#include "bitcrypto/Data.hpp"
+#include "Data.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 template<class Hash>

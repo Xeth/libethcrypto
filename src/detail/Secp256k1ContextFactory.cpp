@@ -1,6 +1,6 @@
 #include "Secp256k1ContextFactory.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 boost::shared_ptr<secp256k1_context> Secp256k1ContextFactory::create() const

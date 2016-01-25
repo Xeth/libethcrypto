@@ -1,7 +1,8 @@
-#include "bitcrypto/KeyPair.hpp"
+#include "KeyPair.hpp"
 
 #include <iostream>
-namespace BitCrypto{
+
+namespace Ethereum{
 
 
 KeyPair::KeyPair()

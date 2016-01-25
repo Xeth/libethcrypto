@@ -3,7 +3,7 @@
 #include <boost/array.hpp>
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 typedef boost::array<unsigned char, 33> CompressedPoint;

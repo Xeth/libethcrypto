@@ -3,7 +3,7 @@
 #include <openssl/aes.h>
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class AesKey

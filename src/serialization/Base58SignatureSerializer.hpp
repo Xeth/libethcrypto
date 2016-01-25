@@ -1,10 +1,10 @@
 #pragma once 
 
-#include "bitcrypto/serialization/detail/GenericSignatureSerializer.hpp"
-#include "bitcrypto/encoding/Base58Encoder.hpp"
+#include "ethkey/serialization/detail/GenericSignatureSerializer.hpp"
+#include "ethkey/encoding/Base58Encoder.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 typedef GenericSignatureSerializer<Base58Encoder> Base58SignatureSerializer;

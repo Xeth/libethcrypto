@@ -1,9 +1,9 @@
 #include <boost/test/unit_test.hpp>
 
-#include "bitcrypto/DoubleSha256CheckSum.hpp"
+#include "ethkey/DoubleSha256CheckSum.hpp"
 
 
-using namespace BitCrypto;
+using namespace Ethereum;
 
 BOOST_AUTO_TEST_SUITE(CheckSumTest)
 

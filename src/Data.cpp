@@ -1,7 +1,7 @@
 
-#include "bitcrypto/Data.hpp"
+#include "Data.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 unsigned char * operator & (Data &data)

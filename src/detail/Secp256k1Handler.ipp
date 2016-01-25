@@ -1,4 +1,4 @@
-namespace BitCrypto{
+namespace Ethereum{
 
 inline Secp256k1Handler::Secp256k1Handler() : 
     _context(createContext())

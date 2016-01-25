@@ -1,5 +1,5 @@
 
-namespace BitCrypto{
+namespace Ethereum{
 
 class CipherAdapter::CipherHolder
 {

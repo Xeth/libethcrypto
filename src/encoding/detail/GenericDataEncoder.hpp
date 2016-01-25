@@ -5,10 +5,10 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "bitcrypto/Data.hpp"
+#include "ethkey/Data.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 

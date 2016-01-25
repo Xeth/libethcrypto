@@ -1,7 +1,7 @@
 #include "Literal.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 std::string Literal(const Data &hash)

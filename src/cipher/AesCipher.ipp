@@ -1,5 +1,5 @@
 
-namespace Stealth{
+namespace Ethereum{
 
 inline AesKey::AesKey(const std::string &password) :
     _password(password)

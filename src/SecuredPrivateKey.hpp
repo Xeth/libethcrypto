@@ -1,9 +1,10 @@
 #pragma once 
 
-#include "bitcrypto/PrivateKey.hpp"
+#include "PrivateKey.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
+
 
 template<class Cipher>
 class SecuredPrivateKey
@@ -28,4 +29,4 @@ class SecuredPrivateKey
 
 }
 
-#include "bitcrypto/SecuredPrivateKey.ipp"
+#include "SecuredPrivateKey.ipp"

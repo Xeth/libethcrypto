@@ -1,6 +1,6 @@
-#include "bitcrypto/PrivateKey.hpp"
+#include "PrivateKey.hpp"
 
-namespace BitCrypto{
+namespace Ethereum{
 
 PrivateKey::PrivateKey()
 {}

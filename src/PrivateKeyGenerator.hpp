@@ -3,12 +3,12 @@
 #include <boost/random/random_device.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
 
-#include "bitcrypto/detail/Secp256k1ContextPtr.hpp"
-#include "bitcrypto/PrivateKey.hpp"
-#include "bitcrypto/Sha256.hpp"
+#include "detail/Secp256k1ContextPtr.hpp"
+#include "PrivateKey.hpp"
+#include "Sha256.hpp"
 
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 class PrivateKeyGenerator

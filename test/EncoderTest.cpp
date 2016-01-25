@@ -1,13 +1,13 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "bitcrypto/Data.hpp"
-#include "bitcrypto/encoding/Base16Encoder.hpp"
-#include "bitcrypto/encoding/Base58Encoder.hpp"
+#include "ethkey/Data.hpp"
+#include "ethkey/encoding/Base16Encoder.hpp"
+#include "ethkey/encoding/Base58Encoder.hpp"
 
 #include <iostream>
 
-using namespace BitCrypto;
+using namespace Ethereum;
 
 BOOST_AUTO_TEST_SUITE(EncodingTest)
 

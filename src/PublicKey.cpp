@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-namespace BitCrypto{
+namespace Ethereum{
 
 
 PublicKey::PublicKey()
