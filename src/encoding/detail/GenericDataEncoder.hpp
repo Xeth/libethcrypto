@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cmath>
 #include <stdexcept>
+#include <boost/array.hpp>
 
 #include "ethkey/Data.hpp"
 
@@ -44,6 +45,17 @@ class GenericDataEncoder
         template<class Iterator>
         size_t strip(Iterator &begin, Iterator end, unsigned char c);
 
+        template<class Data>
+        void assign(Data &, unsigned char , size_t );
+
+        template<class T, size_t size>
+        void assign(boost::array<T, size> &, unsigned char , size_t);
+
+        template<class Data>
+        void trim(Data &, size_t );
+
+        template<class T, size_t size>
+        void trim(boost::array<T, size> &, size_t);
 };
 
 

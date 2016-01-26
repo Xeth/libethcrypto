@@ -24,11 +24,13 @@ void GenericDataEncoder<Alphabet>::encode(Iterator begin, Iterator end, Data &re
     if(Alphabet::strip)
     {
         zeroes = strip(begin, end, 0);
-        result.assign(zeroes+ceil((end - begin) * log(256) / log(Alphabet::base)), 0);
+//        result.assign(zeroes+ceil((end - begin) * log(256) / log(Alphabet::base)), 0);
+        assign(result, 0, zeroes+ceil((end - begin) * log(256) / log(Alphabet::base)));
     }
     else
     {
-        result.assign(ceil((end - begin) * log(256) / log(Alphabet::base)), 0);
+//        result.assign(ceil((end - begin) * log(256) / log(Alphabet::base)), 0);
+        assign(result, 0, ceil((end - begin) * log(256) / log(Alphabet::base)));
     }
 
     typename Data::reverse_iterator rBegin = result.rbegin(), rEnd = result.rend();
@@ -56,7 +58,8 @@ void GenericDataEncoder<Alphabet>::encode(Iterator begin, Iterator end, Data &re
 
         if(totalZeroes>zeroes)
         {
-            result.erase(0, totalZeroes-zeroes);
+            trim(result, totalZeroes-zeroes);
+//            result.erase(0, totalZeroes-zeroes);
         }
     }
 
@@ -68,6 +71,40 @@ void GenericDataEncoder<Alphabet>::encode(Iterator begin, Iterator end, Data &re
 }
 
 
+template<class Alphabet>
+template<class Data>
+void GenericDataEncoder<Alphabet>::assign(Data &result,  unsigned char value, size_t size)
+{
+    result.assign(size, value);
+}
+
+
+template<class Alphabet>
+template<class Data>
+void GenericDataEncoder<Alphabet>::trim(Data &result, size_t size)
+{
+//    result.erase(0, size);
+    result.erase(result.begin(), result.begin()+size);
+}
+
+
+template<class Alphabet>
+template<class T, size_t capacity>
+void GenericDataEncoder<Alphabet>::assign(boost::array<T, capacity> &result, unsigned char value, size_t size)
+{
+    if(size > capacity)
+    {
+        throw std::runtime_error("container overflow");
+    }
+
+    std::fill_n(result.begin(),size, value);
+}
+
+
+template<class Alphabet>
+template<class T, size_t capacity>
+void GenericDataEncoder<Alphabet>::trim(boost::array<T, capacity> &, size_t)
+{}
 
 template<class Alphabet>
 template<class Data, class Iterator>
@@ -95,11 +132,13 @@ bool GenericDataEncoder<Alphabet>::decode(Iterator begin, Iterator end, Data &re
     if(Alphabet::strip)
     {
         zeroes = strip(begin, end, Alphabet::map[0]);
-        result.assign(zeroes + ceil((end-begin) *log(Alphabet::base)/log(256)), 0);
+        assign(result, 0,  zeroes + ceil((end-begin) *log(Alphabet::base)/log(256)));
+//        result.assign(zeroes + ceil((end-begin) *log(Alphabet::base)/log(256)), 0);
     }
     else
     {
-        result.assign(ceil((end-begin) *log(Alphabet::base)/log(256)), 0);
+        assign(result, 0, ceil((end-begin) *log(Alphabet::base)/log(256)));
+//        result.assign(ceil((end-begin) *log(Alphabet::base)/log(256)), 0);
     }
 
     typename Data::reverse_iterator rBegin=result.rbegin(), rEnd=result.rend();
@@ -136,7 +175,8 @@ bool GenericDataEncoder<Alphabet>::decode(Iterator begin, Iterator end, Data &re
 
         if(totalZeroes>zeroes)
         {
-            result.erase(result.begin(), result.begin()+(totalZeroes-zeroes));
+            trim(result, totalZeroes-zeroes);
+//            result.erase(result.begin(), result.begin()+(totalZeroes-zeroes));
         }
     }
     return true;
