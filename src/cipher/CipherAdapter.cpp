@@ -1,4 +1,4 @@
-#include "ethkey/cipher/CipherAdapter.hpp"
+#include "CipherAdapter.hpp"
 
 
 namespace Ethereum{

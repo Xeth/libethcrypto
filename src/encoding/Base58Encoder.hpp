@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ethkey/Data.hpp"
+#include "../Data.hpp"
 #include "detail/GenericDataEncoder.hpp"
 
 

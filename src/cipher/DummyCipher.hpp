@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include "ethkey/Data.hpp"
-#include "ethkey/PrivateKey.hpp"
+#include "../Data.hpp"
+#include "../PrivateKey.hpp"
 
 
 namespace Ethereum{
