@@ -67,7 +67,7 @@ PublicKey BinaryPublicKeySerializer::unserialize(const Point &point)  const
     PublicKey key(getContext());
     if(!unserialize(point, key))
     {
-        throw std::runtime_error("invalid compressed point");
+        throw std::runtime_error("invalid serialized point");
     }
     return key;
 }

@@ -1,7 +1,7 @@
 #pragma once 
 
 #include "detail/GenericPrivateKeySerializer.hpp"
-#include "ethkey/encoding/Base58Encoder.hpp"
+#include "../encoding/Base58Encoder.hpp"
 
 
 namespace Ethereum{

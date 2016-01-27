@@ -1,9 +1,9 @@
 #pragma once
 
-//#include "ethkey/CompressedPoint.hpp"
-//#include "ethkey/UncompressedPoint.hpp"
-//#include "ethkey/PublicKey.hpp"
-//#include "ethkey/detail/Secp256k1Handler.hpp"
+#include "../CompressedPoint.hpp"
+#include "../UncompressedPoint.hpp"
+#include "../PublicKey.hpp"
+#include "../detail/Secp256k1Handler.hpp"
 
 
 namespace Ethereum{

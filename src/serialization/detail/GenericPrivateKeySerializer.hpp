@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ethkey/PrivateKey.hpp"
-#include "ethkey/SecuredPrivateKey.hpp"
+#include "../../PrivateKey.hpp"
+#include "../../SecuredPrivateKey.hpp"
 
-#include "ethkey/detail/Secp256k1ContextPtr.hpp"
+#include "../../detail/Secp256k1ContextPtr.hpp"
 
 namespace Ethereum{
 

@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <boost/array.hpp>
 
-#include "ethkey/Data.hpp"
+#include "../../Data.hpp"
 
 
 namespace Ethereum{

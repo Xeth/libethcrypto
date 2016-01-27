@@ -1,8 +1,8 @@
 #pragma once 
 
-#include "ethkey/serialization/BinarySignatureSerializer.hpp"
-#include "ethkey/Data.hpp"
-#include "ethkey/Signature.hpp"
+#include "../BinarySignatureSerializer.hpp"
+#include "../../Data.hpp"
+#include "../../Signature.hpp"
 
 namespace Ethereum{
 

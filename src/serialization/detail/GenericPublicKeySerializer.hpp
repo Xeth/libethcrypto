@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ethkey/PublicKey.hpp"
-#include "ethkey/CompressedPoint.hpp"
-#include "ethkey/UncompressedPoint.hpp"
-#include "ethkey/detail/Secp256k1Handler.hpp"
-#include "ethkey/serialization/BinaryPublicKeySerializer.hpp"
+#include "../../PublicKey.hpp"
+#include "../../CompressedPoint.hpp"
+#include "../../UncompressedPoint.hpp"
+#include "../../detail/Secp256k1Handler.hpp"
+#include "../BinaryPublicKeySerializer.hpp"
 
 
 
