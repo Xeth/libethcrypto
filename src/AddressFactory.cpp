@@ -1,6 +1,5 @@
 #include "AddressFactory.hpp"
 
-#include <iostream>
 
 namespace Ethereum{
 
