@@ -28,11 +28,30 @@ class PrivateKey :
         PrivateKey & operator *= (const PrivateKey &);
 
 
+        template<class Secret>
+        PrivateKey operator + (const Secret &) const;
 
+        template<class Secret>
+        PrivateKey operator * (const Secret &) const;
+
+    private:
+
+        template<class Secret>
+        bool validateSecretSize(const Secret &) const;
+        bool validateSecretSize(const PrivateKey &) const;
+
+
+        template<class Secret>
+        PrivateKey sum(const Secret &) const;
+
+        template<class Secret>
+        PrivateKey multiply(const Secret &) const;
 };
 
 
-//typedef boost::array<unsigned char, 32> PrivateKey;
 
 
 }
+
+
+#include "PrivateKey.ipp"

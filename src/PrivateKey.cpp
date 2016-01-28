@@ -33,22 +33,13 @@ const unsigned char * PrivateKey::operator & () const
 
 PrivateKey PrivateKey::operator + (const PrivateKey &privateKey) const
 {
-    PrivateKey result(*this);
-    if(!secp256k1_ec_privkey_tweak_add(getContext().get(), result.data(), privateKey.data()))
-    {
-        throw std::runtime_error("private key operation failed");
-    }
-    return result;
+    return sum(privateKey);
 }
+
 
 PrivateKey PrivateKey::operator * (const PrivateKey &privateKey) const
 {
-    PrivateKey result(*this);
-    if(!secp256k1_ec_privkey_tweak_mul(getContext().get(), result.data(), privateKey.data()))
-    {
-        throw std::runtime_error("private key operation failed");
-    }
-    return result;
+    return multiply(privateKey);
 }
 
 PrivateKey & PrivateKey::operator += (const PrivateKey &privateKey)
