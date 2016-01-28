@@ -15,16 +15,9 @@ PublicKeyFactory::PublicKeyFactory()
 
 PublicKey PublicKeyFactory::createFromSecret(const PrivateKey &secret)
 {
-    Secp256k1ContextPtr & context = getContext();
-    PublicKey key(context);
-
-    if(!secp256k1_ec_pubkey_create(context.get(), &key, secret.data()))
-    {
-        throw std::runtime_error("failed to create PublicKey");
-    }
-
-    return key;
+    return createFromSecretData(secret);
 }
+
 
 
 template<class Point>

@@ -23,10 +23,24 @@ class PublicKeyFactory : public Secp256k1Handler
         PublicKey createFromPoint(const UncompressedPoint &);
         PublicKey createFromPoint(const Data &);
 
+        template<class Secret>
+        PublicKey createFromSecret(const Secret &secret);
+
     private:
+
+        template<class Secret>
+        PublicKey createFromSecretData(const Secret &);
+
+        bool validateSecretSize(const PrivateKey &);
+
+        template<class Secret>
+        bool validateSecretSize(const Secret &);
+
         template<class Point>
         PublicKey createFromPointData(const Point &);
 };
 
 
 }
+
+#include "PublicKeyFactory.ipp"
