@@ -3,8 +3,12 @@ namespace Ethereum{
 template<class Data>
 Data Literal(const std::string &serialized)
 {
-    Base16HashSerializer serializer;
-    return serializer.unserialize(serialized);
+//    Base16HashSerializer serializer;
+//    return serializer.unserialize(serialized);
+    Base16Encoder encoder;
+    Data result;
+    encoder.decode(serialized.begin(), serialized.end(), result);
+    return result;
 }
 
 

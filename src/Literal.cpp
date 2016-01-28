@@ -6,8 +6,10 @@ namespace Ethereum{
 
 std::string Literal(const Data &hash)
 {
-    Base16HashSerializer serializer;
-    return serializer.serialize(hash);
+//    Base16HashSerializer serializer;
+//    return serializer.serialize(hash);
+    Base16Encoder encoder;
+    return encoder.encode(hash.begin(), hash.end());
 }
 
 
