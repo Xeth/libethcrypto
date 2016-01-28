@@ -27,6 +27,8 @@ class KeyGenerator : public Secp256k1Handler
         template<class Cipher, class CipherKey>
         SecuredKeyPair<Cipher> generate(const unsigned char *entropy, size_t entropySize, const Cipher &, const CipherKey &);
 
+        PublicKeyFactory & getPublicKeyFactory();
+        PrivateKeyGenerator &getPrivateKeyGenerator();
 
     private:
         PrivateKeyGenerator _privateKeyGenerator;

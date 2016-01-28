@@ -68,4 +68,15 @@ KeyPair KeyGenerator::generate(const unsigned char *entropy, size_t entropySize)
 }
 
 
+PublicKeyFactory & KeyGenerator::getPublicKeyFactory()
+{
+    return _publicKeyGenerator;
+}
+
+
+PrivateKeyGenerator & KeyGenerator::getPrivateKeyGenerator()
+{
+    return _privateKeyGenerator;
+}
+
 }
