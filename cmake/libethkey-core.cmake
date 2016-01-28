@@ -2,8 +2,7 @@ find_package(Boost COMPONENTS system REQUIRED)
 
 #add_definitions(-D__DEBUG__)
 
-include_directories(${CMAKE_BINARY_DIR}/include)
-
+include_directories(${CRYPTOPP_INCLUDE_DIR} ${CMAKE_BINARY_DIR}/include)
 
 file(GLOB SOURCES 
     "src/*.cpp"
