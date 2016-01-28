@@ -1,7 +1,10 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "Sha256.hpp"
 #include "DoubleHash.hpp"
+
 
 namespace Ethereum{
 
