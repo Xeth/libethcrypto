@@ -1,12 +1,16 @@
 #include "AddressFactory.hpp"
 
+#include <iostream>
+
 namespace Ethereum{
 
 
 bool AddressFactory::createFromPublicKey(const PublicKey &key, Address &result) const
 {
-    Sha256 hasher;
-    Data hash = hasher.hash(key.begin(), key.end());
+    Sha3 hasher;
+    BinaryPublicKeySerializer serializer;
+    UncompressedPoint point = serializer.serialize<UncompressedPoint>(key);
+    Data hash = hasher.hash(point.begin()+1, point.end());
     std::copy(hash.begin() + 12, hash.end(), result.begin());
     return true;
 }

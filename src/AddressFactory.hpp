@@ -4,7 +4,11 @@
 #include "Address.hpp"
 
 #include "encoding/Base16Encoder.hpp"
-#include "Sha256.hpp"
+#include "CompressedPoint.hpp"
+#include "serialization/BinaryPublicKeySerializer.hpp"
+#include "DoubleHash.hpp"
+#include "Sha3.hpp"
+#include "Literal.hpp"
 
 
 namespace Ethereum{
