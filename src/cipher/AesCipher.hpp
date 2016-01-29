@@ -1,29 +1,24 @@
 #pragma once 
 
-#include <openssl/aes.h>
+#include <cryptopp/aes.h>
+#include <cryptopp/modes.h>
+#include <cryptopp/filters.h>
 
+#include "AesKey.hpp"
+#include "../BufferCast.hpp"
 
 namespace Ethereum{
 
 
-class AesKey
-{
-    public:
-        AesKey(const std::string &password);
-        AesKey(const std::string &password, const std::string &iv);
-
-        const unsigned char *getPassword() const;
-        const unsigned char *getIV() const;
-
-    private:
-        std::string _password;
-        std::string _iv;
-};
-
+using namespace CryptoPP;
 
 
 class AesCipher
 {
+    public:
+        typedef AesKey Key;
+
+
     public:
 
         template<class Input, class Output>
@@ -45,11 +40,11 @@ class AesCipher
         Data encrypt(const Input &, const AesKey &);
 
         template<class Input>
-        Data decrypt(const Input &);
+        Data decrypt(const Input &, const AesKey &);
 
     private:
-        template<class Input, class Output>
-        bool execute(const Input &input, Output &output, const AesKey &key, int encrypt);
+        template<class Handler, class Input, class Output>
+        bool execute(Handler &, const Input &input, Output &output, const AesKey &key);
 };
 
 

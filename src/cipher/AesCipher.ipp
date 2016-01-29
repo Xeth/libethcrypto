@@ -1,79 +1,38 @@
 
 namespace Ethereum{
 
-inline AesKey::AesKey(const std::string &password) :
-    _password(password)
-{}
-
-inline AesKey::AesKey(const std::string &password, const std::string &iv) :
-    _password(password),
-    _iv(iv)
-{}
-
-inline const unsigned char * AesKey::getPassword() const
+template<class Handler, class Input, class Output>
+bool AesCipher::execute(Handler &handler, const Input &input, Output &output, const AesKey &key)
 {
-    return (unsigned char *)_password.c_str();
-}
-
-inline const unsigned char * AesKey::getIV() const
-{
-    return (unsigned char *)_iv.c_str();
-}
-
-
-template<class Input, class Output>
-bool AesCipher::execute(const Input &input, Output &output, const AesKey &key, int encrypt)
-{
-    EVP_CIPHER_CTX *ctx;
-    ctx = EVP_CIPHER_CTX_new();
-
-    if(!EVP_CipherInit_ex(ctx, EVP_aes_256_cbc(), NULL, NULL, NULL, encrypt))
+    Data derivedKey = key.getDerivedKey();
+    handler.SetKeyWithIV(&derivedKey, derivedKey.size(), key.getIV());
+    StreamTransformationFilter stream(handler, NULL);
+    for(typename Input::const_iterator it = input.begin(), end=input.end(); it!=end; ++it)
     {
-        EVP_CIPHER_CTX_free(ctx);
-        return false;
+        stream.Put(*it);
     }
-
-    if(!EVP_CipherInit_ex(ctx, NULL, NULL, key.getPassword().c_str(), key.getIV().c_str(), encrypt))
-    {
-        EVP_CIPHER_CTX_free(ctx);
-        return false;
-    }
-
-    int outSize = output.size();
-    int inSize = input.size();
-
-    if(!EVP_CipherUpdate(ctx, &*output.begin(), &outSize, input, inSize))
-    {
-        EVP_CIPHER_CTX_free(ctx);
-        return false;
-    }
-
-    if(!EVP_CipherFinal_ex(ctx, &*output.begin(), &outSize))
-    {
-        EVP_CIPHER_CTX_free(ctx);
-        return false;
-    }
-
-    EVP_CIPHER_CTX_free(ctx);
-    output.resize(outSize);
+    output.resize(stream.MaxRetrievable());
+    stream.Get(BufferCast(output), output.size());
     return true;
 }
 
 
 template<class Input, class Output>
-bool AesCipher::encrypt(const Input &input, Output &output,  const AesKey &key)
+bool AesCipher::encrypt(const Input &input, Output &output, const AesKey &key)
 {
-    output.resize(((input.size() + EVP_MAX_BLOCK_LENGTH) / EVP_MAX_BLOCK_LENGTH ) * EVP_MAX_BLOCK_LENGTH );
-    return execute(input, output, key, 1);
+    CTR_Mode< AES >::Encryption encryption;
+    return execute(encryption, input, output, key);
 }
 
 
 template<class Input, class Output>
 bool AesCipher::decrypt(const Input &input, Output &output, const AesKey &key)
 {
-    output.resize(input.size());
-    return execute(input, output, key, 0);
+    CTR_Mode<AES>::Decryption decryption;
+    return execute(decryption, input, output, key);
 }
+
+
 
 
 template<class Output, class Input>
