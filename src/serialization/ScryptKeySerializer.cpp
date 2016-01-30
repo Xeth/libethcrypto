@@ -36,7 +36,7 @@ ScryptKey ScryptKeySerializer::unserialize(const Json::Value &json, const std::s
     int dkLen = params["dklen"].asInt();
 
     Data salt = hex.decode(params["salt"].asString());
-    Data iv = hex.decode(params["iv"].asString());
+    Data iv = hex.decode(json["iv"].asString());
 
     return ScryptKey(password, r, p, dkLen, iterations, salt, iv);
 }

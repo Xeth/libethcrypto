@@ -1,5 +1,7 @@
 #include "ScryptKey.hpp"
 
+#include <iostream>
+
 namespace Ethereum{
 
 
