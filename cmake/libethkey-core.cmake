@@ -1,8 +1,10 @@
 find_package(Boost COMPONENTS system REQUIRED)
+find_package(JsonCPP REQUIRED)
+find_package(CryptoPP REQUIRED)
 
 #add_definitions(-D__DEBUG__)
 
-include_directories(${CRYPTOPP_INCLUDE_DIR} ${CMAKE_BINARY_DIR}/include)
+include_directories(${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_BINARY_DIR}/include)
 
 file(GLOB SOURCES 
     "src/*.cpp"
