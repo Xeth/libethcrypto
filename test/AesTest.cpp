@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_SUITE(AesCipherTest)
 
 BOOST_AUTO_TEST_CASE(encrypt)
 {
-    AesKey key("asdasd123");
+    ScryptKey key("asdasd123");
     std::string plain("hello world !!!");
 
     AesCipher cipher;
