@@ -3,7 +3,7 @@
 
 #include "ethkey/Data.hpp"
 #include "ethkey/encoding/Base16Encoder.hpp"
-#include "ethkey/Sha256.hpp"
+#include "ethkey/hash/Sha256.hpp"
 #include "ethkey/Literal.hpp"
 
 #include <iostream>

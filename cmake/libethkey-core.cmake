@@ -15,6 +15,7 @@ file(GLOB SOURCES
     "src/encoding/*.cpp"
     "src/encoding/detail/*.cpp"
     "src/cipher/*.cpp"
+    "src/hash/*.cpp"
 )
 
 
@@ -35,6 +36,8 @@ file(GLOB HEADERS RELATIVE ${CMAKE_SOURCE_DIR}/src
     "src/encoding/detail/*.ipp"
     "src/cipher/*.hpp"
     "src/cipher/*.ipp"
+    "src/hash/*.hpp"
+    "src/hash/*.ipp"
 )
 
 

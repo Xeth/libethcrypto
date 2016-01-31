@@ -3,7 +3,7 @@
 #include "ethkey/KeyGenerator.hpp"
 #include "ethkey/Signer.hpp"
 #include "ethkey/SignatureValidator.hpp"
-#include "ethkey/Sha256.hpp"
+#include "ethkey/hash/Sha256.hpp"
 #include "ethkey/Literal.hpp"
 
 #include <iostream>

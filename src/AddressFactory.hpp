@@ -5,9 +5,9 @@
 
 #include "encoding/Base16Encoder.hpp"
 #include "CompressedPoint.hpp"
-#include "serialization/BinaryPublicKeySerializer.hpp"
+#include "serialization/detail/BinaryPublicKeySerializer.hpp"
 #include "DoubleHash.hpp"
-#include "Sha3.hpp"
+#include "hash/Sha3.hpp"
 #include "Literal.hpp"
 
 
