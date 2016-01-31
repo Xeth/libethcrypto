@@ -5,7 +5,7 @@
 
 #include "detail/Secp256k1ContextPtr.hpp"
 #include "PrivateKey.hpp"
-#include "Sha256.hpp"
+#include "hash/Sha256.hpp"
 
 
 namespace Ethereum{
