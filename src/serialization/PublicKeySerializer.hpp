@@ -37,6 +37,8 @@ class PublicKeySerializer
         PublicKey fromPoint(const CompressedPoint &) const;
         PublicKey fromPoint(const UncompressedPoint &) const;
 
+        template<class Iterator>
+        PublicKey fromPoint(Iterator, Iterator) const;
 
     private:
         BinaryPublicKeySerializer _binarySerializer;
@@ -47,3 +49,5 @@ class PublicKeySerializer
 
 
 }
+
+#include "PublicKeySerializer.ipp"
