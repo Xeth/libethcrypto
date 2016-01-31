@@ -5,6 +5,6 @@
 
 namespace Ethereum{
 
-typedef GenericHashSerializer<Base16Encoder> Base16HashSerializer;
+typedef GenericHashSerializer<Base16Encoder> HashSerializer;
 
 }
