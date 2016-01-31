@@ -4,7 +4,7 @@
 #include "../../CompressedPoint.hpp"
 #include "../../UncompressedPoint.hpp"
 #include "../../detail/Secp256k1Handler.hpp"
-#include "../BinaryPublicKeySerializer.hpp"
+#include "BinaryPublicKeySerializer.hpp"
 
 
 
@@ -12,23 +12,20 @@ namespace Ethereum{
 
 
 template<class Encoder>
-class GenericPublicKeySerializer : public Secp256k1Handler
+class GenericPublicKeySerializer
 {
 
     public:
 
         GenericPublicKeySerializer();
         GenericPublicKeySerializer(const Secp256k1ContextPtr &);
+        GenericPublicKeySerializer(const BinaryPublicKeySerializer &);
 
         PublicKey unserialize(const std::string &) const;
-
-        void unserialize(const std::string &encoded, CompressedPoint &) const;
-        void unserialize(const std::string &encoded, UncompressedPoint &) const;
-
-        std::string serialize(const CompressedPoint &) const;
-        std::string serialize(const UncompressedPoint &) const;
-
         std::string serialize(const PublicKey &, bool compress=true) const;
+
+    private:
+        BinaryPublicKeySerializer _binarySerializer;
 
 };
 
