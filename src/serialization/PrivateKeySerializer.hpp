@@ -7,7 +7,7 @@
 namespace Ethereum{
 
 
-typedef GenericPrivateKeySerializer<Base16Encoder> Base16PrivateKeySerializer;
+typedef GenericPrivateKeySerializer<Base16Encoder> PrivateKeySerializer;
 
 
 }
