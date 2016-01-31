@@ -1,9 +1,9 @@
 #pragma once 
 
-#include "serialization/Base16HashSerializer.hpp"
-#include "serialization/Base16PublicKeySerializer.hpp"
-#include "serialization/Base16PrivateKeySerializer.hpp"
-#include "serialization/Base16SignatureSerializer.hpp"
+#include "serialization/HashSerializer.hpp"
+#include "serialization/PublicKeySerializer.hpp"
+#include "serialization/PrivateKeySerializer.hpp"
+#include "serialization/SignatureSerializer.hpp"
 
 
 namespace Ethereum{
