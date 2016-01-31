@@ -1,4 +1,17 @@
+
 namespace Ethereum{
+
+
+template<class Encoder>
+GenericSignatureSerializer<Encoder>::GenericSignatureSerializer()
+{}
+
+
+template<class Encoder>
+GenericSignatureSerializer<Encoder>::GenericSignatureSerializer(const BinarySignatureSerializer &binSerializer) :
+    _serializer(binSerializer)
+{}
+
 
 template<class Encoder>
 std::string GenericSignatureSerializer<Encoder>::serialize(const Signature &signature, bool compact) const

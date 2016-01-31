@@ -3,10 +3,7 @@
 #include "ethkey/PublicKeyFactory.hpp"
 #include "ethkey/Signer.hpp"
 #include "ethkey/SignatureValidator.hpp"
-#include "ethkey/serialization/Base16PrivateKeySerializer.hpp"
-#include "ethkey/serialization/Base16PublicKeySerializer.hpp"
-#include "ethkey/serialization/Base16SignatureSerializer.hpp"
-#include "ethkey/Sha256.hpp"
+#include "ethkey/hash/Sha256.hpp"
 #include "ethkey/Literal.hpp"
 #include <iostream>
 
