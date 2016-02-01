@@ -4,7 +4,7 @@ find_package(CryptoPP REQUIRED)
 
 #add_definitions(-D__DEBUG__)
 
-include_directories(${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_BINARY_DIR}/include)
+include_directories(${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/include)
 
 file(GLOB SOURCES 
     "src/*.cpp"
@@ -20,7 +20,7 @@ file(GLOB SOURCES
 
 
 
-file(GLOB HEADERS RELATIVE ${CMAKE_SOURCE_DIR}/src
+file(GLOB HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/src
     "src/*.hpp"
     "src/*.ipp"
     "src/external/*.h"
@@ -40,8 +40,9 @@ file(GLOB HEADERS RELATIVE ${CMAKE_SOURCE_DIR}/src
     "src/hash/*.ipp"
 )
 
+message(${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 
-add_library(ethkey-dummy STATIC ${CMAKE_SOURCE_DIR}/src/main.cpp)
+add_library(ethkey-dummy STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 
 
 
@@ -55,7 +56,7 @@ foreach(HEADER ${HEADERS})
         TARGET ethkey-dummy
         PRE_BUILD
         COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${CMAKE_SOURCE_DIR}/src/${HEADER} ${CMAKE_BINARY_DIR}/include/ethkey/${HEADER}
+        ARGS -E copy ${CMAKE_CURRENT_SOURCE_DIR}/src/${HEADER} ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/${HEADER}
 )
 endforeach(HEADER )
 

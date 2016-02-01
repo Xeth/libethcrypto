@@ -12,9 +12,8 @@ ELSE(GMP_LIBRARY)
     MESSAGE(FATAL_ERROR "gmp library - not found")
 ENDIF(GMP_LIBRARY)
 
-#include_directories(${CMAKE_BINARY_DIR}/secp256k1/include ${CMAKE_SOURCE_DIR}/src)
 
-include_directories(${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_BINARY_DIR}/include)
+include_directories(${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/include)
 
 add_executable(unit-tests ${TEST_SOURCES})
 add_dependencies(unit-tests ethkey)
