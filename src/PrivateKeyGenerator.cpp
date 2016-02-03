@@ -34,7 +34,7 @@ PrivateKey PrivateKeyGenerator::generate(const Data &entropy) const
 {
     Sha256 hasher;
     PrivateKey PrivateKey(_context);
-    hasher.hash(entropy.begin(), entropy.end(), PrivateKey.begin());
+    hasher.hashUnsafe(entropy.begin(), entropy.end(), PrivateKey.begin());
     return PrivateKey;
 }
 
@@ -44,7 +44,7 @@ PrivateKey PrivateKeyGenerator::generate(const unsigned char *entropy, size_t en
 {
     Sha256 hasher;
     PrivateKey PrivateKey(_context);
-    hasher.hash(entropy, entropy + entropySize, PrivateKey.begin());
+    hasher.hashUnsafe(entropy, entropy + entropySize, PrivateKey.begin());
     return PrivateKey;
 }
 

@@ -3,11 +3,11 @@ namespace Ethereum{
 
 template<class Hash>
 template<class Iterator, class OutIterator>
-void DoubleHash<Hash>::hash(Iterator begin, Iterator end, OutIterator out) const
+void DoubleHash<Hash>::hashUnsafe(Iterator begin, Iterator end, OutIterator out) const
 {
     Hash hasher;
     Data firstHash = hasher.hash(begin, end);
-    hasher.hash(firstHash.begin(), firstHash.end(), out);
+    hasher.hashUnsafe(firstHash.begin(), firstHash.end(), out);
 }
 
 
@@ -17,7 +17,7 @@ Output DoubleHash<Hash>::hash(Iterator begin, Iterator end) const
 {
     Output result;
     result.resize(Hash::Size);
-    hash(begin, end, result.begin());
+    hashUnsafe(begin, end, result.begin());
     return result;
 }
 
