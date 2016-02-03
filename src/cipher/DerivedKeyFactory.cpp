@@ -5,29 +5,29 @@
 namespace Ethereum{
 
 
-bool DerivedKeyFactory::makeDerived(const ScryptKey &key, Data &result) const
+bool DerivedKeyFactory::makeDerived(const std::string &password, const ScryptParams &params, Data &result) const
 {
-    result.resize(key.getDKlen());
+    result.resize(params.getDKlen());
     return libscrypt_scrypt
     (
-        (uint8_t const*)key.getPassword().data(), 
-        key.getPassword().size(), 
-        &key.getSalt(), 
-        key.getSalt().size(), 
-        key.getIterations(), 
-        key.getR(), 
-        key.getP(), 
+        (uint8_t const*)password.data(), 
+        password.size(), 
+        &params.getSalt(), 
+        params.getSalt().size(), 
+        params.getIterations(), 
+        params.getR(), 
+        params.getP(), 
         &result,
-        key.getDKlen()
+        params.getDKlen()
      ) == 0;
 }
 
 
 
-Data DerivedKeyFactory::makeDerived(const ScryptKey &key) const
+Data DerivedKeyFactory::makeDerived(const std::string &password, const ScryptParams &params) const
 {
     Data derived;
-    if(!makeDerived(key, derived))
+    if(!makeDerived(password, params, derived))
     {
         throw std::runtime_error("failed to derive key");
     }

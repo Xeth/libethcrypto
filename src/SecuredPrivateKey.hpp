@@ -23,7 +23,7 @@ class SecuredPrivateKey
 
     private:
         Cipher _cipher;
-        Data  _privateKey;
+        Data   _privateKey;
 };
 
 

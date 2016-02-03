@@ -10,17 +10,16 @@ BOOST_AUTO_TEST_SUITE(AesCipherTest)
 
 BOOST_AUTO_TEST_CASE(encrypt)
 {
-    ScryptKey key("asdasd123");
     std::string plain("hello world !!!");
 
-    AesCipher cipher;
+    AesCipher cipher(MakeRandomIV(), MakeRandomScryptParams());
     Data encrypted;
 
-    BOOST_REQUIRE(cipher.encrypt(plain, encrypted, key));
+    BOOST_REQUIRE(cipher.encrypt(plain, encrypted, "asdads123"));
 
     std::string decrypted;
 
-    BOOST_REQUIRE(cipher.decrypt(encrypted, decrypted, key));
+    BOOST_REQUIRE(cipher.decrypt(encrypted, decrypted, "asdads123"));
 
     BOOST_REQUIRE_EQUAL(plain, decrypted);
 

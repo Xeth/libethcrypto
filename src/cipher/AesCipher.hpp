@@ -4,7 +4,7 @@
 #include <cryptopp/modes.h>
 #include <cryptopp/filters.h>
 
-#include "ScryptKey.hpp"
+#include "ScryptParams.hpp"
 #include "DerivedKeyFactory.hpp"
 #include "../BufferCast.hpp"
 
@@ -13,39 +13,50 @@ namespace Ethereum{
 
 using namespace CryptoPP;
 
+Data MakeRandomIV();
+
 
 class AesCipher
 {
-    public:
-        typedef ScryptKey Key;
-
 
     public:
 
+        AesCipher(const Data &iv, const ScryptParams &scrypt);
+
+        const ScryptParams & getParams() const;
+        const Data & getIV() const;
+
         template<class Input, class Output>
-        bool encrypt(const Input &input, Output &output,  const Key &key);
+        bool encrypt(const Input &input, Output &output,  const std::string &password);
 
 
         template<class Input, class Output>
-        bool decrypt(const Input &input, Output &output, const Key &key);
+        bool decrypt(const Input &input, Output &output, const std::string &password);
 
 
         template<class Output, class Input>
-        Output encrypt(const Input &input, const Key &key);
+        Output encrypt(const Input &input, const std::string &password);
 
 
         template<class Output, class Input>
-        Output decrypt(const Input &input, const Key &key);
+        Output decrypt(const Input &input, const std::string &password);
 
         template<class Input>
-        Data encrypt(const Input &, const Key &);
+        Data encrypt(const Input &, const std::string &);
 
         template<class Input>
-        Data decrypt(const Input &, const Key &);
+        Data decrypt(const Input &, const std::string &);
+
+
 
     private:
         template<class Handler, class Input, class Output>
-        bool execute(Handler &, const Input &input, Output &output, const Key &key);
+        bool execute(Handler &, const Input &input, Output &output, const std::string &password);
+
+    private:
+        Data _iv;
+        ScryptParams _params;
+
 };
 
 
