@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(encrypt)
     std::string plain("hello world !!!");
 
     AesCipher cipher(MakeRandomIV(), MakeRandomScryptParams());
-    Data encrypted;
+    EncryptedData encrypted;
 
     BOOST_REQUIRE(cipher.encrypt(plain, encrypted, "asdads123"));
 

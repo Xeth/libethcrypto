@@ -23,4 +23,15 @@ Data MakeRandomIV()
     return MakeRandomData(16);
 }
 
+Data AesCipher::decrypt(const EncryptedData &input, const std::string &password)
+{
+    return decrypt<Data>(input, password);
+}
+
+Data AesCipher::makeDerived(const std::string &password)
+{
+    DerivedKeyFactory keyFactory;
+    return keyFactory.makeDerived(password, _params);
+}
+
 }

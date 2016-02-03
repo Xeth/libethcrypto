@@ -6,6 +6,8 @@
 
 #include "ScryptParams.hpp"
 #include "DerivedKeyFactory.hpp"
+#include "CipherMacFactory.hpp"
+#include "EncryptedData.hpp"
 #include "../BufferCast.hpp"
 
 namespace Ethereum{
@@ -26,32 +28,30 @@ class AesCipher
         const ScryptParams & getParams() const;
         const Data & getIV() const;
 
-        template<class Input, class Output>
-        bool encrypt(const Input &input, Output &output,  const std::string &password);
+        template<class Input>
+        bool encrypt(const Input &input, EncryptedData &output,  const std::string &password);
 
 
-        template<class Input, class Output>
-        bool decrypt(const Input &input, Output &output, const std::string &password);
+        template<class Output>
+        bool decrypt(const EncryptedData &input, Output &output, const std::string &password);
 
-
-        template<class Output, class Input>
-        Output encrypt(const Input &input, const std::string &password);
-
-
-        template<class Output, class Input>
-        Output decrypt(const Input &input, const std::string &password);
 
         template<class Input>
-        Data encrypt(const Input &, const std::string &);
+        EncryptedData encrypt(const Input &input, const std::string &password);
 
-        template<class Input>
-        Data decrypt(const Input &, const std::string &);
+
+        template<class Output>
+        Output decrypt(const EncryptedData &input, const std::string &password);
+
+        Data decrypt(const EncryptedData &, const std::string &);
 
 
 
     private:
         template<class Handler, class Input, class Output>
-        bool execute(Handler &, const Input &input, Output &output, const std::string &password);
+        bool execute(Handler &, const Input &input, Output &output, const Data &derivedKey);
+
+        Data makeDerived(const std::string &password);
 
     private:
         Data _iv;
