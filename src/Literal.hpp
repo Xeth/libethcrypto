@@ -5,6 +5,7 @@
 #include "serialization/PrivateKeySerializer.hpp"
 #include "serialization/SignatureSerializer.hpp"
 
+#include "encoding/HexEncoder.hpp"
 
 namespace Ethereum{
 
@@ -20,16 +21,9 @@ std::string Literal(const Data &);
 
 std::string Literal(const PrivateKey &);
 
-template<class Cipher>
-std::string Literal(const SecuredPrivateKey<Cipher> &);
-
 
 template<>
 PrivateKey Literal<PrivateKey>(const std::string &);
-
-
-template<class Cipher>
-SecuredPrivateKey<Cipher> Literal(const std::string &, const Cipher &);
 
 
 //public key

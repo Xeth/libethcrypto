@@ -6,25 +6,21 @@ namespace Ethereum{
 
 std::string Literal(const Data &hash)
 {
-//    Base16HashSerializer serializer;
-//    return serializer.serialize(hash);
-    Base16Encoder encoder;
-    return encoder.encode(hash.begin(), hash.end());
+    return EncodeHex(hash.begin(), hash.end());
 }
 
 
 std::string Literal(const PrivateKey &key)
 {
-    PrivateKeySerializer serializer;
-    return serializer.serialize(key);
+    return EncodeHex(key.begin(), key.end());
 }
 
 
 template<>
 PrivateKey Literal<PrivateKey>(const std::string &serialized)
 {
-    PrivateKeySerializer serializer;
-    return serializer.unserialize(serialized);
+    PrivateKey key = DecodeHex(serialized);
+    return key;
 }
 
 

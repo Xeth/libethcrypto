@@ -15,7 +15,10 @@ class GenericPrivateKeySerializer
     
         GenericPrivateKeySerializer();
         GenericPrivateKeySerializer(const Secp256k1ContextPtr &);
-    
+
+
+        Json::Value serializeToJson(const PrivateKey &);
+
         std::string serialize(const PrivateKey &) const;
         PrivateKey unserialize(const std::string &) const;
 

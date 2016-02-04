@@ -10,19 +10,6 @@ Data Literal(const std::string &serialized)
 }
 
 
-template<class Cipher>
-SecuredPrivateKey<Cipher> Literal(const std::string &serialized, const Cipher &cipher)
-{
-    PrivateKeySerializer serializer;
-    return serializer.unserialize(serialized, cipher);
-}
 
-
-template<class Cipher>
-std::string Literal(const SecuredPrivateKey<Cipher> &key)
-{
-    PrivateKeySerializer serializer;
-    return serializer.serialize(key);
-}
 
 }
