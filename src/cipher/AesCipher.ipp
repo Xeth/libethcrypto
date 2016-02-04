@@ -3,7 +3,7 @@ namespace Ethereum{
 
 template<class KDF>
 template<class Handler, class Input, class Output>
-bool AesCipher<KDF>::execute(Handler &handler, const Input &input, Output &output, const Data &derivedKey)
+bool AesCipher<KDF>::execute(Handler &handler, const Input &input, Output &output, const Data &derivedKey) const
 {
     handler.SetKeyWithIV(&derivedKey, derivedKey.size(), &_iv);
     CryptoPP::StreamTransformationFilter stream(handler, NULL);
@@ -19,7 +19,7 @@ bool AesCipher<KDF>::execute(Handler &handler, const Input &input, Output &outpu
 
 template<class KDF>
 template<class Input>
-bool AesCipher<KDF>::encrypt(const Input &input, EncryptedData &output, const std::string &password)
+bool AesCipher<KDF>::encrypt(const Input &input, EncryptedData &output, const std::string &password) const
 {
     Data derivedKey = makeDerived(password);
 
@@ -38,7 +38,7 @@ bool AesCipher<KDF>::encrypt(const Input &input, EncryptedData &output, const st
 
 template<class KDF>
 template<class Output>
-bool AesCipher<KDF>::decrypt(const EncryptedData &input, Output &output, const std::string &password)
+bool AesCipher<KDF>::decrypt(const EncryptedData &input, Output &output, const std::string &password) const
 {
     Data derivedKey = makeDerived(password);
     Data mac;
@@ -63,7 +63,7 @@ bool AesCipher<KDF>::decrypt(const EncryptedData &input, Output &output, const s
 
 template<class KDF>
 template<class Input>
-EncryptedData AesCipher<KDF>::encrypt(const Input &input, const std::string &password)
+EncryptedData AesCipher<KDF>::encrypt(const Input &input, const std::string &password) const
 {
     EncryptedData output;
     if(!encrypt(input, output, password))
@@ -76,7 +76,7 @@ EncryptedData AesCipher<KDF>::encrypt(const Input &input, const std::string &pas
 
 template<class KDF>
 template<class Output>
-Output AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &password)
+Output AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &password) const
 {
     Output output;
     if(!decrypt(input, output, password))
@@ -112,14 +112,14 @@ inline Data MakeRandomIV()
 
 
 template<class KDF>
-Data AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &password)
+Data AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &password) const
 {
     return decrypt<Data>(input, password);
 }
 
 
 template<class KDF>
-Data AesCipher<KDF>::makeDerived(const std::string &password)
+Data AesCipher<KDF>::makeDerived(const std::string &password) const
 {
     DerivedKeyFactory keyFactory;
     return keyFactory.makeDerived(password, _params);
