@@ -5,24 +5,23 @@
 namespace Ethereum{
 
 
-PrivateKey DummyCipher::decrypt(const Data &data, const DummyKey &) const
+DummyCipher::DummyCipher():
+    _params(MakeRandomScryptParams())
+{}
+
+DummyCipher::DummyCipher(const Data &, const ScryptParams &params):
+    _params(params)
+{}
+
+
+const Data & DummyCipher::getIV() const
 {
-    if(data.size() != 32)
-    {
-        throw std::runtime_error("invalid data");
-    }
-    PrivateKey PrivateKey;
-    std::copy(data.begin(), data.end(), PrivateKey.begin());
-    return PrivateKey;
+    return _iv;
 }
 
-
-Data DummyCipher::encrypt(const PrivateKey &PrivateKey, const DummyKey &) const
+const ScryptParams & DummyCipher::getParams() const
 {
-    Data data;
-    data.resize(32);
-    std::copy(PrivateKey.begin(), PrivateKey.end(), data.begin());
-    return data;
+    return _params;
 }
 
 }
