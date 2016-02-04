@@ -157,6 +157,10 @@ PublicKey & PublicKey::operator = (const PublicKey &key)
 }
 
 
+bool PublicKey::operator == (const PublicKey &a) const
+{
+    return std::equal(_data.data, _data.data+33, a._data.data);
+}
 
 
 

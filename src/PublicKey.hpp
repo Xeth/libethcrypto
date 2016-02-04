@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <stdint.h>
 
 #include "ethkey/secp256k1/secp256k1.h"
@@ -46,7 +47,7 @@ class PublicKey : public LazySecp256k1Handler
         PublicKey & operator *= (const PrivateKey &);
         PublicKey & operator = (const PublicKey &);
 
-
+        bool operator == (const PublicKey &) const;
 
     private:
         secp256k1_pubkey _data;
