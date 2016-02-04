@@ -11,7 +11,7 @@ SecuredPrivateKey<Cipher>::SecuredPrivateKey(const PrivateKey &privateKey, const
 
 
 template<class Cipher>
-SecuredPrivateKey<Cipher>::SecuredPrivateKey(const Data &privateKey, const Cipher &cipher) :
+SecuredPrivateKey<Cipher>::SecuredPrivateKey(const EncryptedData &privateKey, const Cipher &cipher) :
     _cipher(cipher),
     _privateKey(privateKey)
 {}
@@ -27,16 +27,23 @@ PrivateKey SecuredPrivateKey<Cipher>::unlock(const CipherKey &key) const
 
 
 template<class Cipher>
-const Data & SecuredPrivateKey<Cipher>::getData() const
+const EncryptedData & SecuredPrivateKey<Cipher>::getData() const
 {
     return _privateKey;
 }
 
 
 template<class Cipher>
-Data & SecuredPrivateKey<Cipher>::getData()
+EncryptedData & SecuredPrivateKey<Cipher>::getData()
 {
     return _privateKey;
+}
+
+
+template<class Cipher>
+const Cipher & SecuredPrivateKey<Cipher>::getCipher() const
+{
+    return _cipher;
 }
 
 

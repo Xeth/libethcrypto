@@ -19,7 +19,7 @@ class SecuredKeyPair
         template<class CipherKey>
         SecuredKeyPair(const PrivateKey &, const PublicKey &, const Cipher &, const CipherKey &);
 
-        SecuredKeyPair(const Data &, const PublicKey &, const Cipher &);
+        SecuredKeyPair(const EncryptedData &, const PublicKey &, const Cipher &);
 
         SecuredPrivateKey<Cipher> & getPrivateKey();
         const SecuredPrivateKey<Cipher> & getPrivateKey() const;
