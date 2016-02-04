@@ -2,25 +2,25 @@ namespace Ethereum{
 
 
 template<class Secret>
-PublicKey PublicKeyFactory::createFromSecret(const Secret &secret)
+PublicKey PublicKeyFactory::createFromSecret(const Secret &secret) const
 {
     return createFromSecretData(secret);
 }
 
 
 template<class Secret>
-bool PublicKeyFactory::validateSecretSize(const Secret &secret)
+bool PublicKeyFactory::validateSecretSize(const Secret &secret) const
 {
     return secret.size() == 32;
 }
 
-inline bool PublicKeyFactory::validateSecretSize(const PrivateKey &)
+inline bool PublicKeyFactory::validateSecretSize(const PrivateKey &) const
 {
     return true;
 }
 
 template<class Secret>
-PublicKey PublicKeyFactory::createFromSecretData(const Secret &secret)
+PublicKey PublicKeyFactory::createFromSecretData(const Secret &secret) const
 {
     if(!validateSecretSize(secret))
     {
