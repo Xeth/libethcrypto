@@ -18,7 +18,7 @@ PublicKeyFactory::PublicKeyFactory()
 {}
 
 
-PublicKey PublicKeyFactory::createFromSecret(const PrivateKey &secret)
+PublicKey PublicKeyFactory::createFromSecret(const PrivateKey &secret) const
 {
     return createFromSecretData(secret);
 }
@@ -26,7 +26,7 @@ PublicKey PublicKeyFactory::createFromSecret(const PrivateKey &secret)
 
 
 template<class Point>
-PublicKey PublicKeyFactory::createFromPointData(const Point &point)
+PublicKey PublicKeyFactory::createFromPointData(const Point &point) const
 {
     BinaryPublicKeySerializer serializer(getContext());
     PublicKey key(getContext());
@@ -40,19 +40,19 @@ PublicKey PublicKeyFactory::createFromPointData(const Point &point)
 }
 
 
-PublicKey PublicKeyFactory::createFromPoint(const Data &point)
+PublicKey PublicKeyFactory::createFromPoint(const Data &point) const
 {
     return createFromPointData(point);
 }
 
 
-PublicKey PublicKeyFactory::createFromPoint(const UncompressedPoint &point)
+PublicKey PublicKeyFactory::createFromPoint(const UncompressedPoint &point) const
 {
     return createFromPointData(point);
 }
 
 
-PublicKey PublicKeyFactory::createFromPoint(const CompressedPoint &point)
+PublicKey PublicKeyFactory::createFromPoint(const CompressedPoint &point) const
 {
     return createFromPointData(point);
 }
