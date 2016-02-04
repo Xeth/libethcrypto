@@ -3,6 +3,11 @@
 
 namespace Ethereum{
 
+PublicKey MakePublicKey(const PrivateKey &secret)
+{
+    PublicKeyFactory factory;
+    return factory.createFromSecret(secret);
+}
 
 PublicKeyFactory::PublicKeyFactory(const Secp256k1ContextPtr &context) : 
     Secp256k1Handler(context)

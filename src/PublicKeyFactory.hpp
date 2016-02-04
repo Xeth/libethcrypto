@@ -42,6 +42,9 @@ class PublicKeyFactory : public Secp256k1Handler
 };
 
 
+PublicKey MakePublicKey(const PrivateKey &);
+
+
 }
 
 #include "PublicKeyFactory.ipp"
