@@ -1,14 +1,12 @@
 
 namespace Ethereum{
 
-
-
-
+template<class KDF>
 template<class Handler, class Input, class Output>
-bool AesCipher::execute(Handler &handler, const Input &input, Output &output, const Data &derivedKey)
+bool AesCipher<KDF>::execute(Handler &handler, const Input &input, Output &output, const Data &derivedKey)
 {
     handler.SetKeyWithIV(&derivedKey, derivedKey.size(), &_iv);
-    StreamTransformationFilter stream(handler, NULL);
+    CryptoPP::StreamTransformationFilter stream(handler, NULL);
     for(typename Input::const_iterator it = input.begin(), end=input.end(); it!=end; ++it)
     {
         stream.Put(*it);
@@ -19,12 +17,13 @@ bool AesCipher::execute(Handler &handler, const Input &input, Output &output, co
 }
 
 
+template<class KDF>
 template<class Input>
-bool AesCipher::encrypt(const Input &input, EncryptedData &output, const std::string &password)
+bool AesCipher<KDF>::encrypt(const Input &input, EncryptedData &output, const std::string &password)
 {
     Data derivedKey = makeDerived(password);
 
-    CTR_Mode< AES >::Encryption encryption;
+    CryptoPP::CTR_Mode<CryptoPP::AES>::Encryption encryption;
     if(!execute(encryption, input, output.data, derivedKey))
     {
         return false;
@@ -37,8 +36,9 @@ bool AesCipher::encrypt(const Input &input, EncryptedData &output, const std::st
 }
 
 
+template<class KDF>
 template<class Output>
-bool AesCipher::decrypt(const EncryptedData &input, Output &output, const std::string &password)
+bool AesCipher<KDF>::decrypt(const EncryptedData &input, Output &output, const std::string &password)
 {
     Data derivedKey = makeDerived(password);
     Data mac;
@@ -50,7 +50,7 @@ bool AesCipher::decrypt(const EncryptedData &input, Output &output, const std::s
         return false;
     }
 
-    CTR_Mode<AES>::Decryption decryption;
+    CryptoPP::CTR_Mode<CryptoPP::AES>::Decryption decryption;
     if(!execute(decryption, input.data, output, derivedKey))
     {
         return false;
@@ -61,9 +61,9 @@ bool AesCipher::decrypt(const EncryptedData &input, Output &output, const std::s
 
 
 
-
+template<class KDF>
 template<class Input>
-EncryptedData AesCipher::encrypt(const Input &input, const std::string &password)
+EncryptedData AesCipher<KDF>::encrypt(const Input &input, const std::string &password)
 {
     EncryptedData output;
     if(!encrypt(input, output, password))
@@ -74,8 +74,9 @@ EncryptedData AesCipher::encrypt(const Input &input, const std::string &password
 }
 
 
+template<class KDF>
 template<class Output>
-Output AesCipher::decrypt(const EncryptedData &input, const std::string &password)
+Output AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &password)
 {
     Output output;
     if(!decrypt(input, output, password))
@@ -85,6 +86,44 @@ Output AesCipher::decrypt(const EncryptedData &input, const std::string &passwor
     return output;
 }
 
+template<class KDF>
+AesCipher<KDF>::AesCipher(const Data &iv, const typename KDF::Params &params) : 
+    _iv(iv),
+    _params(params)
+{}
+
+template<class KDF>
+const typename AesCipher<KDF>::KdfParams & AesCipher<KDF>::getParams() const
+{
+    return _params;
+}
+
+template<class KDF>
+const Data & AesCipher<KDF>::getIV() const
+{
+    return _iv;
+}
+
+
+inline Data MakeRandomIV()
+{
+    return MakeRandomData(16);
+}
+
+
+template<class KDF>
+Data AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &password)
+{
+    return decrypt<Data>(input, password);
+}
+
+
+template<class KDF>
+Data AesCipher<KDF>::makeDerived(const std::string &password)
+{
+    DerivedKeyFactory keyFactory;
+    return keyFactory.makeDerived(password, _params);
+}
 
 
 

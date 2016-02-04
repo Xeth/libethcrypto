@@ -1,6 +1,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "ethkey/cipher/AesCipher.hpp"
+#include "ethkey/cipher/Scrypt.hpp"
 
 using namespace Ethereum;
 
@@ -12,7 +13,7 @@ BOOST_AUTO_TEST_CASE(encrypt)
 {
     std::string plain("hello world !!!");
 
-    AesCipher cipher(MakeRandomIV(), MakeRandomScryptParams());
+    AesCipher<Scrypt> cipher(MakeRandomIV(), MakeRandomScryptParams());
     EncryptedData encrypted;
 
     BOOST_REQUIRE(cipher.encrypt(plain, encrypted, "asdads123"));

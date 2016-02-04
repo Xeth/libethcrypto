@@ -13,19 +13,19 @@
 namespace Ethereum{
 
 
-using namespace CryptoPP;
-
 Data MakeRandomIV();
 
-
+template<class KDF>
 class AesCipher
 {
+    public:
+        typedef typename KDF::Params KdfParams;
 
     public:
 
-        AesCipher(const Data &iv, const ScryptParams &scrypt);
+        AesCipher(const Data &iv, const typename KDF::Params &);
 
-        const ScryptParams & getParams() const;
+        const KdfParams & getParams() const;
         const Data & getIV() const;
 
         template<class Input>
@@ -55,7 +55,7 @@ class AesCipher
 
     private:
         Data _iv;
-        ScryptParams _params;
+        typename KDF::Params _params;
 
 };
 
