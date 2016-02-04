@@ -7,6 +7,11 @@ std::string CipherName(const AesCipher<KDF> &)
     return "aes-128-ctr";
 }
 
+inline std::string CipherName(const DummyCipher &)
+{
+    return "dummy";
+}
+
 template<class Cipher>
 Json::Value PrivateKeySerializer<Cipher>::serializeToJson(const SecuredPrivateKey<Cipher> &key) const
 {

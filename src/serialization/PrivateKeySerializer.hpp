@@ -9,6 +9,7 @@
 #include "../SecuredPrivateKey.hpp"
 #include "../cipher/ScryptParams.hpp"
 #include "../cipher/AesCipher.hpp"
+#include "../cipher/DummyCipher.hpp"
 
 #include "KdfSerializer.hpp"
 
@@ -36,6 +37,7 @@ class PrivateKeySerializer
 template<class KDF>
 std::string CipherName(const AesCipher<KDF> &);
 
+std::string CipherName(const DummyCipher &);
 
 }
 
