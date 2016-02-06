@@ -34,6 +34,8 @@ class DummyCipher
         const Data & getIV() const;
         const ScryptParams & getParams() const;
 
+        DummyCipher & operator = (const DummyCipher &);
+
     private:
         Data _iv;
         ScryptParams _params;

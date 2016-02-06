@@ -13,6 +13,7 @@ namespace Ethereum{
 class ScryptParams
 {
     public:
+        ScryptParams();
         ScryptParams(const Data &salt, int r, int p, int dkLen = 32, int iterations=(1<<18));
 
         const Data & getSalt() const;
@@ -22,6 +23,8 @@ class ScryptParams
         int getP() const;
         int getDKlen() const;
         int getIterations() const;
+
+        ScryptParams & operator = (const ScryptParams &);
 
     private:
         Data _iv;

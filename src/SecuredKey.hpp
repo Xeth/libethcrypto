@@ -13,12 +13,14 @@ class SecuredKey
 {
     public:
 
+        SecuredKey();
         SecuredKey(const SecuredPrivateKey<Cipher> &, const Address &);
         SecuredKey(const SecuredKeyPair<Cipher> &);
 
         template<class CipherParams>
         SecuredKey(const PrivateKey &, const Cipher &, const CipherParams &);
 
+        SecuredKey & operator = (const SecuredKey &);
 
         const SecuredPrivateKey<Cipher> & getPrivateKey() const;
         const Address & getAddress() const;

@@ -2,6 +2,18 @@
 namespace Ethereum{
 
 template<class KDF>
+AesCipher<KDF>::AesCipher()
+{}
+
+template<class KDF>
+AesCipher<KDF> & AesCipher<KDF>::operator = (const AesCipher &copy)
+{
+    _iv = copy._iv;
+    _params = copy._params;
+    return *this;
+}
+
+template<class KDF>
 template<class Handler, class Input, class Output>
 bool AesCipher<KDF>::execute(Handler &handler, const Input &input, Output &output, const Data &derivedKey) const
 {

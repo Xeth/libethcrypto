@@ -11,6 +11,8 @@ template<class Cipher>
 class SecuredPrivateKey
 {
     public:
+        SecuredPrivateKey();
+
         template<class CipherKey>
         SecuredPrivateKey(const PrivateKey &, const Cipher &, const CipherKey &);
 
@@ -23,6 +25,8 @@ class SecuredPrivateKey
         EncryptedData & getData();
 
         const Cipher & getCipher() const;
+
+        SecuredPrivateKey & operator = (const SecuredPrivateKey &);
 
     private:
         Cipher _cipher;

@@ -24,4 +24,11 @@ const ScryptParams & DummyCipher::getParams() const
     return _params;
 }
 
+DummyCipher & DummyCipher::operator = (const DummyCipher &copy)
+{
+    _iv = copy._iv;
+    _params = copy._params;
+    return *this;
+}
+
 }

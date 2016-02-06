@@ -23,6 +23,7 @@ class AesCipher
 
     public:
 
+        AesCipher();
         AesCipher(const Data &iv, const typename KDF::Params &);
 
         const KdfParams & getParams() const;
@@ -45,7 +46,7 @@ class AesCipher
 
         Data decrypt(const EncryptedData &, const std::string &) const;
 
-
+        AesCipher & operator = (const AesCipher &);
 
     private:
         template<class Handler, class Input, class Output>

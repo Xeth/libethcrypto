@@ -3,6 +3,10 @@ namespace Ethereum{
 
 
 template<class Cipher>
+SecuredPrivateKey<Cipher>::SecuredPrivateKey()
+{}
+
+template<class Cipher>
 template<class CipherKey>
 SecuredPrivateKey<Cipher>::SecuredPrivateKey(const PrivateKey &privateKey, const Cipher &cipher, const CipherKey &key) :
     _cipher(cipher),
@@ -16,6 +20,14 @@ SecuredPrivateKey<Cipher>::SecuredPrivateKey(const EncryptedData &privateKey, co
     _privateKey(privateKey)
 {}
 
+
+template<class Cipher>
+SecuredPrivateKey<Cipher> & SecuredPrivateKey<Cipher>::operator = (const SecuredPrivateKey &copy)
+{
+    _cipher = copy._cipher;
+    _privateKey = copy._privateKey;
+    return *this;
+}
 
 
 template<class Cipher>

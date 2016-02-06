@@ -15,6 +15,9 @@ ScryptParams MakeRandomScryptParams(int r, int p, int dkLen, int iterations)
     return ScryptParams(MakeRandomData(32), r, p, dkLen, iterations);
 }
 
+ScryptParams::ScryptParams()
+{}
+
 
 ScryptParams::ScryptParams(const Data &salt, int r, int p, int dkLen, int iterations) :
     _r(r),
@@ -24,6 +27,16 @@ ScryptParams::ScryptParams(const Data &salt, int r, int p, int dkLen, int iterat
     _salt(salt)
 {}
 
+
+ScryptParams & ScryptParams::operator = (const ScryptParams &copy)
+{
+    _r = copy._r;
+    _p = copy._p;
+    _dkLen = copy._dkLen;
+    _iterations = copy._iterations;
+    _salt = copy._salt;
+    return *this;
+}
 
 const Data & ScryptParams::getSalt() const
 {
