@@ -27,15 +27,9 @@ endif (WIN32)
 
 
 
+include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CopyHeaders.cmake)
+CopyHeaders()
 
-
-file(GLOB SECP256K1_HEADERS 
-    "${PROJECT_BINARY_DIR}/secp256k1/include/*"
-)
-
-
-install(FILES ${HEADERS} DESTINATION include/ethkey)
-install(FILES ${SECP256K1_HEADERS} DESTINATION include/ethkey)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/config.hpp DESTINATION include/ethkey)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include DESTINATION include)
 install (TARGETS ethkey ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin)
 

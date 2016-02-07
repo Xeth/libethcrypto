@@ -18,4 +18,4 @@ include_directories(${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_CURRE
 add_executable(ethkey-tests ${TEST_SOURCES})
 add_dependencies(ethkey-tests ethkey)
 
-target_link_libraries(ethkey-tests ethkey ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${Boost_RANDOM_LIBRARY} ${CRYPTOPP_LIBRARY} ${GMP_LIBRARY} -lscrypt ${JSONCPP_LIBRARY})
+target_link_libraries(ethkey-tests ethkey ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${Boost_RANDOM_LIBRARY} ${CRYPTOPP_LIBRARY} ${GMP_LIBRARY} ${LIBSCRYPT_LIBRARY} ${JSONCPP_LIBRARY})
