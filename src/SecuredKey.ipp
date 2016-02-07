@@ -34,6 +34,14 @@ SecuredKey<Cipher> & SecuredKey<Cipher>::operator = (const SecuredKey &copy)
     return *this;
 }
 
+template<class Cipher>
+SecuredKey<Cipher> & SecuredKey<Cipher>::operator = (const SecuredKeyPair<Cipher> &copy)
+{
+    _secret = copy.getPrivateKey();
+    _address = Address(copy.getPublicKey());
+    return *this;
+}
+
 
 template<class Cipher>
 const SecuredPrivateKey<Cipher> & SecuredKey<Cipher>::getPrivateKey() const

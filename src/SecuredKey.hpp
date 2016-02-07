@@ -21,6 +21,7 @@ class SecuredKey
         SecuredKey(const PrivateKey &, const Cipher &, const CipherParams &);
 
         SecuredKey & operator = (const SecuredKey &);
+        SecuredKey & operator = (const SecuredKeyPair<Cipher> &);
 
         const SecuredPrivateKey<Cipher> & getPrivateKey() const;
         const Address & getAddress() const;
