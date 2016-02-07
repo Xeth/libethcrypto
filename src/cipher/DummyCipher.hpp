@@ -8,6 +8,8 @@
 
 #include "EncryptedData.hpp"
 #include "ScryptParams.hpp"
+#include "ScryptParamsGenerator.hpp"
+
 
 namespace Ethereum{
 

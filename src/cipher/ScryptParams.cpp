@@ -5,16 +5,6 @@
 namespace Ethereum{
 
 
-ScryptParams MakeRandomScryptParams()
-{
-    return ScryptParams(MakeRandomData(32), 8, 1, 32, 1<<18);
-}
-
-ScryptParams MakeRandomScryptParams(int r, int p, int dkLen, int iterations)
-{
-    return ScryptParams(MakeRandomData(32), r, p, dkLen, iterations);
-}
-
 ScryptParams::ScryptParams()
 {}
 

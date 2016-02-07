@@ -5,6 +5,7 @@
 #include <cryptopp/filters.h>
 
 #include "ScryptParams.hpp"
+#include "ScryptParamsGenerator.hpp"
 #include "DerivedKeyFactory.hpp"
 #include "CipherMacFactory.hpp"
 #include "EncryptedData.hpp"

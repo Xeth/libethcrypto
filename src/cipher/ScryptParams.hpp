@@ -36,8 +36,5 @@ class ScryptParams
 };
 
 
-ScryptParams MakeRandomScryptParams( int r, int p, int dkLen = 32, int iterations=(1<<18));
-ScryptParams MakeRandomScryptParams();
-
 
 }
