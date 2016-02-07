@@ -24,6 +24,12 @@ void MakeRandomData(Data &result, size_t size)
     }
 }
 
+Data MakeRandomIV()
+{
+    return MakeRandomData(16);
+}
+
+
 
 
 }

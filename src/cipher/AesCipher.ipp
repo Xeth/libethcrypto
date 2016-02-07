@@ -117,11 +117,6 @@ const Data & AesCipher<KDF>::getIV() const
 }
 
 
-inline Data MakeRandomIV()
-{
-    return MakeRandomData(16);
-}
-
 
 template<class KDF>
 Data AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &password) const

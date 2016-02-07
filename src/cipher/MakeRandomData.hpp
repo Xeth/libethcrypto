@@ -7,7 +7,7 @@
 
 namespace Ethereum{
 
-
+Data MakeRandomIV();
 Data MakeRandomData(size_t size);
 void MakeRandomData(Data &data, size_t size);
 

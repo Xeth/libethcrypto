@@ -14,7 +14,7 @@
 namespace Ethereum{
 
 
-Data MakeRandomIV();
+
 
 template<class KDF>
 class AesCipher
