@@ -3,12 +3,12 @@
 namespace Ethereum{
 
 
-ScryptParams ScryptParamsGenerator::generate()
+ScryptParams ScryptParamsGenerator::generate() const
 {
     return ScryptParams(MakeRandomData(32), 8, 1, 32, 1<<18);
 }
 
-ScryptParams ScryptParamsGenerator::generate(int r, int p, int dkLen, int iterations)
+ScryptParams ScryptParamsGenerator::generate(int r, int p, int dkLen, int iterations) const
 {
     return ScryptParams(MakeRandomData(32), r, p, dkLen, iterations);
 }

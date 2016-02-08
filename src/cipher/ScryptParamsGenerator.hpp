@@ -10,8 +10,8 @@ namespace Ethereum{
 class ScryptParamsGenerator
 {
     public:
-        ScryptParams generate();
-        ScryptParams generate(int r, int p, int dkLen, int iterations);
+        ScryptParams generate() const;
+        ScryptParams generate(int r, int p, int dkLen, int iterations) const;
 };
 
 
