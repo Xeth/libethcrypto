@@ -28,6 +28,11 @@ ScryptParams & ScryptParams::operator = (const ScryptParams &copy)
     return *this;
 }
 
+bool ScryptParams::operator == (const ScryptParams &b) const
+{
+    return _r == b._r && _p == b._p && _dkLen == b._dkLen && _iterations == b._iterations && _salt == b._salt;
+}
+
 const Data & ScryptParams::getSalt() const
 {
     return _salt;

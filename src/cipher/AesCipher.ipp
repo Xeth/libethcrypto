@@ -14,6 +14,12 @@ AesCipher<KDF> & AesCipher<KDF>::operator = (const AesCipher &copy)
 }
 
 template<class KDF>
+bool AesCipher<KDF>::operator == (const AesCipher &b) const
+{
+    return _iv == b._iv && _params == b._params;
+}
+
+template<class KDF>
 template<class Handler, class Input, class Output>
 bool AesCipher<KDF>::execute(Handler &handler, const Input &input, Output &output, const Data &derivedKey) const
 {

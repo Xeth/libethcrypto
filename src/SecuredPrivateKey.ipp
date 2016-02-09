@@ -31,6 +31,13 @@ SecuredPrivateKey<Cipher> & SecuredPrivateKey<Cipher>::operator = (const Secured
 
 
 template<class Cipher>
+bool SecuredPrivateKey<Cipher>::operator == (const SecuredPrivateKey &b) const
+{
+    return _cipher == b._cipher && _privateKey.data ==b._privateKey.data && _privateKey.mac == b._privateKey.mac;
+}
+
+
+template<class Cipher>
 template<class CipherKey>
 PrivateKey SecuredPrivateKey<Cipher>::unlock(const CipherKey &key) const
 {

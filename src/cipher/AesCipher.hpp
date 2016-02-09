@@ -48,6 +48,7 @@ class AesCipher
         Data decrypt(const EncryptedData &, const std::string &) const;
 
         AesCipher & operator = (const AesCipher &);
+        bool operator == (const AesCipher &) const;
 
     private:
         template<class Handler, class Input, class Output>

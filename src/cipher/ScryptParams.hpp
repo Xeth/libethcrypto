@@ -25,6 +25,7 @@ class ScryptParams
         int getIterations() const;
 
         ScryptParams & operator = (const ScryptParams &);
+        bool operator == (const ScryptParams &) const;
 
     private:
         Data _iv;

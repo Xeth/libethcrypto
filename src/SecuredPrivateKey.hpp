@@ -27,6 +27,7 @@ class SecuredPrivateKey
         const Cipher & getCipher() const;
 
         SecuredPrivateKey & operator = (const SecuredPrivateKey &);
+        bool operator == (const SecuredPrivateKey &) const;
 
     private:
         Cipher _cipher;
