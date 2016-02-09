@@ -22,6 +22,7 @@ class SecuredKey
 
         SecuredKey & operator = (const SecuredKey &);
         SecuredKey & operator = (const SecuredKeyPair<Cipher> &);
+        bool operator == (const SecuredKey &) const;
 
         const SecuredPrivateKey<Cipher> & getPrivateKey() const;
         const Address & getAddress() const;

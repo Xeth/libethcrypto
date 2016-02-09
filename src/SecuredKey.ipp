@@ -44,6 +44,13 @@ SecuredKey<Cipher> & SecuredKey<Cipher>::operator = (const SecuredKeyPair<Cipher
 
 
 template<class Cipher>
+bool SecuredKey<Cipher>::operator == (const SecuredKey &b) const
+{
+    return _secret == b._secret && _address == b._address;
+}
+
+
+template<class Cipher>
 const SecuredPrivateKey<Cipher> & SecuredKey<Cipher>::getPrivateKey() const
 {
     return _secret;
