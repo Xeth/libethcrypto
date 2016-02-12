@@ -15,18 +15,18 @@ PublicKey::PublicKey(const Secp256k1ContextPtr &context) :
 PublicKey::PublicKey(const PublicKey &copy) :
     LazySecp256k1Handler(copy.getContext())
 {
-    std::copy(copy._data.data, copy._data.data+64, _data.data);
+    std::copy(copy._data.data, copy._data.data+sizeof(_data.data), _data.data);
 }
 
 PublicKey::PublicKey(const Data &bin)
 {
-    std::copy(bin.begin(), bin.begin()+64, _data.data);
+    std::copy(bin.begin(), bin.begin()+sizeof(_data.data), _data.data);
 }
 
 PublicKey::PublicKey(const Data &bin, const Secp256k1ContextPtr &context) :
     LazySecp256k1Handler(context)
 {
-    std::copy(bin.begin(), bin.begin()+64, _data.data);
+    std::copy(bin.begin(), bin.begin()+sizeof(_data.data), _data.data);
 }
 
 PublicKey::operator secp256k1_pubkey & ()
@@ -67,7 +67,7 @@ PublicKey::Iterator PublicKey::begin()
 
 PublicKey::Iterator PublicKey::end()
 {
-    return _data.data+33;
+    return _data.data+sizeof(_data.data);
 }
 
 PublicKey::ConstIterator PublicKey::begin() const
@@ -77,7 +77,7 @@ PublicKey::ConstIterator PublicKey::begin() const
 
 PublicKey::ConstIterator PublicKey::end() const
 {
-    return _data.data+33;
+    return _data.data+sizeof(_data.data);
 }
 
 
@@ -152,14 +152,14 @@ PublicKey & PublicKey::operator *= (const PrivateKey &secret)
 
 PublicKey & PublicKey::operator = (const PublicKey &key)
 {
-    std::copy(key._data.data, key._data.data+33, _data.data);
+    std::copy(key._data.data, key._data.data+sizeof(_data.data), _data.data);
     return *this;
 }
 
 
 bool PublicKey::operator == (const PublicKey &a) const
 {
-    return std::equal(_data.data, _data.data+33, a._data.data);
+    return std::equal(_data.data, _data.data+sizeof(_data.data), a._data.data);
 }
 
 

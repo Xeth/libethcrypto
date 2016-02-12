@@ -21,9 +21,9 @@ class PublicKey : public LazySecp256k1Handler
     public:
         PublicKey();
         PublicKey(const PublicKey &);
-        PublicKey(const Data &);
-        PublicKey(const Secp256k1ContextPtr &);
-        PublicKey(const Data &, const Secp256k1ContextPtr &);
+        explicit PublicKey(const Data &);
+        explicit PublicKey(const Secp256k1ContextPtr &);
+        explicit PublicKey(const Data &, const Secp256k1ContextPtr &);
 
         operator secp256k1_pubkey & ();
         operator const secp256k1_pubkey & () const;
