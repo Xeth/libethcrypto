@@ -10,11 +10,11 @@ ScryptParams::ScryptParams()
 
 
 ScryptParams::ScryptParams(const Data &salt, int r, int p, int dkLen, int iterations) :
+    _salt(salt),
     _r(r),
     _p(p),
     _dkLen(dkLen),
-    _iterations(iterations),
-    _salt(salt)
+    _iterations(iterations)
 {}
 
 

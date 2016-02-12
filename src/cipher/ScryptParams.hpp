@@ -28,7 +28,6 @@ class ScryptParams
         bool operator == (const ScryptParams &) const;
 
     private:
-        Data _iv;
         Data _salt;
         int _r;
         int _p;

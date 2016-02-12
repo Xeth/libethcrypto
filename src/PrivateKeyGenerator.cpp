@@ -20,7 +20,7 @@ PrivateKey PrivateKeyGenerator::generate() const
     boost::random::uniform_int_distribution<unsigned char> generator;
     PrivateKey PrivateKey(_context);
 
-    for(int i=0; i<PrivateKey.size(); i++)
+    for(size_t i=0; i<PrivateKey.size(); i++)
     {
         PrivateKey[i] = generator(engine);
     }

@@ -19,7 +19,7 @@ std::string Literal(const PrivateKey &key)
 template<>
 PrivateKey Literal<PrivateKey>(const std::string &serialized)
 {
-    PrivateKey key = DecodeHex(serialized);
+    PrivateKey key(DecodeHex(serialized));
     return key;
 }
 

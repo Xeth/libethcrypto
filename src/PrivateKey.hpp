@@ -15,8 +15,8 @@ class PrivateKey :
 {
     public:
         PrivateKey();
-        PrivateKey(const Secp256k1ContextPtr &);
-        PrivateKey(const Data &);
+        explicit PrivateKey(const Secp256k1ContextPtr &);
+        explicit PrivateKey(const Data &);
 
         unsigned char * operator & ();
         const unsigned char * operator & () const;

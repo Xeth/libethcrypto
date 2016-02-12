@@ -20,7 +20,7 @@ template<class Alphabet>
 template<class Iterator, class Data>
 void GenericDataEncoder<Alphabet>::encode(Iterator begin, Iterator end, Data &result)
 {
-    size_t zeroes;
+    size_t zeroes = 0;
     if(Alphabet::strip)
     {
         zeroes = strip(begin, end, 0);
@@ -128,7 +128,7 @@ template<class Alphabet>
 template<class Iterator, class Data>
 bool GenericDataEncoder<Alphabet>::decode(Iterator begin, Iterator end, Data &result)
 {
-    size_t zeroes;
+    size_t zeroes = 0;
     if(Alphabet::strip)
     {
         zeroes = strip(begin, end, Alphabet::map[0]);

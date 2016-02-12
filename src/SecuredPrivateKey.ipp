@@ -41,7 +41,7 @@ template<class Cipher>
 template<class CipherKey>
 PrivateKey SecuredPrivateKey<Cipher>::unlock(const CipherKey &key) const
 {
-    return _cipher.decrypt(_privateKey, key);
+    return PrivateKey(_cipher.decrypt(_privateKey, key));
 }
 
 

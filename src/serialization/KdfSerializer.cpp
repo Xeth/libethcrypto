@@ -6,7 +6,6 @@ namespace Ethereum{
 
 Json::Value KdfSerializer<ScryptParams>::serializeToJson(const ScryptParams &params) const
 {
-    const Data & salt = params.getSalt();
     Json::Value result;
     result["n"] = params.getIterations();
     result["r"] = params.getR();
