@@ -19,6 +19,14 @@ BOOST_AUTO_TEST_CASE(fromPublicKey)
     BOOST_REQUIRE_EQUAL(address.toString(), "0f3947a26863e72193756090cf5190e9ac42ce70");
 }
 
+BOOST_AUTO_TEST_CASE(fromPublicKey2)
+{
+    PublicKeyFactory factory;
+    PrivateKey secret = Literal<PrivateKey>("6264896b11f6987100129a2667c28e29acca23863ba9dae0c67fa25296f95f24");
+    PublicKey pubKey = factory.createFromSecret(secret);
+    Address address(pubKey);
+    BOOST_REQUIRE_EQUAL(address.toString(), "4463fd4dd1993fc5beeb51554fdefa97abede8cc");
+}
 
 
 
