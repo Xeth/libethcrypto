@@ -1,3 +1,4 @@
+#include <iostream>
 
 namespace Ethereum{
 
@@ -23,7 +24,7 @@ template<class KDF>
 template<class Handler, class Input, class Output>
 bool AesCipher<KDF>::execute(Handler &handler, const Input &input, Output &output, const Data &derivedKey) const
 {
-    handler.SetKeyWithIV(&derivedKey, derivedKey.size(), &_iv);
+    handler.SetKeyWithIV(&derivedKey, std::min(derivedKey.size(), _iv.size()), &_iv, _iv.size());
     CryptoPP::StreamTransformationFilter stream(handler, NULL);
     for(typename Input::const_iterator it = input.begin(), end=input.end(); it!=end; ++it)
     {
