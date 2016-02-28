@@ -13,7 +13,7 @@ ELSE(GMP_LIBRARY)
 ENDIF(GMP_LIBRARY)
 
 
-include_directories(${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/include)
+include_directories(${Boost_INCLUDE_DIRS} ${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/include)
 
 add_executable(ethkey-tests ${TEST_SOURCES})
 add_dependencies(ethkey-tests ethkey)
