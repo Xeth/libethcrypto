@@ -1,11 +1,13 @@
 [submodule "secp256k1"]
 	path = secp256k1
-	url = git@github.com:bitcoin/secp256k1.git
+	url = https://github.com/bitcoin/secp256k1.git
 
 
 [submodule "cmake/modules"]
 	path = cmake/modules
-	url = git@github.com:BitProfile/cmake-modules.git
+	url = https://github.com/BitProfile/cmake-modules.git
+
+
 [submodule "libscrypt"]
 	path = libscrypt
-	url = git@github.com:technion/libscrypt.git
+	url = https://github.com/technion/libscrypt.git
