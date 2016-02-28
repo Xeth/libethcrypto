@@ -1,7 +1,7 @@
 
 
 add_library(ethkey STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp) 
-add_dependencies(ethkey libsecp256k1)
+add_dependencies(ethkey secp256k1)
 add_dependencies(ethkey ethkey-core)
 
 

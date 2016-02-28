@@ -21,7 +21,7 @@ file(GLOB SOURCES
 
 
 add_library(ethkey-core STATIC ${SOURCES})
-add_dependencies(ethkey-core libsecp256k1 )
+add_dependencies(ethkey-core secp256k1 )
 
 
 
