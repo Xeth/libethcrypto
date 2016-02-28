@@ -1,7 +1,6 @@
 find_package(Boost COMPONENTS system REQUIRED)
 find_package(JsonCPP REQUIRED)
 find_package(CryptoPP REQUIRED)
-find_package(LibScrypt REQUIRED)
 
 #add_definitions(-D__DEBUG__)
 
@@ -21,7 +20,6 @@ file(GLOB SOURCES
 
 
 add_library(ethkey-core STATIC ${SOURCES})
-add_dependencies(ethkey-core secp256k1 )
 
 
 

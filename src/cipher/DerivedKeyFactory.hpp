@@ -1,6 +1,6 @@
 #pragma once 
 
-#include <libscrypt.h>
+#include "libscrypt.h"
 
 #include "../Data.hpp"
 #include "ScryptParams.hpp"
