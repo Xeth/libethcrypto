@@ -1,6 +1,6 @@
 #pragma once 
 
-#include <crypto++/sha.h>
+#include <cryptopp/sha.h>
 
 #include "../Data.hpp"
 

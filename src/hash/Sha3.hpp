@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include <crypto++/sha3.h>
+#include <cryptopp/sha3.h>
 
 #include "../Data.hpp"
 
