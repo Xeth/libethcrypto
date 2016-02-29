@@ -15,6 +15,12 @@ include(cmake/core.cmake)
 add_dependencies(ethkey-core secp256k1)
 add_dependencies(ethkey-core scrypt)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
 add_library(ethkey STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp) 
 add_dependencies(ethkey secp256k1)
 add_dependencies(ethkey ethkey-core)
@@ -22,19 +28,19 @@ add_dependencies(ethkey ethkey-core)
 
 
 if (WIN32 AND NOT MINGW)
-    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "\"${CMAKE_CURRENT_BINARY_DIR}\\secp256k1.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\scrypt.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\ethkey-core.lib\"")
+    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "\"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\secp256k1.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\scrypt.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\ethkey-core.lib\"")
 elseif (${CMAKE_GENERATOR} STREQUAL "Xcode")
-    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "${CMAKE_CURRENT_BINARY_DIR}/secp256k1.a ${CMAKE_CURRENT_BINARY_DIR}/libscrypt.a ${CMAKE_CURRENT_BINARY_DIR}/ethkey-core.a")
+    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "${CMAKE_CURRENT_BINARY_DIR}/lib.obj/secp256k1.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libscrypt.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/ethkey-core.a")
 else()
-    set(LIB_OBJ_DIR ${CMAKE_CURRENT_BINARY_DIR}/lib.obj)
+    set(LIB_OBJ_DIR ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/obj)
     make_directory (${LIB_OBJ_DIR})
 
     ADD_CUSTOM_COMMAND(TARGET ethkey
           POST_BUILD
           COMMAND echo "packing libethkey.a"
-          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/libsecp256k1.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
-          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/libscrypt.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
-          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/libethkey-core.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
+          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libsecp256k1.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
+          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libscrypt.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
+          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libethkey-core.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
           COMMAND ${CMAKE_AR} rcs ${CMAKE_CURRENT_BINARY_DIR}/libethkey.a ${LIB_OBJ_DIR}/*.o
           COMMAND rm -fr ${LIB_OBJ_DIR}
     )
