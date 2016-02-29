@@ -1,3 +1,6 @@
+#pragma once 
+
+
 #ifdef __WINDOWS_OS__
 
 typedef char int8_t;
@@ -7,7 +10,7 @@ typedef unsigned __int32 uint32_t;
 typedef __int64 int64_t;
 typedef unsigned __int64 uint64_t;
 
-#if defined(__HAS_INT128__)
+#ifdef __HAS_INT128__
 typedef __int128 int128_t;
 typedef unsigned __int128 uint128_t;
 #endif
