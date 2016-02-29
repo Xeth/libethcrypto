@@ -16,7 +16,10 @@ else (NOT SECP256K1_USE_CMAKE)
 
     if(SIZEOF_VOID_P EQUAL 8) 
         message("x86_64 detected")
-        add_definitions(-DUSE_ASM_X86_64)
+
+        if(NOT WIN32 AND NOT MSVC)
+            add_definitions(-DUSE_ASM_X86_64)
+        endif()
 
         add_definitions(-DUSE_FIELD_5X52)
 
