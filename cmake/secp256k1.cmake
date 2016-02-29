@@ -29,6 +29,7 @@ else (NOT SECP256K1_USE_CMAKE)
         endif()
 
         if(SIZEOF_INT128)
+            add_definitions(-D__HAS_INT128__)
             add_definitions(-DUSE_SCALAR_4X64)
             add_definitions(-DHAVE___INT128)
         else()
