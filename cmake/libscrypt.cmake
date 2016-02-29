@@ -3,7 +3,6 @@ set(LIBSCRYPT_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/sha256.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/crypto-mcf.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/b64.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/crypto-scrypt-saltgen.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/crypto_scrypt-check.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/crypto_scrypt-hash.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/slowequals.c"
@@ -28,6 +27,8 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/libscrypt.h DESTINATION ${CMAKE_
 
 if(MSVC OR WIN32)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/portable)
+else()
+    list(APPEND LIBSCRYPT_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/crypto-scrypt-saltgen.c")
 endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libscrypt)
