@@ -207,7 +207,7 @@ Data GenericDataEncoder<Alphabet>::decode(Iterator begin, Iterator end)
 template<class Alphabet>
 Data GenericDataEncoder<Alphabet>::decode(const std::string &input)
 {
-    return decode<Data>(input.begin(), input.end());
+    return decode<Data>(reinterpret_cast<const unsigned char *>(input.data()), reinterpret_cast<const unsigned char *>(input.data()+input.size()));
 }
 
 

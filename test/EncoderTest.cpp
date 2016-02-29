@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_CASE(base16Encoding)
 
     std::string hex = "03d9e876028f4fc062c19f7097762e4affc2ce4edfffa7d42e3c17cd157ec6d1bc";
     Base16Encoder encoder;
-    Data data = encoder.decode(hex.begin(), hex.end());
+    Data data = encoder.decode(hex);
 
     BOOST_REQUIRE_EQUAL(data.size(), 33);
 
@@ -37,8 +37,8 @@ void checkEncoding(const std::string& hex, const std::string& encoded)
     Data data = base16.decode(hex.begin(), hex.end());
     BOOST_REQUIRE_EQUAL(base58.encode(data.begin(), data.end()), encoded);
 
-    data = base58.decode(encoded.begin(), encoded.end());
-    BOOST_REQUIRE_EQUAL(base16.encode(data.begin(), data.end()), hex);
+    Data data2 = base58.decode(encoded);
+    BOOST_REQUIRE_EQUAL(base16.encode(data2.begin(), data2.end()), hex);
 
 }
 
