@@ -1,6 +1,13 @@
 if(WIN32 OR MSVC)
     set(SECP256K1_USE_CMAKE 1)
+    include(CheckTypeSize) 
+    check_type_size("__int128" SIZEOF_INT128 BUILTIN_TYPES_ONLY)
+    if(SIZEOF_INT128)
+        add_definitions(-D__HAS_INT128__=1)
+    endif()
 endif()
+
+
 include(cmake/secp256k1.cmake)
 include(cmake/libscrypt.cmake)
 include(cmake/core.cmake)
