@@ -50,12 +50,12 @@ const secp256k1_pubkey * PublicKey::operator & () const
 }
 
 
-const uint8_t * PublicKey::getData() const
+const unsigned char * PublicKey::getData() const
 {
     return _data.data;
 }
 
-uint8_t PublicKey::operator [](int i) const
+unsigned char PublicKey::operator [](int i) const
 {
     return _data.data[i];
 }

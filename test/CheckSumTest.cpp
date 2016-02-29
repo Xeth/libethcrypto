@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(doubleSha256CheckSum)
 {
     unsigned char data[] = { 0, 0, 0, 0, 0 };
     DoubleSha256CheckSum checksum;
-    uint32_t result = checksum(data, data+5);
+    unsigned result = checksum(data, data+5);
     BOOST_REQUIRE_EQUAL(result, 0x93af0179u);
 }
 

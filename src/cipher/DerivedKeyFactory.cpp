@@ -10,7 +10,7 @@ bool DerivedKeyFactory::makeDerived(const std::string &password, const ScryptPar
     result.resize(params.getDKlen());
     return libscrypt_scrypt
     (
-        (uint8_t const*)password.data(), 
+        (unsigned char const*)password.data(), 
         password.size(), 
         &params.getSalt(), 
         params.getSalt().size(), 

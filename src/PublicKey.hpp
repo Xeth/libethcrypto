@@ -1,7 +1,6 @@
 #pragma once
 
 #include <algorithm>
-#include <stdint.h>
 
 #include "ethkey/secp256k1/secp256k1.h"
 #include "detail/LazySecp256k1Handler.hpp"
@@ -15,8 +14,8 @@ namespace Ethereum{
 class PublicKey : public LazySecp256k1Handler
 {
     public:
-        typedef  uint8_t * Iterator;
-        typedef const uint8_t * ConstIterator;
+        typedef  unsigned char * Iterator;
+        typedef const unsigned char * ConstIterator;
 
     public:
         PublicKey();
@@ -30,8 +29,8 @@ class PublicKey : public LazySecp256k1Handler
         secp256k1_pubkey * operator & ();
         const secp256k1_pubkey * operator & () const;
         
-        uint8_t operator [](int i) const;
-        const uint8_t * getData() const;
+        unsigned char operator [](int i) const;
+        const unsigned char * getData() const;
 
         ConstIterator begin() const;
         ConstIterator end() const;

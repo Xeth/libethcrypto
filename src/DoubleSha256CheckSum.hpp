@@ -1,7 +1,5 @@
 #pragma once
 
-#include <stdint.h>
-
 #include "hash/Sha256.hpp"
 #include "DoubleHash.hpp"
 
@@ -14,16 +12,16 @@ class DoubleSha256CheckSum
     public:
 
         template<class Iterator>
-        uint32_t operator()(Iterator begin, Iterator end) const;
+        unsigned operator()(Iterator begin, Iterator end) const;
 
         template<class Data>
-        uint32_t operator()(const Data &) const;
+        unsigned operator()(const Data &) const;
 
         template<class Iterator>
-        uint32_t checksum(Iterator begin, Iterator end) const;
+        unsigned checksum(Iterator begin, Iterator end) const;
 
         template<class Data>
-        uint32_t checksum(const Data &) const;
+        unsigned checksum(const Data &) const;
 
 };
 
