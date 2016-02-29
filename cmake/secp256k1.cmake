@@ -23,7 +23,11 @@ else (NOT SECP256K1_USE_CMAKE)
 
         add_definitions(-DUSE_FIELD_5X52)
 
-        check_type_size("__int128" SIZEOF_INT128 BUILTIN_TYPES_ONLY)
+        check_type_size("int128_t" SIZEOF_INT128)
+        if(NOT SIZEOF_INT128)
+            check_type_size("__int128" SIZEOF_INT128 BUILTIN_TYPES_ONLY)
+        endif()
+
         if(SIZEOF_INT128)
             add_definitions(-DUSE_SCALAR_4X64)
             add_definitions(-DHAVE___INT128)
