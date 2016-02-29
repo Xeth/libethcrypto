@@ -19,6 +19,7 @@ file(GLOB SOURCES
 )
 
 
+set(LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 add_library(ethkey-core STATIC ${SOURCES})
 
 

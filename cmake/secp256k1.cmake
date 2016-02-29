@@ -71,6 +71,7 @@ if(MSVC OR WIN32)
 endif()
 
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/secp256k1)
+    set(LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+    add_library(secp256k1 STATIC ${SECP256K1_SOURCES})
 
-    add_library(secp256k1 ${SECP256K1_SOURCES})
 endif (NOT SECP256K1_USE_CMAKE)

@@ -33,4 +33,5 @@ endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libscrypt)
 
-add_library(scrypt ${LIBSCRYPT_SOURCES})
+set(LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+add_library(scrypt STATIC ${LIBSCRYPT_SOURCES})
