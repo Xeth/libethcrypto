@@ -1,4 +1,6 @@
-
+if(WIN32 OR MSVC)
+    set(SECP256K1_USE_CMAKE 1)
+endif()
 include(cmake/secp256k1.cmake)
 include(cmake/libscrypt.cmake)
 include(cmake/core.cmake)
