@@ -26,6 +26,10 @@ endif()
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/libscrypt.h DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/)
 
+if(MSVC OR WIN32)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/portable)
+endif()
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libscrypt)
 
 add_library(scrypt ${LIBSCRYPT_SOURCES})
