@@ -21,9 +21,11 @@ add_dependencies(ethkey ethkey-core)
 
 
 
-if (WIN32 OR ${CMAKE_GENERATOR} STREQUAL "Xcode")
-    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS ${CMAKE_CURRENT_BINARY_DIR}/libsecp256k1.a ${CMAKE_CURRENT_BINARY_DIR}/libscrypt.a ${CMAKE_CURRENT_BINARY_DIR}/libethkey-core.a)
-elseif (UNIX)
+if (WIN32 AND NOT MINGW)
+    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "\"${CMAKE_CURRENT_BINARY_DIR}\\secp256k1.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\scrypt.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\ethkey-core.lib\"")
+elseif (${CMAKE_GENERATOR} STREQUAL "Xcode")
+    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "${CMAKE_CURRENT_BINARY_DIR}/secp256k1.a ${CMAKE_CURRENT_BINARY_DIR}/libscrypt.a ${CMAKE_CURRENT_BINARY_DIR}/ethkey-core.a")
+else()
     set(LIB_OBJ_DIR ${CMAKE_CURRENT_BINARY_DIR}/lib.obj)
     make_directory (${LIB_OBJ_DIR})
 
