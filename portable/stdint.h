@@ -33,6 +33,10 @@ typedef uint32_t uint_fast32_t;
 typedef int64_t int_fast64_t;
 typedef uint64_t uint_fast64_t;
 
+typedef int64_t intmax_t;
+typedef uint64_t uintmax_t;
+
+
 #define INT8_MAX   0x7f
 #define INT8_MIN   (-INT8_MAX - 1)
 #define UINT8_MAX   (INT8_MAX * 2 + 1)
@@ -41,10 +45,10 @@ typedef uint64_t uint_fast64_t;
 #define UINT16_MAX   (__CONCAT(INT16_MAX, U) * 2U + 1U)
 #define INT32_MAX   0x7fffffffL
 #define INT32_MIN   (-INT32_MAX - 1L)
-#define UINT32_MAX   (__CONCAT(INT32_MAX, U) * 2UL + 1UL)
+#define UINT32_MAX   0xffffffff
 #define INT64_MAX   0x7fffffffffffffffLL
 #define INT64_MIN   (-INT64_MAX - 1LL)
-#define UINT64_MAX   (__CONCAT(INT64_MAX, U) * 2ULL + 1ULL)
+#define UINT64_MAX  0xffffffffffffffff
 
 #define INT_LEAST8_MAX   INT8_MAX
 #define INT_LEAST8_MIN   INT8_MIN
@@ -71,6 +75,7 @@ typedef uint64_t uint_fast64_t;
 #define INT_FAST64_MAX   INT64_MAX
 #define INT_FAST64_MIN   INT64_MIN
 #define UINT_FAST64_MAX   UINT64_MAX
+
 
 
 #ifdef __HAS_INT128__
