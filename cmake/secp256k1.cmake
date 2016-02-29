@@ -19,21 +19,22 @@ else (NOT SECP256K1_USE_CMAKE)
 
         if(NOT WIN32 AND NOT MSVC)
             add_definitions(-DUSE_ASM_X86_64)
-        endif()
-
-        add_definitions(-DUSE_FIELD_5X52)
-
-        check_type_size("int128_t" SIZEOF_INT128)
-        if(NOT SIZEOF_INT128)
+            add_definitions(-DUSE_FIELD_5X52)
+            check_type_size("int128_t" SIZEOF_INT128)
+        else()
             check_type_size("__int128" SIZEOF_INT128 BUILTIN_TYPES_ONLY)
         endif()
 
+
         if(SIZEOF_INT128)
-            add_definitions(-D__HAS_INT128__)
             add_definitions(-DUSE_SCALAR_4X64)
             add_definitions(-DHAVE___INT128)
+            add_definitions(-DUSE_FIELD_5X52)
         else()
             add_definitions(-DUSE_SCALAR_8X32)
+            if(WIN32 OR MSVC)
+                add_definitions(-DUSE_FIELD_10X26)
+            endif()
         endif()
 
     else()
