@@ -26,7 +26,7 @@ endif()
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/libscrypt.h DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/)
 
 if(MSVC OR WIN32)
-    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/portable)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/msvc/include)
 else()
     list(APPEND LIBSCRYPT_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/crypto-scrypt-saltgen.c")
 endif()

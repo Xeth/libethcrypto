@@ -67,7 +67,7 @@ else (NOT SECP256K1_USE_CMAKE)
     file(COPY ${SECP256K1_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/secp256k1)
 
 if(MSVC OR WIN32)
-    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/portable)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/msvc/include)
 endif()
 
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/secp256k1)
