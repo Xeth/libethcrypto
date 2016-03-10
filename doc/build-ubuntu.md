@@ -15,13 +15,13 @@ make
 ```
 
 
-run unit tests
+##run unit tests
 ```
 ./ethkey-tests
 ```
 
 
-install library
+##install library
 ```
 make install
 ```
