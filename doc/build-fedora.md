@@ -4,4 +4,4 @@ yum install git automake autoconf libtool cmake gcc gcc-c++ boost-devel gmp-deve
 ```
 
 ##compile
-[linux generic](doc/linux-generic.md)
+[linux generic](linux-generic.md)
