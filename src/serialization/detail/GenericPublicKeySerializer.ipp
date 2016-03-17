@@ -47,6 +47,13 @@ PublicKey GenericPublicKeySerializer<Encoder>::unserialize(const std::string &en
     return _binarySerializer.unserialize(data);
 }
 
+template<class Encoder>
+PublicKey GenericPublicKeySerializer<Encoder>::unserialize(const char *buffer, size_t size) const
+{
+    Encoder encoder;
+    Data data = encoder.decode(buffer, buffer+size);
+    return _binarySerializer.unserialize(data);
+}
 
 
 

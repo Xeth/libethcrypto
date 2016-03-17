@@ -3,7 +3,7 @@
 #include <boost/array.hpp>
 
 #include "PublicKey.hpp"
-#include "encoding/Base16Encoder.hpp"
+#include "encoding/HexEncoder.hpp"
 
 
 namespace Ethereum{

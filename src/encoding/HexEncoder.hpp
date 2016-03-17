@@ -1,42 +1,52 @@
-#pragma once 
+#pragma once
 
-#include "Base16Encoder.hpp"
+#include "detail/EncoderFacade.hpp"
+#include "detail/BufferAdapter.hpp"
 
 namespace Ethereum{
 
 
-typedef Base16Encoder HexEncoder;
+
+
+class HexEncoder : public EncoderFacade<HexEncoder>
+{
+    public:
+        typedef EncoderFacade<HexEncoder> Base;
+
+    public:
+
+        using Base::encode;
+        using Base::decode;
+
+        template<class Iterator, class Data>
+        bool decode(Iterator, Iterator, Data &) const;
+
+        template<class Iterator, class Data>
+        void encode(Iterator, Iterator, Data &) const;
+
+        
+
+    private:
+        unsigned char decodeChar(char) const;
+
+};
+
 
 
 template<class Data>
-std::string EncodeHex(const Data &data)
-{
-    HexEncoder encoder;
-    return encoder.encode(data.begin(), data.end());
-}
-
+std::string EncodeHex(const Data &data);
 
 template<class Iterator>
-std::string EncodeHex(Iterator begin, Iterator end)
-{
-    HexEncoder encoder;
-    return encoder.encode(begin, end);
-}
+std::string EncodeHex(Iterator begin, Iterator end);
 
 template<class Data>
-Data DecodeHex(const std::string &hex)
-{
-    HexEncoder encoder;
-    return encoder.decode<Data>(hex.begin(), hex.end());
-}
+Data DecodeHex(const std::string &hex);
 
-inline Data DecodeHex(const std::string &hex)
-{
-    HexEncoder encoder;
-    return encoder.decode(hex);
-}
-
-
+Data DecodeHex(const std::string &hex);
 
 
 }
+
+#include "HexEncoder.ipp"
+
+

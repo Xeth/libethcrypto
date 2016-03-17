@@ -18,6 +18,7 @@ class PublicKeySerializer
         std::string serialize(const CompressedPoint &) const;
         std::string serialize(const UncompressedPoint &) const;
 
+        PublicKey unserialize(const char *, size_t ) const;
         PublicKey unserialize(const std::string &) const;
         PublicKey unserialize(const CompressedPoint &) const;
         PublicKey unserialize(const UncompressedPoint &) const;
@@ -34,6 +35,7 @@ class PublicKeySerializer
         UncompressedPoint toUncompressedPoint(const std::string &) const;
 
         PublicKey fromHex(const std::string &) const;
+        PublicKey fromHex(const char *, size_t ) const;
         PublicKey fromPoint(const CompressedPoint &) const;
         PublicKey fromPoint(const UncompressedPoint &) const;
 

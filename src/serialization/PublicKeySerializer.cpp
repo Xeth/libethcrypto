@@ -1,6 +1,5 @@
 #include "PublicKeySerializer.hpp"
 
-
 namespace Ethereum{
 
 
@@ -36,6 +35,11 @@ std::string PublicKeySerializer::serialize(const UncompressedPoint &point) const
 PublicKey PublicKeySerializer::unserialize(const std::string &serialized) const
 {
     return fromHex(serialized);
+}
+
+PublicKey PublicKeySerializer::unserialize(const char *buffer, size_t size) const
+{
+    return fromHex(buffer, size);
 }
 
 
@@ -101,6 +105,10 @@ PublicKey PublicKeySerializer::fromHex(const std::string &hex) const
     return _hexSerializer.unserialize(hex);
 }
 
+PublicKey PublicKeySerializer::fromHex(const char *buffer, size_t size) const
+{
+    return _hexSerializer.unserialize(buffer, size);
+}
 
 PublicKey PublicKeySerializer::fromPoint(const CompressedPoint &point) const
 {

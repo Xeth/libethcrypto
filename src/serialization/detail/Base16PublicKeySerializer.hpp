@@ -1,12 +1,12 @@
 #pragma once 
 
 #include "GenericPublicKeySerializer.hpp"
-#include "../../encoding/Base16Encoder.hpp"
+#include "../../encoding/HexEncoder.hpp"
 
 namespace Ethereum{
 
 
-typedef GenericPublicKeySerializer<Base16Encoder> Base16PublicKeySerializer;
+typedef GenericPublicKeySerializer<HexEncoder> Base16PublicKeySerializer;
 
 
 }

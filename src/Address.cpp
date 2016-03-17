@@ -29,7 +29,7 @@ Address::Address(const char *str, size_t size)
 
 std::string Address::toString() const
 {
-    Base16Encoder encoder;
+    HexEncoder encoder;
     return encoder.encode(begin(), end());
 }
 

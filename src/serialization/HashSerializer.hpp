@@ -1,10 +1,10 @@
 #pragma once 
 
 #include "detail/GenericHashSerializer.hpp"
-#include "../encoding/Base16Encoder.hpp"
+#include "../encoding/HexEncoder.hpp"
 
 namespace Ethereum{
 
-typedef GenericHashSerializer<Base16Encoder> HashSerializer;
+typedef GenericHashSerializer<HexEncoder> HashSerializer;
 
 }

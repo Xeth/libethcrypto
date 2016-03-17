@@ -1,13 +1,13 @@
 #pragma once 
 
-#include "../../encoding/Base16Encoder.hpp"
+#include "../../encoding/HexEncoder.hpp"
 #include "GenericPointSerializer.hpp"
 
 
 namespace Ethereum{
 
 
-typedef GenericPointSerializer<Base16Encoder> Base16PointSerializer;
+typedef GenericPointSerializer<HexEncoder> Base16PointSerializer;
 
 
 }

@@ -22,6 +22,7 @@ class GenericPublicKeySerializer
         GenericPublicKeySerializer(const BinaryPublicKeySerializer &);
 
         PublicKey unserialize(const std::string &) const;
+        PublicKey unserialize(const char *, size_t) const;
         std::string serialize(const PublicKey &, bool compress=true) const;
 
     private:

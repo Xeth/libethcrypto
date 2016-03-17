@@ -25,7 +25,7 @@ Address AddressFactory::createFromPublicKey(const PublicKey &key) const
 
 bool AddressFactory::createFromString(const std::string &str, Address &address) const
 {
-    Base16Encoder encoder;
+    HexEncoder encoder;
     encoder.decode(str.begin(), str.end(), address.toArray());
     return true;
 }
@@ -40,7 +40,7 @@ Address AddressFactory::createFromString(const std::string &str) const
 
 bool AddressFactory::createFromString(const char *str, size_t size, Address &address) const
 {
-    Base16Encoder encoder;
+    HexEncoder encoder;
     encoder.decode(str, str+size, address.toArray());
     return true;
 }

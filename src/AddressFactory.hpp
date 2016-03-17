@@ -3,7 +3,7 @@
 #include "PublicKey.hpp"
 #include "Address.hpp"
 
-#include "encoding/Base16Encoder.hpp"
+#include "encoding/HexEncoder.hpp"
 #include "CompressedPoint.hpp"
 #include "serialization/detail/BinaryPublicKeySerializer.hpp"
 #include "DoubleHash.hpp"
