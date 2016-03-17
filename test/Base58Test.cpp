@@ -2,37 +2,21 @@
 #include <boost/test/unit_test.hpp>
 
 #include "ethkey/Data.hpp"
-#include "ethkey/encoding/Base16Encoder.hpp"
+#include "ethkey/encoding/HexEncoder.hpp"
 #include "ethkey/encoding/Base58Encoder.hpp"
 
 #include <iostream>
 
 using namespace Ethereum;
 
-BOOST_AUTO_TEST_SUITE(EncodingTest)
+BOOST_AUTO_TEST_SUITE(Base58Test)
 
 
-BOOST_AUTO_TEST_CASE(base16Encoding)
-{
-
-    std::string hex = "03d9e876028f4fc062c19f7097762e4affc2ce4edfffa7d42e3c17cd157ec6d1bc";
-    Base16Encoder encoder;
-    Data data = encoder.decode(hex);
-
-    BOOST_REQUIRE_EQUAL(data.size(), 33);
-
-    BOOST_REQUIRE_EQUAL(encoder.encode(data.begin(), data.end()), "03d9e876028f4fc062c19f7097762e4affc2ce4edfffa7d42e3c17cd157ec6d1bc");
-    BOOST_REQUIRE_EQUAL(data[0], 0x03);
-    BOOST_REQUIRE_EQUAL(data[1], 0xd9);
-    BOOST_REQUIRE_EQUAL(data[2], 0xe8);
-    BOOST_REQUIRE_EQUAL(data[3], 0x76);
-    BOOST_REQUIRE_EQUAL(data[4], 0x02);
-}
 
 void checkEncoding(const std::string& hex, const std::string& encoded)
 {
     Base58Encoder base58;
-    Base16Encoder base16;
+    HexEncoder base16;
 
     Data data = base16.decode(hex.begin(), hex.end());
     BOOST_REQUIRE_EQUAL(base58.encode(data.begin(), data.end()), encoded);
@@ -81,8 +65,6 @@ BOOST_AUTO_TEST_CASE(base58Encoding)
     {
         BOOST_REQUIRE_EQUAL((int)data[i], (int)data2[i]);
     }
-    
-    std::cout<<std::endl;
 
 }
 
