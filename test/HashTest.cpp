@@ -2,7 +2,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "ethkey/Data.hpp"
-#include "ethkey/encoding/Base16Encoder.hpp"
+#include "ethkey/encoding/HexEncoder.hpp"
 #include "ethkey/hash/Sha256.hpp"
 #include "ethkey/Literal.hpp"
 
@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_SUITE(HashTest)
 BOOST_AUTO_TEST_CASE(sha256Test)
 {
     Sha256 hasher;
-    Base16Encoder encoder;
+    HexEncoder encoder;
 
     BOOST_REQUIRE_EQUAL(encoder.encode(hasher.hash("data")), "3a6eb0790f39ac87c94f3856b2dd2c5d110e6811602261a9a923d3bb23adc8b7");
     BOOST_REQUIRE_EQUAL(encoder.encode(hasher.hash("")), "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");

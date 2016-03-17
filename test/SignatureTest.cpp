@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(sign)
 BOOST_AUTO_TEST_CASE(validSignature)
 {
     SignatureValidator validator;
-    Base16Encoder encoder;
+    HexEncoder encoder;
     PublicKey key = Literal<PublicKey>("03bc88a1bd6ebac38e9a9ed58eda735352ad10650e235499b7318315cc26c9b55b");
     
     Data hash = encoder.decode("ed8f9b40c2d349c8a7e58cebe79faa25c21b6bb85b874901f72a1b3f1ad0a67f");
