@@ -20,7 +20,7 @@ bool HexEncoder::decode(Iterator begin, Iterator end, Data &result) const
     try
     {
         Resize(result, size+rest);
-        int i;
+        size_t i;
         if(rest)
         {
             result[0] = decodeChar(*begin);
@@ -35,7 +35,9 @@ bool HexEncoder::decode(Iterator begin, Iterator end, Data &result) const
 
         for(; i<size; ++i)
         {
-            result[i] = decodeChar(*begin)<<4|decodeChar(*(++begin));
+            result[i] = decodeChar(*begin)<<4;
+            ++begin;
+            result[i]|=decodeChar(*begin);
             ++begin;
         }
 
