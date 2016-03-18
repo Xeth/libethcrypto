@@ -3,12 +3,12 @@
 #include "PublicKey.hpp"
 #include "Address.hpp"
 
-#include "encoding/HexEncoder.hpp"
+#include "../encoding/HexEncoder.hpp"
 #include "CompressedPoint.hpp"
-#include "serialization/detail/BinaryPublicKeySerializer.hpp"
-#include "DoubleHash.hpp"
-#include "hash/Sha3.hpp"
-#include "Literal.hpp"
+#include "../serialization/detail/BinaryPublicKeySerializer.hpp"
+#include "../hash/DoubleHash.hpp"
+#include "../hash/Sha3.hpp"
+#include "../serialization/Literal.hpp"
 
 
 namespace Ethereum{

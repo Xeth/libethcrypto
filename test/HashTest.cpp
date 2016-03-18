@@ -1,10 +1,9 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/Data.hpp"
 #include "ethkey/encoding/HexEncoder.hpp"
 #include "ethkey/hash/Sha256.hpp"
-#include "ethkey/Literal.hpp"
+#include "ethkey/serialization/Literal.hpp"
 
 #include <iostream>
 

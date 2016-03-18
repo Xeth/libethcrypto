@@ -1,7 +1,6 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/Data.hpp"
 #include "ethkey/encoding/HexEncoder.hpp"
 #include "ethkey/encoding/Base58Encoder.hpp"
 

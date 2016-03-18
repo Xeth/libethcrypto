@@ -1,8 +1,8 @@
 #pragma once 
 
 #include <string>
-#include "../Data.hpp"
-#include "../PrivateKey.hpp"
+#include "../detail/Data.hpp"
+#include "../key/PrivateKey.hpp"
 
 
 namespace Ethereum{

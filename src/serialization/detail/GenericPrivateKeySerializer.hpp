@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../PrivateKey.hpp"
-#include "../../SecuredPrivateKey.hpp"
+#include "../../key/PrivateKey.hpp"
+#include "../../key/SecuredPrivateKey.hpp"
 
 #include "../../detail/Secp256k1ContextPtr.hpp"
 

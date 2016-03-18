@@ -2,7 +2,7 @@
 
 #include "ethkey/libscrypt.h"
 
-#include "../Data.hpp"
+#include "../detail/Data.hpp"
 #include "ScryptParams.hpp"
 
 

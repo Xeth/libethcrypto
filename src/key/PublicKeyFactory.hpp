@@ -1,13 +1,15 @@
 #pragma once 
 
-#include "detail/Secp256k1Handler.hpp"
+#include "../detail/Secp256k1Handler.hpp"
+#include "../detail/Data.hpp"
+
 #include "PublicKey.hpp"
 #include "CompressedPoint.hpp"
 #include "UncompressedPoint.hpp"
 #include "PrivateKey.hpp"
-#include "Data.hpp"
 
-#include "serialization/detail/BinaryPublicKeySerializer.hpp"
+
+#include "../serialization/detail/BinaryPublicKeySerializer.hpp"
 
 
 namespace Ethereum{

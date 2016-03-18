@@ -3,8 +3,8 @@
 #include "ethkey/cipher/AesCipher.hpp"
 #include "ethkey/cipher/Scrypt.hpp"
 #include "ethkey/serialization/KeySerializer.hpp"
-#include "ethkey/KeyGenerator.hpp"
-#include "ethkey/Literal.hpp"
+#include "ethkey/key/KeyGenerator.hpp"
+#include "ethkey/serialization/Literal.hpp"
 
 #include <iostream>
 

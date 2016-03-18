@@ -5,8 +5,8 @@
 
 #include "../encoding/HexEncoder.hpp"
 
-#include "../PrivateKey.hpp"
-#include "../SecuredPrivateKey.hpp"
+#include "../key/PrivateKey.hpp"
+#include "../key/SecuredPrivateKey.hpp"
 #include "../cipher/ScryptParams.hpp"
 #include "../cipher/AesCipher.hpp"
 #include "../cipher/DummyCipher.hpp"

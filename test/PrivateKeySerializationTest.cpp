@@ -3,7 +3,7 @@
 #include "ethkey/cipher/AesCipher.hpp"
 #include "ethkey/cipher/Scrypt.hpp"
 #include "ethkey/serialization/PrivateKeySerializer.hpp"
-#include "ethkey/KeyGenerator.hpp"
+#include "ethkey/key/KeyGenerator.hpp"
 
 using namespace Ethereum;
 

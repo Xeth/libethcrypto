@@ -3,9 +3,11 @@
 #include <boost/random/random_device.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
 
-#include "detail/Secp256k1ContextPtr.hpp"
+#include "../detail/Secp256k1ContextPtr.hpp"
+#include "../hash/Sha256.hpp"
+
 #include "PrivateKey.hpp"
-#include "hash/Sha256.hpp"
+
 
 
 namespace Ethereum{

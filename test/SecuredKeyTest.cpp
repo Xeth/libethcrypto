@@ -4,10 +4,10 @@
 #include "ethkey/cipher/Scrypt.hpp"
 
 
-#include "ethkey/Address.hpp"
-#include "ethkey/Literal.hpp"
-#include "ethkey/PublicKeyFactory.hpp"
-#include "ethkey/SecuredKey.hpp"
+#include "ethkey/key/Address.hpp"
+#include "ethkey/serialization/Literal.hpp"
+#include "ethkey/key/PublicKeyFactory.hpp"
+#include "ethkey/key/SecuredKey.hpp"
 
 using namespace Ethereum;
 

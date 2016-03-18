@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "cipher/EncryptedData.hpp"
+#include "../cipher/EncryptedData.hpp"
 #include "PrivateKey.hpp"
 
 

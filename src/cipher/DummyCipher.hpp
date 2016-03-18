@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include "../Data.hpp"
-#include "../PrivateKey.hpp"
+#include "../detail/Data.hpp"
+#include "../key/PrivateKey.hpp"
 
 #include "EncryptedData.hpp"
 #include "ScryptParams.hpp"

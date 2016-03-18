@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../CompressedPoint.hpp"
-#include "../../UncompressedPoint.hpp"
+#include "../../key/CompressedPoint.hpp"
+#include "../../key/UncompressedPoint.hpp"
 
 
 namespace Ethereum{

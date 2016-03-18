@@ -3,7 +3,7 @@
 #include "PublicKey.hpp"
 #include "PrivateKey.hpp"
 
-#include "detail/Secp256k1ContextPtr.hpp"
+#include "../detail/Secp256k1ContextPtr.hpp"
 
 
 namespace Ethereum{

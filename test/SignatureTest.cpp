@@ -1,10 +1,10 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/PublicKeyFactory.hpp"
-#include "ethkey/Signer.hpp"
-#include "ethkey/SignatureValidator.hpp"
+#include "ethkey/key/PublicKeyFactory.hpp"
+#include "ethkey/signature/Signer.hpp"
+#include "ethkey/signature/SignatureValidator.hpp"
 #include "ethkey/hash/Sha256.hpp"
-#include "ethkey/Literal.hpp"
+#include "ethkey/serialization/Literal.hpp"
 #include <iostream>
 
 using namespace Ethereum;

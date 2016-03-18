@@ -2,7 +2,7 @@
 
 #include "KeyPair.hpp"
 #include "SecuredKeyPair.hpp"
-#include "detail/Secp256k1Handler.hpp"
+#include "../detail/Secp256k1Handler.hpp"
 
 
 namespace Ethereum{

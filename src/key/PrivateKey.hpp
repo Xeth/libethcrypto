@@ -2,9 +2,9 @@
 
 #include <boost/array.hpp>
 
-#include "detail/LazySecp256k1Handler.hpp"
-#include "Data.hpp"
-#include "Signature.hpp"
+#include "../detail/LazySecp256k1Handler.hpp"
+#include "../detail/Data.hpp"
+#include "../signature/Signature.hpp"
 
 namespace Ethereum{
 

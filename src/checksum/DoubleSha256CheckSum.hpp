@@ -1,7 +1,7 @@
 #pragma once
 
-#include "hash/Sha256.hpp"
-#include "DoubleHash.hpp"
+#include "../hash/Sha256.hpp"
+#include "../hash/DoubleHash.hpp"
 
 
 namespace Ethereum{

@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <sstream>
 
-#include "../../Data.hpp"
+#include "../../detail/Data.hpp"
 
 namespace Ethereum{
 

@@ -2,9 +2,9 @@
 
 #include <algorithm>
 
-#include "ethkey/secp256k1/secp256k1.h"
-#include "detail/LazySecp256k1Handler.hpp"
-#include "Data.hpp"
+#include "../detail/LazySecp256k1Handler.hpp"
+#include "../detail/Data.hpp"
+
 #include "PrivateKey.hpp"
 
 

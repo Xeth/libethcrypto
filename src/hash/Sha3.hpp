@@ -4,7 +4,7 @@
 
 #include <cryptopp/sha3.h>
 
-#include "../Data.hpp"
+#include "../detail/Data.hpp"
 
 
 namespace Ethereum{

@@ -1,8 +1,9 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/Address.hpp"
-#include "ethkey/Literal.hpp"
-#include "ethkey/PublicKeyFactory.hpp"
+
+#include "ethkey/serialization/Literal.hpp"
+#include "ethkey/key/PublicKeyFactory.hpp"
+#include "ethkey/key/Address.hpp"
 
 using namespace Ethereum;
 

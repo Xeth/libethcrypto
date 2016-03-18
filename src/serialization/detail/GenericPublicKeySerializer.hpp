@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../PublicKey.hpp"
-#include "../../CompressedPoint.hpp"
-#include "../../UncompressedPoint.hpp"
+#include "../../key/PublicKey.hpp"
+#include "../../key/CompressedPoint.hpp"
+#include "../../key/UncompressedPoint.hpp"
 #include "../../detail/Secp256k1Handler.hpp"
 #include "BinaryPublicKeySerializer.hpp"
 

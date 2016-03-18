@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-#include "../../Data.hpp"
+#include "../../detail/Data.hpp"
 
 
 namespace Ethereum{

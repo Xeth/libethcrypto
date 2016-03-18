@@ -5,9 +5,9 @@
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "../SecuredKey.hpp"
-#include "../Address.hpp"
-#include "../PublicKeyFactory.hpp"
+#include "../key/SecuredKey.hpp"
+#include "../key/Address.hpp"
+#include "../key/PublicKeyFactory.hpp"
 
 
 #include "PrivateKeySerializer.hpp"

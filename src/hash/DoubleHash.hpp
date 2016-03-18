@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "Data.hpp"
+#include "../detail/Data.hpp"
 
 namespace Ethereum{
 

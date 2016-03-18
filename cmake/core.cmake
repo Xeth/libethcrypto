@@ -6,18 +6,9 @@ find_package(CryptoPP REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIRS} ${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/include)
 
-file(GLOB SOURCES 
-    "src/*.cpp"
-    "src/external/*.cpp"
-    "src/detail/*.cpp"
-    "src/serialization/*.cpp"
-    "src/serialization/detail/*.cpp"
-    "src/encoding/*.cpp"
-    "src/encoding/detail/*.cpp"
-    "src/cipher/*.cpp"
-    "src/hash/*.cpp"
-)
+file(GLOB_RECURSE SOURCES src/*.cpp)
 
+message(${SOURCES})
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}/lib.obj")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}/lib.obj")

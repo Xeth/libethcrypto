@@ -1,10 +1,10 @@
 #pragma once
 
-#include "detail/Secp256k1Handler.hpp"
-#include "PrivateKey.hpp"
-#include "Signature.hpp"
-#include "Data.hpp"
+#include "../detail/Secp256k1Handler.hpp"
+#include "../key/PrivateKey.hpp"
+#include "../detail/Data.hpp"
 
+#include "Signature.hpp"
 
 namespace Ethereum{
 

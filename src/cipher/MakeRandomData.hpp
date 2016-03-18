@@ -3,7 +3,7 @@
 #include <boost/random/random_device.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
 
-#include "../Data.hpp"
+#include "../detail/Data.hpp"
 
 namespace Ethereum{
 

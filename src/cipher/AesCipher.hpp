@@ -9,7 +9,7 @@
 #include "DerivedKeyFactory.hpp"
 #include "CipherMacFactory.hpp"
 #include "EncryptedData.hpp"
-#include "../BufferCast.hpp"
+#include "../detail/BufferCast.hpp"
 
 namespace Ethereum{
 

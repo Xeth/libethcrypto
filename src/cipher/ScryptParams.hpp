@@ -1,7 +1,7 @@
 #pragma once 
 
 
-#include "../Data.hpp"
+#include "../detail/Data.hpp"
 #include "MakeRandomData.hpp"
 
 

@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/DoubleSha256CheckSum.hpp"
+#include "ethkey/checksum/DoubleSha256CheckSum.hpp"
 
 
 using namespace Ethereum;
