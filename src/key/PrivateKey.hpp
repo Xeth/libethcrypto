@@ -4,7 +4,6 @@
 
 #include "../detail/LazySecp256k1Handler.hpp"
 #include "../detail/Data.hpp"
-#include "../signature/Signature.hpp"
 
 namespace Ethereum{
 
