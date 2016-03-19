@@ -3,7 +3,9 @@
 #include <boost/array.hpp>
 
 #include "PublicKey.hpp"
+
 #include "../encoding/HexEncoder.hpp"
+#include "../checksum/HexCaseCheckSum.hpp"
 
 
 namespace Ethereum{
@@ -20,6 +22,7 @@ class Address : public boost::array<unsigned char, 20>
         Address(const std::string &);
 
         std::string toString() const;
+        std::string toStringCheckSum() const;
         operator std::string () const;
 
         boost::array<unsigned char, 20> & toArray();

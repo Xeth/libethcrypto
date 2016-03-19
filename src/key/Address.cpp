@@ -26,11 +26,17 @@ Address::Address(const char *str, size_t size)
     factory.createFromString(str, size, *this);
 }
 
-
 std::string Address::toString() const
 {
     HexEncoder encoder;
     return encoder.encode(begin(), end());
+}
+
+std::string Address::toStringCheckSum() const
+{
+    HexEncoder encoder;
+    HexCaseCheckSum checksum;
+    return checksum.compute(encoder.encode(begin(), end()));
 }
 
 

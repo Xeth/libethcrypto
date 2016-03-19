@@ -119,7 +119,7 @@ std::string HexCaseCheckSum::toLowerCase(const std::string &hex) const
     }
     else
     {
-        hex.end();
+        begin = hex.begin();
         resultSize = hex.size();
     }
     std::string result;

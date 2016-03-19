@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(fromString)
     
     SecuredKey<Cipher> key = serializer.unserialize(serialized);
 
-    BOOST_REQUIRE_EQUAL(key.getAddress().toString(), "4463fd4dd1993fc5beeb51554fdefa97abede8cc");
+    BOOST_REQUIRE_EQUAL(key.getAddress().toStringCheckSum(), "0x4463FD4DD1993Fc5Beeb51554fdEFa97abEDe8CC");
 
     PrivateKey secret = key.getPrivateKey().unlock("asdasd123");
     SecuredKey<Cipher> key2(secret, Cipher(MakeRandomIV(), MakeRandomScryptParams()), "asdasd123");
