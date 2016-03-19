@@ -1,9 +1,9 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/cipher/AesCipher.hpp"
-#include "ethkey/cipher/Scrypt.hpp"
-#include "ethkey/serialization/PrivateKeySerializer.hpp"
-#include "ethkey/key/KeyGenerator.hpp"
+#include "ethcrypto/cipher/AesCipher.hpp"
+#include "ethcrypto/cipher/Scrypt.hpp"
+#include "ethcrypto/serialization/PrivateKeySerializer.hpp"
+#include "ethcrypto/key/KeyGenerator.hpp"
 
 using namespace Ethereum;
 

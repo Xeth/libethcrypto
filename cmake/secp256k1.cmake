@@ -4,7 +4,7 @@ if (NOT SECP256K1_USE_CMAKE)
     ExternalProject_Add(
       secp256k1
       SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/secp256k1
-      CONFIGURE_COMMAND  ./autogen.sh && ./configure --prefix=${CMAKE_CURRENT_BINARY_DIR}/secp256k1 --disable-shared --includedir=${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/secp256k1 --libdir=${CMAKE_CURRENT_BINARY_DIR}/lib.obj
+      CONFIGURE_COMMAND  ./autogen.sh && ./configure --prefix=${CMAKE_CURRENT_BINARY_DIR}/secp256k1 --disable-shared --includedir=${CMAKE_CURRENT_BINARY_DIR}/include/ethcrypto/secp256k1 --libdir=${CMAKE_CURRENT_BINARY_DIR}/lib.obj
       BUILD_COMMAND make
       BUILD_IN_SOURCE 1
     )
@@ -64,7 +64,7 @@ else (NOT SECP256K1_USE_CMAKE)
 
     file(GLOB SECP256K1_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/secp256k1/include/*")
 
-    file(COPY ${SECP256K1_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/secp256k1)
+    file(COPY ${SECP256K1_HEADERS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/ethcrypto/secp256k1)
 
 if(MSVC OR WIN32)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/msvc/include)

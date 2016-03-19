@@ -17,16 +17,16 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}/lib.obj"
 
 
 
-add_library(ethkey-core STATIC ${SOURCES})
+add_library(ethcrypto-core STATIC ${SOURCES})
 
 
 
 foreach(HEADER ${HEADERS})
     add_custom_command(
-        TARGET ethkey-dummy
+        TARGET ethcrypto-dummy
         PRE_BUILD
         COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${CMAKE_CURRENT_SOURCE_DIR}/src/${HEADER} ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/${HEADER}
+        ARGS -E copy ${CMAKE_CURRENT_SOURCE_DIR}/src/${HEADER} ${CMAKE_CURRENT_BINARY_DIR}/include/ethcrypto/${HEADER}
 )
 endforeach(HEADER )
 

@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "ethkey/libscrypt.h"
+#include "ethcrypto/libscrypt.h"
 
 #include "../detail/Data.hpp"
 #include "ScryptParams.hpp"

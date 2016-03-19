@@ -12,8 +12,8 @@ include(cmake/secp256k1.cmake)
 include(cmake/libscrypt.cmake)
 include(cmake/core.cmake)
 
-add_dependencies(ethkey-core secp256k1)
-add_dependencies(ethkey-core scrypt)
+add_dependencies(ethcrypto-core secp256k1)
+add_dependencies(ethcrypto-core scrypt)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
@@ -21,27 +21,27 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
-add_library(ethkey STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp) 
-add_dependencies(ethkey secp256k1)
-add_dependencies(ethkey ethkey-core)
+add_library(ethcrypto STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp) 
+add_dependencies(ethcrypto secp256k1)
+add_dependencies(ethcrypto ethcrypto-core)
 
 
 
 if (WIN32 AND NOT MINGW)
-    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "\"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\secp256k1.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\scrypt.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\ethkey-core.lib\"")
+    set_property (TARGET ethcrypto APPEND PROPERTY STATIC_LIBRARY_FLAGS "\"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\secp256k1.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\scrypt.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\ethcrypto-core.lib\"")
 elseif (${CMAKE_GENERATOR} STREQUAL "Xcode")
-    set_property (TARGET ethkey APPEND PROPERTY STATIC_LIBRARY_FLAGS "${CMAKE_CURRENT_BINARY_DIR}/lib.obj/secp256k1.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libscrypt.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/ethkey-core.a")
+    set_property (TARGET ethcrypto APPEND PROPERTY STATIC_LIBRARY_FLAGS "${CMAKE_CURRENT_BINARY_DIR}/lib.obj/secp256k1.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libscrypt.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/ethcrypto-core.a")
 else()
     set(LIB_OBJ_DIR ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/obj)
     make_directory (${LIB_OBJ_DIR})
 
-    ADD_CUSTOM_COMMAND(TARGET ethkey
+    ADD_CUSTOM_COMMAND(TARGET ethcrypto
           POST_BUILD
-          COMMAND echo "packing libethkey.a"
+          COMMAND echo "packing libethcrypto.a"
           COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libsecp256k1.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
           COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libscrypt.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
-          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libethkey-core.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
-          COMMAND ${CMAKE_AR} rcs ${CMAKE_CURRENT_BINARY_DIR}/libethkey.a ${LIB_OBJ_DIR}/*.o
+          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libethcrypto-core.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
+          COMMAND ${CMAKE_AR} rcs ${CMAKE_CURRENT_BINARY_DIR}/libethcrypto.a ${LIB_OBJ_DIR}/*.o
           COMMAND rm -fr ${LIB_OBJ_DIR}
     )
 endif ()
@@ -53,5 +53,5 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CopyHeaders.cmake)
 CopyHeaders()
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include DESTINATION include)
-install (TARGETS ethkey ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin)
+install (TARGETS ethcrypto ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin)
 

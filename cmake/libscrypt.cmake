@@ -23,7 +23,7 @@ if(HAS_RELRO)
 endif()
 
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/libscrypt.h DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/ethkey/)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/libscrypt/libscrypt.h DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/ethcrypto/)
 
 if(MSVC OR WIN32)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/msvc/include)

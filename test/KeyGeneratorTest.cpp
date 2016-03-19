@@ -1,10 +1,10 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/key/KeyGenerator.hpp"
-#include "ethkey/signature/Signer.hpp"
-#include "ethkey/signature/SignatureValidator.hpp"
-#include "ethkey/hash/Sha256.hpp"
-#include "ethkey/serialization/Literal.hpp"
+#include "ethcrypto/key/KeyGenerator.hpp"
+#include "ethcrypto/signature/Signer.hpp"
+#include "ethcrypto/signature/SignatureValidator.hpp"
+#include "ethcrypto/hash/Sha256.hpp"
+#include "ethcrypto/serialization/Literal.hpp"
 
 #include <iostream>
 

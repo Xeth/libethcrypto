@@ -1,10 +1,10 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/cipher/AesCipher.hpp"
-#include "ethkey/cipher/Scrypt.hpp"
-#include "ethkey/serialization/KeySerializer.hpp"
-#include "ethkey/key/KeyGenerator.hpp"
-#include "ethkey/serialization/Literal.hpp"
+#include "ethcrypto/cipher/AesCipher.hpp"
+#include "ethcrypto/cipher/Scrypt.hpp"
+#include "ethcrypto/serialization/KeySerializer.hpp"
+#include "ethcrypto/key/KeyGenerator.hpp"
+#include "ethcrypto/serialization/Literal.hpp"
 
 #include <iostream>
 

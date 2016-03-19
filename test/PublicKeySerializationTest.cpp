@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/serialization/PublicKeySerializer.hpp"
+#include "ethcrypto/serialization/PublicKeySerializer.hpp"
 #include <iostream>
 
 using namespace Ethereum;

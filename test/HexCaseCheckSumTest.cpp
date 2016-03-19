@@ -1,7 +1,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/checksum/HexCaseCheckSum.hpp"
+#include "ethcrypto/checksum/HexCaseCheckSum.hpp"
 
 #include <iostream>
 

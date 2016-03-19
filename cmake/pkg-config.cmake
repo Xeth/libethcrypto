@@ -8,6 +8,6 @@ endif()
 
 if( DEFINED PKGCONFIG_DIR)
   MESSAGE("PKG CONFIG FOUND")
-  CONFIGURE_FILE("cmake/pkg-config.conf" "ethkey.pc" @ONLY)
-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/ethkey.pc" DESTINATION "${CMAKE_INSTALL_PREFIX}/${PKGCONFIG_DIR}")
+  CONFIGURE_FILE("cmake/pkg-config.conf" "ethcrypto.pc" @ONLY)
+  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/ethcrypto.pc" DESTINATION "${CMAKE_INSTALL_PREFIX}/${PKGCONFIG_DIR}")
 endif()

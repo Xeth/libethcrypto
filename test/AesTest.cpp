@@ -1,7 +1,7 @@
 #include <boost/test/unit_test.hpp>
 
-#include "ethkey/cipher/AesCipher.hpp"
-#include "ethkey/cipher/Scrypt.hpp"
+#include "ethcrypto/cipher/AesCipher.hpp"
+#include "ethcrypto/cipher/Scrypt.hpp"
 
 using namespace Ethereum;
 
