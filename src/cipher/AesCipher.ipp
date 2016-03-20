@@ -100,7 +100,7 @@ Output AesCipher<KDF>::decrypt(const EncryptedData &input, const std::string &pa
     Output output;
     if(!decrypt(input, output, password))
     {
-        throw std::runtime_error("failed tp decrypt");
+        throw std::runtime_error("invalid password");
     }
     return output;
 }
