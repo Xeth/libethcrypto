@@ -28,9 +28,9 @@ add_dependencies(ethcrypto ethcrypto-core)
 
 
 if (WIN32 AND NOT MINGW)
-    set_property (TARGET ethcrypto APPEND PROPERTY STATIC_LIBRARY_FLAGS "\"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\secp256k1.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\scrypt.lib\" \"${CMAKE_CURRENT_BINARY_DIR}\\lib.obj\\ethcrypto-core.lib\"")
+    set_property (TARGET ethcrypto APPEND PROPERTY STATIC_LIBRARY_FLAGS "\"$<TARGET_OBJECTS:secp256k1>\" \"$<TARGET_OBJECTS:scrypt>\" \"$<TARGET_OBJECTS:ethcrypto-core>\"")
 elseif (${CMAKE_GENERATOR} STREQUAL "Xcode")
-    set_property (TARGET ethcrypto APPEND PROPERTY STATIC_LIBRARY_FLAGS "${CMAKE_CURRENT_BINARY_DIR}/lib.obj/secp256k1.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libscrypt.a ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/ethcrypto-core.a")
+    set_property (TARGET ethcrypto APPEND PROPERTY STATIC_LIBRARY_FLAGS "$<TARGET_OBJECTS:secp256k1> $<TARGET_OBJECTS:scrypt> $<TARGET_OBJECTS:ethcrypto-core>")
 else()
     set(LIB_OBJ_DIR ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/obj)
     make_directory (${LIB_OBJ_DIR})
