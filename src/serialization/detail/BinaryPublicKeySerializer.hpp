@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdexcept>
+
 #include "../../key/CompressedPoint.hpp"
 #include "../../key/UncompressedPoint.hpp"
 #include "../../key/PublicKey.hpp"

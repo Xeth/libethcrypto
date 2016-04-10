@@ -1,5 +1,7 @@
 #pragma once 
 
+#include <stdexcept>
+
 #include "ethcrypto/libscrypt.h"
 
 #include "../detail/Data.hpp"

@@ -1,5 +1,7 @@
 #pragma once 
 
+#include <stdexcept>
+
 #include "../../detail/Secp256k1Handler.hpp"
 #include "../../detail/Data.hpp"
 #include "../../signature/Signature.hpp"
