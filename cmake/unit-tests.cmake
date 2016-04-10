@@ -1,5 +1,8 @@
 find_package(Boost COMPONENTS system filesystem unit_test_framework random REQUIRED)
-find_package(GMP)
+
+if(ENABLE_GMP)
+    find_package(GMP)
+endif()
 
 file(GLOB TEST_SOURCES 
     "test/*.cpp"

@@ -12,7 +12,9 @@ else (NOT SECP256K1_USE_CMAKE)
     include(CheckTypeSize) 
     check_type_size("void*" SIZEOF_VOID_P BUILTIN_TYPES_ONLY)
 
-    find_package(GMP)
+    if(ENABLE_GMP)
+        find_package(GMP)
+    endif()
 
     if(SIZEOF_VOID_P EQUAL 8) 
         message("x86_64 detected")
