@@ -5,7 +5,8 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include "../hash/Sha3.hpp"
+#include "../hash/Keccak256.hpp"
+#include "../hash/Sha256.hpp"
 
 
 namespace Ethereum{

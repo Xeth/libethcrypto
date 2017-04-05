@@ -6,7 +6,7 @@ namespace Ethereum{
 
 bool AddressFactory::createFromPublicKey(const PublicKey &key, Address &result) const
 {
-    Sha3 hasher;
+    Keccak256 hasher;
     BinaryPublicKeySerializer serializer;
     UncompressedPoint point = serializer.serialize<UncompressedPoint>(key);
     Data hash = hasher.hash(point.begin()+1, point.end());

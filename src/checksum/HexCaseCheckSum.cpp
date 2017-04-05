@@ -1,6 +1,8 @@
 #include "HexCaseCheckSum.hpp"
 #include "../encoding/HexEncoder.hpp"
+
 #include <iostream>
+
 namespace Ethereum{
 
 
@@ -102,7 +104,7 @@ bool HexCaseCheckSum::checkAddressLen(const std::string &hex) const
 
 Data HexCaseCheckSum::hash(const std::string &hex) const
 {
-    Sha3 hasher;
+    Keccak256 hasher;
     return hasher.hash(hex);
 }
 

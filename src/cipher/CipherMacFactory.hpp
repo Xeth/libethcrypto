@@ -1,7 +1,7 @@
 #pragma once 
 
 #include "../detail/Data.hpp"
-#include "../hash/Sha3.hpp"
+#include "../hash/Keccak256.hpp"
 
 namespace Ethereum{
 

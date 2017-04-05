@@ -14,7 +14,7 @@ Data CipherMacFactory::createMac(const Data &encrypted, const Data &key) const
 
 void CipherMacFactory::createMac(const Data &encrypted, const Data &key, Data &result) const
 {
-    Sha3 hasher;
+    Keccak256 hasher;
     hasher.update(key.begin()+16, key.end());
     hasher.update(encrypted.begin(), encrypted.end());
     hasher.finalize(result);

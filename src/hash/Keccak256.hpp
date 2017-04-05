@@ -2,14 +2,14 @@
 
 #include <string>
 
-#include "cryptopp/sha3.h"
+#include "cryptopp/keccak.h"
 #include "./detail/CryptoppHasher.hpp"
 
 
 namespace Ethereum{
 
 
-typedef CryptoppHasher<CryptoPP::SHA3_256, 32> Sha3;
+typedef CryptoppHasher<CryptoPP::Keccak_256, 32> Keccak256;
 
 
 

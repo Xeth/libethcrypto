@@ -6,8 +6,7 @@
 #include "../encoding/HexEncoder.hpp"
 #include "CompressedPoint.hpp"
 #include "../serialization/detail/BinaryPublicKeySerializer.hpp"
-#include "../hash/DoubleHash.hpp"
-#include "../hash/Sha3.hpp"
+#include "../hash/Keccak256.hpp"
 #include "../serialization/Literal.hpp"
 
 
