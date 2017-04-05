@@ -14,7 +14,7 @@ find_package(Threads REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIRS} ${CRYPTOPP_INCLUDE_DIR} ${JSONCPP_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/include)
 
-add_executable(ethcrypto-tests ${TEST_SOURCES})
+add_executable(ethcrypto-tests EXCLUDE_FROM_ALL ${TEST_SOURCES})
 add_dependencies(ethcrypto-tests ethcrypto)
 
 target_link_libraries(ethcrypto-tests 
