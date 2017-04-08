@@ -25,7 +25,7 @@ std::string KeySerializer<Cipher>::serialize(const SecuredKey<Cipher> &key) cons
 template<class Cipher>
 SecuredKey<Cipher> KeySerializer<Cipher>::unserialize(const Json::Value &json) const
 {
-    SecuredPrivateKey<Cipher> secret = _secretSerializer.unserialize(json["Crypto"]);
+    SecuredPrivateKey<Cipher> secret = _secretSerializer.unserialize(json.isMember("Crypto") ? json["Crypto"] : json["crypto"]);
     Address address(json["address"].asString());
     return SecuredKey<Cipher>(secret, address);
 }
