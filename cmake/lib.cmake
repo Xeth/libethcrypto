@@ -7,10 +7,12 @@ if(WIN32 OR MSVC)
     endif()
 endif()
 
+include(cmake/modules/MakeIncludesLink.cmake)
 include(cmake/cryptopp.cmake)
 include(cmake/secp256k1.cmake)
 include(cmake/libscrypt.cmake)
 include(cmake/core.cmake)
+
 
 add_dependencies(ethcrypto-core secp256k1)
 add_dependencies(ethcrypto-core scrypt)
@@ -63,7 +65,7 @@ if(NOT SKIP_LIBRARY_INSTALL)
     install (TARGETS ethcrypto ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin OPTIONAL)
 endif()
 
-ADD_CUSTOM_TARGET(link_ethcrypto ALL COMMAND ${CMAKE_COMMAND} -E create_symlink ${PROJECT_SOURCE_DIR}/src ${PROJECT_BINARY_DIR}/include/ethcrypto)
+MakeIncludesLink()
 
 
 set(ETHCRYPTO_INCLUDE_DIRS ${PROJECT_BINARY_DIR}/include ${LIBSCRYPT_INCLUDE_DIRS} ${SECP256K1_INCLUDE_DIRS} ${ETHCRYPTO_CONFIG_INCLUDE_DIR})
