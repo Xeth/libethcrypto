@@ -7,7 +7,7 @@ if(WIN32 OR MSVC)
     endif()
 endif()
 
-
+include(cmake/cryptopp.cmake)
 include(cmake/secp256k1.cmake)
 include(cmake/libscrypt.cmake)
 include(cmake/core.cmake)
@@ -23,7 +23,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
 add_library(ethcrypto STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp) 
 add_dependencies(ethcrypto secp256k1)
+add_dependencies(ethcrypto cryptopp-static)
 add_dependencies(ethcrypto ethcrypto-core)
+
 
 
 
@@ -40,6 +42,7 @@ else()
     ADD_CUSTOM_COMMAND(TARGET ethcrypto
           POST_BUILD
           COMMAND echo "packing libethcrypto.a"
+          COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libcryptopp.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
           COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libsecp256k1.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
           COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libscrypt.a WORKING_DIRECTORY ${LIB_OBJ_DIR}
           COMMAND ${CMAKE_AR} x ${CMAKE_CURRENT_BINARY_DIR}/lib.obj/libethcrypto-core.a WORKING_DIRECTORY ${LIB_OBJ_DIR}

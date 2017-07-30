@@ -6,7 +6,7 @@ template<class Handler, size_t HashSize>
 template<class Iterator>
 void CryptoppHasher<Handler, HashSize>::update(Iterator begin, Iterator end)
 {
-    _handler.Update((const byte *)&*begin, end-begin);
+    _handler.Update((const unsigned char *)&*begin, end-begin);
 }
 
 template<class Handler, size_t HashSize>
