@@ -1,3 +1,5 @@
+
+set(SECP256K1_INCLUDE_DIRS ${PROJECT_BINARY_DIR}/include/ethcrypto-deps)
 if (NOT SECP256K1_USE_CMAKE)
     find_program(AUTORECONF autoreconf)
     if(AUTORECONF)

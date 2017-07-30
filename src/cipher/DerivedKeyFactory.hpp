@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-#include "ethcrypto/libscrypt.h"
+#include "libscrypt/libscrypt.h"
 
 #include "../detail/Data.hpp"
 #include "ScryptParams.hpp"

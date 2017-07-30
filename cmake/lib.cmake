@@ -22,6 +22,10 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
 add_library(ethcrypto STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp) 
+
+target_include_directories(ethcrypto-core PUBLIC ${LIBSCRYPT_INCLUDE_DIRS})
+target_include_directories(ethcrypto-core PUBLIC ${SECP256K1_INCLUDE_DIRS})
+
 add_dependencies(ethcrypto secp256k1)
 add_dependencies(ethcrypto cryptopp-static)
 add_dependencies(ethcrypto ethcrypto-core)
@@ -54,10 +58,12 @@ endif ()
 
 
 
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CopyHeaders.cmake)
-CopyHeaders()
-
 if(NOT SKIP_LIBRARY_INSTALL)
     install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include DESTINATION include OPTIONAL)
     install (TARGETS ethcrypto ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin OPTIONAL)
 endif()
+
+ADD_CUSTOM_TARGET(link_ethcrypto ALL COMMAND ${CMAKE_COMMAND} -E create_symlink ${PROJECT_SOURCE_DIR}/src ${PROJECT_BINARY_DIR}/include/ethcrypto)
+
+
+set(ETHCRYPTO_INCLUDE_DIRS ${PROJECT_BINARY_DIR}/include ${LIBSCRYPT_INCLUDE_DIRS} ${SECP256K1_INCLUDE_DIRS} ${ETHCRYPTO_CONFIG_INCLUDE_DIR})
