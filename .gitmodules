@@ -13,4 +13,4 @@
 	url = https://github.com/technion/libscrypt.git
 [submodule "cryptopp"]
 	path = cryptopp
-	url = https://github.com/weidai11/cryptopp.git
+	url = git@github.com:weidai11/cryptopp.git
