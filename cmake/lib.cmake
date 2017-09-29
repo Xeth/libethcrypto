@@ -29,7 +29,7 @@ target_include_directories(ethcrypto-core PUBLIC ${LIBSCRYPT_INCLUDE_DIRS})
 target_include_directories(ethcrypto-core PUBLIC ${SECP256K1_INCLUDE_DIRS})
 
 add_dependencies(ethcrypto secp256k1)
-add_dependencies(ethcrypto cryptopp-static)
+add_dependencies(ethcrypto cryptopp)
 add_dependencies(ethcrypto ethcrypto-core)
 
 
@@ -66,4 +66,5 @@ endif ()
 MakeIncludesLink()
 
 
-set(ETHCRYPTO_INCLUDE_DIRS ${PROJECT_BINARY_DIR}/include ${LIBSCRYPT_INCLUDE_DIRS} ${SECP256K1_INCLUDE_DIRS} ${ETHCRYPTO_CONFIG_INCLUDE_DIR})
+set(ETHCRYPTO_INCLUDE_DIRS ${CMAKE_CURRENT_BINARY_DIR}/include ${LIBSCRYPT_INCLUDE_DIRS} ${SECP256K1_INCLUDE_DIRS} ${CRYPTOPP_INCLUDE_DIRS} ${ETHCRYPTO_CONFIG_INCLUDE_DIR} PARENT_SCOPE)
+

@@ -21,13 +21,3 @@ add_library(ethcrypto-core STATIC ${SOURCES})
 
 
 
-foreach(HEADER ${HEADERS})
-    add_custom_command(
-        TARGET ethcrypto-dummy
-        PRE_BUILD
-        COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${CMAKE_CURRENT_SOURCE_DIR}/src/${HEADER} ${CMAKE_CURRENT_BINARY_DIR}/include/ethcrypto/${HEADER}
-)
-endforeach(HEADER )
-
-

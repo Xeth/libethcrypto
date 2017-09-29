@@ -1,11 +1,6 @@
-set(CRYPTOPP_INCLUDE_DIR ${PROJECT_SOURCE_DIR})
-set(CRYPTOPP_LIBRARY cryptopp-static)
-
 include(ExternalProject)
 
-MESSAGE("------------------------------------------------")
-MESSAGE("${CMAKE_CURRENT_BINARY_DIR}/lib.obj")
-message("make -C ${CMAKE_CURRENT_SOURCE_DIR}/cryptopp")
+set(CRYPTOPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/cryptopp)
 
 ExternalProject_Add(
   cryptopp
