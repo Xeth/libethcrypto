@@ -1,6 +1,6 @@
 include(ExternalProject)
 
-set(CRYPTOPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/cryptopp)
+set(CRYPTOPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/cryptopp PARENT_SCOPE)
 
 ExternalProject_Add(
   cryptopp
