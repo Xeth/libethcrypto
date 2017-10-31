@@ -12,3 +12,5 @@ configure_file (
 
 
 set(ETHCRYPTO_CONFIG_INCLUDE_DIRS ${ETHCRYPTO_CONFIG_INCLUDE_DIR})
+
+#add_definitions(-D__DEBUG__)
