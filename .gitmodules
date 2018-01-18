@@ -5,7 +5,7 @@
 
 [submodule "cmake/modules"]
 	path = cmake/modules
-	url = https://github.com/BitProfile/cmake-modules.git
+	url = https://github.com/Xeth/cmake-modules.git
 
 
 [submodule "libscrypt"]
@@ -13,4 +13,4 @@
 	url = https://github.com/technion/libscrypt.git
 [submodule "cryptopp"]
 	path = cryptopp
-	url = git@github.com:weidai11/cryptopp.git
+	url = https://github.com/weidai11/cryptopp.git
